@@ -1,3 +1,6 @@
+# config.js file
+config.js
+
 # Logs
 logs
 *.log
@@ -81,6 +84,7 @@ typings/
 # Nuxt.js build / generate output
 .nuxt
 dist
+# dist -- comment this out to create dist folder
 
 # Gatsby files
 .cache/
@@ -102,3 +106,5 @@ dist
 
 # TernJS port file
 .tern-port
+
+

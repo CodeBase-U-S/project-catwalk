@@ -1,0 +1,42 @@
+{
+  "name": "project-catwalk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "nodemon ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimmyG37/project-catwalk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JimmyG37/project-catwalk/issues"
+  },
+  "homepage": "https://github.com/JimmyG37/project-catwalk#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jquery": "^3.6.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/helper-define-map": "^7.13.12",
+    "@babel/helper-regex": "^7.10.5",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.27.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.7.0"
+  }
+}
