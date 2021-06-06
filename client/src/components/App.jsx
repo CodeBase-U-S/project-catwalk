@@ -2,7 +2,7 @@ import React from 'react';
 
 import Overview from './Overview.jsx';
 import QandA from './QandA.jsx';
-import RatingsReviews from './RatingsReviews.jsx';
+import RatingsReviews from './R&R/RatingsAndReviews.jsx';
 import RelatedItems from './RelatedItems.jsx';
 
 class App extends React.Component {
