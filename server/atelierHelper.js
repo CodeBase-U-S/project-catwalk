@@ -13,17 +13,17 @@ const atelierHelper = {
       headers: {
         'Authorization': `${config.TOKEN}`
       }
-    }
+    };
     axios(options)
       .then(response => {
-        res.status(200).send(response.data)
+        res.status(200).send(response.data);
       })
       .catch(err => {
         console.log('err here is', err);
         res.status(400).send(err);
-      })
+      });
   }
-}
+};
 
 
 

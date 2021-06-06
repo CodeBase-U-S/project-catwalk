@@ -24,11 +24,11 @@ afterEach(() => {
   unmountComponentAtNode(container);
   container.remove();
   container = null;
-})
+});
 
-it("renders", () => {
+it('renders', () => {
   act(() => {
     render(<Overview />, container);
   });
-  expect(container.textContent).toBe("Hello from Overview");
+  expect(container.textContent).toBe('Hello from Overview');
 });
