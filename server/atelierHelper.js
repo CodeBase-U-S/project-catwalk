@@ -9,7 +9,7 @@ const atelierHelper = {
   getProductData: (req, res) => {
     let options = {
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products`,
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products',
       headers: {
         'Authorization': `${config.TOKEN}`
       }
