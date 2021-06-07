@@ -6,11 +6,11 @@ const ProductInformation = (props) => {
     <div id="product-info">
       <div>Star Rating Placeholder</div>
       <div id="category">{props.data.category}</div>
-      <div>{props.data.name}</div>
-      <div>${props.data.default_price}</div>
-      <div>{props.data.description}</div>
+      <div id="name">{props.data.name}</div>
+      <div id="price">${props.data.default_price}</div>
+      <div id="description">{props.data.description}</div>
     </div>
-  )
+  );
 };
 
 export default ProductInformation;

@@ -10,18 +10,18 @@ import ImageGallery from './overview/ImageGallery.jsx';
 
 const Overview = (props) => {
 
-  const [products, setProducts] = useState(null)
+  const [products, setProducts] = useState(null);
 
   useEffect(() => {
     axios.get('/api/products')
-    .then(response => {
-      console.log(response)
-      setProducts(response)
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }, [])
+      .then(response => {
+        console.log(response);
+        setProducts(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div id="Overview">
