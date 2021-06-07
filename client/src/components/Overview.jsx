@@ -30,7 +30,7 @@ const Overview = (props) => {
       <AddToCart />
       <StyleSelector />
     </div>
-    )
+  );
 };
 
 export default Overview;
