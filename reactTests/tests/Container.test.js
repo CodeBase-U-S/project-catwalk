@@ -16,7 +16,7 @@ test('use jsdom in this test file', () => {
 let container = null;
 beforeEach(() => {
   // setup a DOM element as a render target
-  container = document.createElement("div");
+  container = document.createElement('div');
   document.body.appendChild(container);
 });
 
@@ -25,13 +25,13 @@ afterEach(() => {
   unmountComponentAtNode(container);
   container.remove();
   container = null;
-})
+});
 
-it("renders", () => {
+it('renders', () => {
   act(() => {
     render(<Overview />, container);
   });
-  expect(container.textContent).toBe("Hello from Overview");
+  expect(container.textContent).toBe('Hello from Overview');
 });
 
 it("renders product data", async () => {
