@@ -2,7 +2,7 @@ import React from 'react';
 
 import Overview from './Overview.jsx';
 import QandA from './QandA.jsx';
-import RatingsReviews from './R&R/RatingsAndReviews.jsx';
+import RatingsAndReviews from './R&R/RatingsAndReviews.jsx';
 import RelatedItems from './RelatedItems.jsx';
 
 class App extends React.Component {
@@ -13,11 +13,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>It worked</div>
+        {/* <div>It worked</div> */}
         <Overview/>
         <RelatedItems/>
         <QandA/>
-        <RatingsReviews/>
+        <RatingsAndReviews/>
       </div>
     )
   }

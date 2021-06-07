@@ -1,0 +1,10 @@
+
+.ratings {
+  float: left;
+  max-width: 30%;
+}
+
+.reviews {
+  float: right;
+  max-width: 70%;
+}
