@@ -6,6 +6,7 @@ import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import Overview from '../../client/src/components/Overview.jsx';
+import productTestData from './test-data-products.js';
 
 test('use jsdom in this test file', () => {
   const element = document.createElement('div');
