@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const config = require('../config.js');
+// const config = require('../config.js');
 
 
 
@@ -11,7 +11,7 @@ const atelierHelper = {
       method: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products`,
       headers: {
-        'Authorization': `${config.TOKEN}`
+        'Authorization': `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`
       }
     }
     axios(options)

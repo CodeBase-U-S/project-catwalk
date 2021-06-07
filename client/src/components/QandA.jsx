@@ -1,7 +1,10 @@
 import React from 'react';
+import Search from './QAcomponents/search.jsx'
 
-const QandA = () => (
-  <div></div>
+let QandA = () => (
+  <>
+    <Search />
+  </>
 )
 
 
