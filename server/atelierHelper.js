@@ -9,21 +9,21 @@ const atelierHelper = {
   getProductData: (req, res) => {
     let options = {
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products`,
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products',
       headers: {
         'Authorization': `${config.TOKEN}`
       }
-    }
+    };
     axios(options)
       .then(response => {
-        res.status(200).send(response.data)
+        res.status(200).send(response.data);
       })
       .catch(err => {
         console.log('err here is', err);
         res.status(400).send(err);
-      })
+      });
   }
-}
+};
 
 
 
