@@ -2,13 +2,15 @@ import React, {useState} from 'react'
 
 let Question = (props) => {
 
+  //state hook for helpful count
+
   return (
-    <>
-      <div>Q: {props.question}</div>
-      <div>Helpful?
-        <div>Yes</div>
-      </div>
-    </>
+    <div>
+      <span>Q: {props.question}</span>
+      <span>  Helpful?
+        <span>  Yes {props.helpfulCount}</span>
+      </span>
+    </div>
   )
 }
 
