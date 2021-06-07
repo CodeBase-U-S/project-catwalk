@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import testData from './test-data-Overview.js';
 
 import ProductInformation from './overview/ProductInformation.jsx';
@@ -8,24 +8,29 @@ import StyleSelector from './overview/StyleSelector.jsx';
 import ImageGallery from './overview/ImageGallery.jsx';
 
 
-class Overview extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Overview = (props) => {
 
-  componentDidMount() {
-  }
+  const [products, setProducts] = useState(null)
 
-  render() {
-    return (
-      <div id="Overview">
-        <ImageGallery />
-        <ProductInformation data={testData[0]}/>
-        <AddToCart />
-        <StyleSelector />
-      </div>
+  useEffect(() => {
+    axios.get('/api/products')
+    .then(response => {
+      console.log(response)
+      setProducts(response)
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [])
+
+  return (
+    <div id="Overview">
+      <ImageGallery />
+      <ProductInformation data={testData[0]}/>
+      <AddToCart />
+      <StyleSelector />
+    </div>
     )
-  }
 };
 
 export default Overview;

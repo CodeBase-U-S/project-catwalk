@@ -5,7 +5,7 @@ const ProductInformation = (props) => {
   return (
     <div id="product-info">
       <div>Star Rating Placeholder</div>
-      <div>{props.data.category}</div>
+      <div id="category">{props.data.category}</div>
       <div>{props.data.name}</div>
       <div>${props.data.default_price}</div>
       <div>{props.data.description}</div>
