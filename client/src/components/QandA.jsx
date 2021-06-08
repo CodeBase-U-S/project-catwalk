@@ -15,6 +15,7 @@ let QandA = () => {
 
   //function to get info from atelier api
   let [questions, setQuestions] = useState([])
+  let [questionCount, setQuestionCount] = useState(2)
 
   let retrieveQuestions = (page, count) => {
     axios.get(`${url}/qa/questions?product_id=16056&page=${page}&count=${count}`, auth)//refactor for product id input
@@ -30,10 +31,13 @@ let QandA = () => {
 
   // retrieveQuestions();
   useEffect(() => {
-    retrieveQuestions(1, 2)
+    retrieveQuestions(1, questionCount)
   }, [])
 
-
+  let moreQuestionsHandler = () => {
+    setQuestionCount(prevQuestionCount => prevQuestionCount + 2)
+    retrieveQuestions(1, questionCount)
+  }
 
   return (
     <>
@@ -44,7 +48,9 @@ let QandA = () => {
           return <Question question={question}/>
         })}
       </div>
-      {/* <Question question='test question' helpfulCount={5}/> */}
+      <div onClick={moreQuestionsHandler}>
+        More Questions
+      </div>
     </>
   )
 
