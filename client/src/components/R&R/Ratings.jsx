@@ -2,8 +2,8 @@ import React from 'react';
 
 
 const Ratings = () => (
-  <div>Lemon</div>
-)
+  <div>lemongsfsdgdgsegd</div>
+);
 
 
 
