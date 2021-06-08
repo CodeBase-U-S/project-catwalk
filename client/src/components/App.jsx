@@ -7,7 +7,7 @@ import RelatedItems from './RelatedItems.jsx';
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
@@ -19,7 +19,7 @@ class App extends React.Component {
         <QandA/>
         <RatingsReviews/>
       </div>
-    )
+    );
   }
 }
 

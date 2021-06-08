@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from 'react-bootstrap/container';
 
 import testData from './test-data-Overview.js';
 
@@ -18,14 +19,14 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div id="Overview">
+      <Container>
         <ImageGallery />
         <ProductInformation data={testData[0]}/>
         <AddToCart />
         <StyleSelector />
-      </div>
-    )
+      </Container>
+    );
   }
-};
+}
 
 export default Overview;
