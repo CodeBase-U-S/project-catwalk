@@ -21,6 +21,7 @@ const Overview = (props) => {
 
   const [product, setProduct] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [rating, setRating] = useState(null);
 
   useEffect(() => {
     getProducts();
@@ -45,6 +46,8 @@ const Overview = (props) => {
     axios.get(`${url}reviews/`, options)
       .then(response => {
         setReviews(response);
+        console.log(response.data)
+        setRating(calculateAvg(response.data.results));
       })
       .catch(err => {
         console.log(err);
@@ -66,7 +69,7 @@ const Overview = (props) => {
         <ImageGallery />
       </Col>
       <Col>
-        <ProductInformation data={product} rating={reviews} />
+        <ProductInformation data={product} rating={rating} />
 
       </Col>
     </Row>

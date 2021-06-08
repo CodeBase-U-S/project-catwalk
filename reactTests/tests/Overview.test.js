@@ -37,12 +37,12 @@ afterEach(() => {
 // });
 
 
-
+// Checks that product information is rendered properly.
 it("renders product data", async () => {
   const testProduct = {
     "id": 132123,
     "campus": "hr-lax",
-    "name": "Camo Onesie",
+    "name": "Potato Jacket",
     "slogan": "Blend in to your crowd",
     "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
     "category": "Jackets",
@@ -51,23 +51,32 @@ it("renders product data", async () => {
     "updated_at": "2021-02-23T03:29:57.827Z"
   }
 
-  jest.spyOn(axios, 'get').mockImplementation(() =>
-    Promise.resolve({
-      json: () => Promise.resolve(testProduct)
-    })
-  );
-
   act(() => {
     render(<ProductInformation data={testProduct}/>, container);
   });
   expect(container.querySelector('#category').textContent).toBe('Jackets');
-  expect(container.querySelector('#name').textContent).toBe('Camo Onesie');
+  expect(container.querySelector('#name').textContent).toBe('Potato Jacket');
   expect(container.querySelector('#price').textContent).toBe('$140.00');
-  expect(container.querySelector('#description').textContent).toBe('The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.');
 
-  // act(async () => {
-  //   render(<Overview />, container);
-  // });
-  // expect(container.textContent).toBe("Hello from Overview");
+});
+
+it('does not render review component if there are no reviews', async () => {
+  const testReviews = {
+      "product": "16056",
+      "page": 0,
+      "count": 0,
+      "results": []
+  }
+  const spy = jest.spyOn(axios, 'get');
+
+  act(() => {
+    render(<Overview />, container);
+  });
+  // const mockFn = jest.fn();
+  // expect(mockFn).toHaveBeenCalled();
+
+  expect(spy).toHaveBeenCalledTimes(2)
+
+
 
 });
