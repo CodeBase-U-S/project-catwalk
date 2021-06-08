@@ -7,13 +7,34 @@ import RelatedItems from './RelatedItems.jsx';
 import TOKEN from '../../../config.js';
 import axios from 'axios';
 
+<<<<<<< HEAD
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+=======
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const auth = {
   headers: {
     Authorization: TOKEN.TOKEN
+>>>>>>> aa7a382abfc4dc222ea9ce99c706af41b64406e2
   }
 };
 
+<<<<<<< HEAD
+  render() {
+    return (
+      <div>
+        <div>It worked</div>
+        <Overview/>
+        <RelatedItems/>
+        <QandA/>
+        <RatingsReviews/>
+      </div>
+    );
+  }
+}
+=======
 const App = () => {
   const [reviews, setReviews] = useState([]);
   const [product, setProduct] = useState([]);
@@ -48,5 +69,6 @@ const App = () => {
   );
 
 };
+>>>>>>> aa7a382abfc4dc222ea9ce99c706af41b64406e2
 
 export default App;
