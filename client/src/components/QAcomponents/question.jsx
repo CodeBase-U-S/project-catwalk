@@ -6,6 +6,7 @@ let Question = (props) => {
 
   //state hook for helpful count
   let [answers, setAnswers] = useState([])
+  let [answerCount, setAnswerCount] = useState(2)
 
   const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 
@@ -25,10 +26,16 @@ let Question = (props) => {
       })
   }
 
+  let question_id = props.question.question_id;
+
   useEffect(() => {
-    let question_id = props.question.question_id;
     retrieveAnswers(question_id, 1, 2)
   }, [])
+
+  let moreAnswersHandler = () => {
+    setAnswerCount(prevAnswerCount => prevAnswerCount + 2)
+    retrieveAnswers(question_id, 1, answerCount)
+  }
 
   return (
     <div>
@@ -40,6 +47,9 @@ let Question = (props) => {
         {answers.map(answer => {
           return <Answer answer={answer}/>
         })}
+      </div>
+      <div onClick={moreAnswersHandler}>
+        More Answers
       </div>
     </div>
   )
