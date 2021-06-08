@@ -12,20 +12,25 @@ import ImageGallery from './overview/ImageGallery.jsx';
 import ProductInformation from './overview/ProductInformation.jsx';
 
 
-// api data //
+// api options //
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/';
-
+const token = config.TOKEN;
 
 
 const Overview = (props) => {
 
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
   const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const getProducts = () => {
     axios.get('/api/products')
       .then(response => {
-        setProducts(response.data[0]);
+        setProduct(response.data[1]);
+        getReviews(response.data[1]);
       })
       .catch(err => {
         console.log(err);
@@ -33,28 +38,27 @@ const Overview = (props) => {
   };
 
   const getReviews = (product) => {
-    console.log('getReviewProduct');
     const options = {
-      headers: {
-        'Authorization': config.TOKEN,
-      },
-      params: {
-        'product_id': product.id
-      }
+      headers: { 'Authorization': token, },
+      params: { 'product_id': product.id }
     };
-    axios.get(`${url}reviews`, options)
+    axios.get(`${url}reviews/`, options)
       .then(response => {
         setReviews(response);
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  const calculateAvg = (arr) => {
+    let sum = 0;
+    arr.forEach((product) => {
+      sum += product.rating;
+    });
+    return sum / arr.length;
+  };
 
-  useEffect(() => {
-    getReviews(products);
-  }, [products]);
 
   return (
     <Row>
@@ -62,7 +66,7 @@ const Overview = (props) => {
         <ImageGallery />
       </Col>
       <Col>
-        <ProductInformation data={testData[0]} />
+        <ProductInformation data={product} rating={reviews} />
 
       </Col>
     </Row>
