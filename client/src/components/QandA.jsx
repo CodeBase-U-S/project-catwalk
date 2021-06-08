@@ -17,20 +17,20 @@ let QandA = () => {
   let [questions, setQuestions] = useState([])
 
   let retrieveQuestions = (page, count) => {
-    axios.get(`${url}/qa/questions?product_id=16056`, auth)//refactor for product id input
+    axios.get(`${url}/qa/questions?product_id=16056&page=${page}&count=${count}`, auth)//refactor for product id input
       .then(({data}) => {
         console.log('response:', data.results)
         setQuestions(data.results)
-        console.log('questions', questions)
       })
       .catch(err => {
         console.log(err)
       })
   }
 
+
   // retrieveQuestions();
   useEffect(() => {
-    retrieveQuestions()
+    retrieveQuestions(1, 2)
   }, [])
 
 
@@ -40,7 +40,8 @@ let QandA = () => {
       <Search />
       <div>
         {questions.map(question => {
-          return <Question question={question.question_body} helpfulCount={question.question_helpfulness}/>
+          // return <Question question={question.question_body} helpfulCount={question.question_helpfulness}/>//<>Questions...Answers</>
+          return <Question question={question}/>
         })}
       </div>
       {/* <Question question='test question' helpfulCount={5}/> */}
