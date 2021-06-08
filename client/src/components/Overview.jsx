@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Container from 'react-bootstrap/container';
+import Row from 'react-bootstrap/row';
+import Col from 'react-bootstrap/col';
 
 
 import testData from './test-data-Overview.js';
 
-import ProductInformation from './overview/ProductInformation.jsx';
-import AddToCart from './overview/AddToCart.jsx';
-import StyleSelector from './overview/StyleSelector.jsx';
 import ImageGallery from './overview/ImageGallery.jsx';
+import ProductInformation from './overview/ProductInformation.jsx';
+
 
 
 const Overview = (props) => {
@@ -27,12 +28,15 @@ const Overview = (props) => {
   }, []);
 
   return (
-    <Container>
-      <ImageGallery />
-      <ProductInformation data={testData[0]}/>
-      <AddToCart />
-      <StyleSelector />
-    </Container>
+    <Row>
+      <Col md='auto'>
+        <ImageGallery />
+      </Col>
+      <Col>
+        <ProductInformation data={testData[0]}/>
+
+      </Col>
+    </Row>
   );
 };
 
