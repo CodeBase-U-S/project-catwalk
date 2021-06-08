@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Jumbotron from 'react-bootstrap/jumbotron';
 
 import AddToCart from '../overview/AddToCart.jsx';
 import StyleSelector from '../overview/StyleSelector.jsx';
 
 const ProductInformation = (props) => {
+
+
 
   return (
     <Jumbotron>

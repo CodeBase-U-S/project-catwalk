@@ -21,7 +21,7 @@ const RatingsAndReviews = () => {
         setReviews(data)
       })
       .catch(err => console.error(err))
-  })
+  }, [])
 
   return (
     <div>
