@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import React from 'react';
+import Container from 'react-bootstrap/container';
+
 import testData from './test-data-Overview.js';
 
 import ProductInformation from './overview/ProductInformation.jsx';
@@ -24,12 +25,12 @@ const Overview = (props) => {
   }, []);
 
   return (
-    <div id="Overview">
+    <Container>
       <ImageGallery />
       <ProductInformation data={testData[0]}/>
       <AddToCart />
       <StyleSelector />
-    </div>
+    </Container>
   );
 };
 
