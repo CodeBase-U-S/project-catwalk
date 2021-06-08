@@ -11,17 +11,7 @@ const auth = {
   }
 };
 
-const RatingsAndReviews = () => {
-  const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    axios.get(`${url}/reviews/?page=1&count=100&product_id=17000`, auth)
-      .then(({ data }) => {
-        console.log(data.results)
-        setReviews(data.results)
-      })
-      .catch(err => console.error(err))
-  }, [])
+const RatingsAndReviews = ({ reviews }) => {
 
   return (
     <div>
@@ -31,14 +21,14 @@ const RatingsAndReviews = () => {
       <div className="reviews">
         {reviews.map((review, index) => (
           <Reviews
-           review={review}
-           key={index}
+            review={review}
+            key={index}
           />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 
 export default RatingsAndReviews;

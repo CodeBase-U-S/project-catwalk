@@ -13,7 +13,7 @@ const Reviews = ({ review }) => (
     </div>
     <div>
       {review.summary.length >= 60 ? (
-       <h3>{review.summary.slice(0, 60)}...</h3>
+        <h3>{review.summary.slice(0, 60)}...</h3>
       ) : (
         <h3>{review.summary}</h3>
       )}
@@ -21,7 +21,7 @@ const Reviews = ({ review }) => (
     <p>{review.body}</p>
     <p>
       {review.recommend ? (
-        `√  I recommend this product.`
+        '√  I recommend this product.'
       ) : (
         null
       )}
@@ -30,11 +30,11 @@ const Reviews = ({ review }) => (
       {!review.response ? (
         <p>{review.response}</p>
       ) : (
-      null
+        null
       )}
     </p>
   </div>
-)
+);
 
 
 
