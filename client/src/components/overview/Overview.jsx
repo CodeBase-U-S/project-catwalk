@@ -25,7 +25,7 @@ const Overview = ( {product, reviews} ) => {
 
   const calculateAvg = (arr = []) => {
     if (arr.length === 0) {
-      return [];
+      return null;
     }
     let sum = 0;
     arr.forEach((product) => {

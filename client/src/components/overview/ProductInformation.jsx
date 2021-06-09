@@ -11,7 +11,7 @@ const ProductInformation = ({ product, rating }) => {
 
   return (
     <Jumbotron>
-      {rating !== [] && <StarRating rating={rating} />}
+      {rating && <StarRating rating={rating} />}
       <h4 id="category">{product.category}</h4>
       <h1 id="name">{product.name}</h1>
       <div id="price">${product.default_price}</div>

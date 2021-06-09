@@ -2,9 +2,8 @@ import React from 'react';
 import { Star } from 'react-bootstrap';
 
 const StarRating = (props) => {
-  console.log(props.rating);
   return (
-    <div>
+    <div id="star_rating">
       {props.rating >= 0.5 && props.rating < 1 && <HalfStar />}
       {props.rating > 1 ? <FullStar /> : <EmptyStar /> }
       {props.rating >= 1.5 && props.rating < 2 && <HalfStar />}
@@ -16,6 +15,7 @@ const StarRating = (props) => {
       {props.rating >= 4.5 && props.rating < 5 && <HalfStar />}
       {props.rating === 5 && <FullStar /> }
       <span>Read all reviews</span>
+      <div id="testtesttest">hello</div>
     </div>
   );
 
