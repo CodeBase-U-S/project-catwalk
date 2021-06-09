@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { render, unmountComponentAtNode, mount } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import axios from 'axios';
 import App from '../../client/src/components/App.jsx';
@@ -84,7 +84,6 @@ it('does not render review component if there are no reviews', async () => {
   });
 
   expect(container.querySelector('#star_rating')).toBeFalsy()
-  expect(container.querySelector('#star_rating')).toBeTruthy()
 
 });
 
@@ -103,7 +102,11 @@ it('should render star ratings if there are reviews', async () => {
   act(() => {
     render(<ProductInformation product={testProduct} rating={4.3}/>, container);
   });
+
+  const wrapper = mount(<Overview product={testProduct} reviews={testReviews.results}/>);
+
   expect(container.querySelector('#star_rating')).toBeTruthy()
+  expect(wrapper.find('ProductInformation').prop('rating')).toBe(3.3);
 
 });
 
