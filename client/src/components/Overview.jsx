@@ -5,11 +5,6 @@ import Row from 'react-bootstrap/row';
 import Col from 'react-bootstrap/col';
 const config = require('../../../config.js');
 
-<<<<<<< HEAD
-const Overview = () => (
-  <div>Hello from Overview</div>
-);
-=======
 
 import testData from './test-data-Overview.js';
 
@@ -51,7 +46,7 @@ const Overview = (props) => {
     axios.get(`${url}reviews/`, options)
       .then(response => {
         setReviews(response);
-        console.log(response.data)
+        console.log(response.data);
         setRating(calculateAvg(response.data.results));
       })
       .catch(err => {
@@ -80,6 +75,5 @@ const Overview = (props) => {
     </Row>
   );
 };
->>>>>>> 4151eee0c70157be2c83efd5c7181ac99fff800b
 
 export default Overview;
