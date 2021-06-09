@@ -11,7 +11,7 @@ const auth = {
   }
 };
 
-const RatingsAndReviews = ({ reviews }) => {
+const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews }) => {
 
   return (
     <div>
@@ -25,6 +25,14 @@ const RatingsAndReviews = ({ reviews }) => {
             key={index}
           />
         ))}
+        {(moreReviews.length === 0) ? (
+          <b>No More Reviews</b>
+        ) : (
+          <input
+            type="button"
+            value="MORE REVIEWS"
+            onClick={() => handleMoreReviews()} />
+        )}
       </div>
     </div>
   );

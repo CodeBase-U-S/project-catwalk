@@ -32,22 +32,22 @@ afterEach(() => {
 
 
 
+const testProduct = {
+  "id": 132123,
+  "campus": "hr-lax",
+  "name": "Potato Jacket",
+  "slogan": "Blend in to your crowd",
+  "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+  "category": "Jackets",
+  "default_price": "140.00",
+  "created_at": "2021-02-23T03:29:57.827Z",
+  "updated_at": "2021-02-23T03:29:57.827Z"
+}
 
 
 // #1. Checks that product information is rendered properly.
 it("renders product data", async () => {
 
-  const testProduct = {
-    "id": 132123,
-    "campus": "hr-lax",
-    "name": "Potato Jacket",
-    "slogan": "Blend in to your crowd",
-    "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-    "category": "Jackets",
-    "default_price": "140.00",
-    "created_at": "2021-02-23T03:29:57.827Z",
-    "updated_at": "2021-02-23T03:29:57.827Z"
-  }
 
   act(() => {
     render(<ProductInformation product={testProduct} rating='4.1'/>, container);
@@ -69,7 +69,7 @@ it('does not render review component if there are no reviews', async () => {
   const spy = jest.spyOn(axios, 'get');
 
   act(() => {
-    render(<Overview />, container);
+    render(<Overview product={testProduct} reviews={testReviews}/>, container);
   });
 
   expect(spy).toHaveBeenCalledTimes(2)

@@ -24,11 +24,13 @@ const Overview = ( {product, reviews} ) => {
   }, [reviews]);
 
   const calculateAvg = (arr) => {
-    let sum = 0;
-    arr.forEach((product) => {
-      sum += product.rating;
-    });
-    return sum / arr.length;
+    if (arr.length > 0) {
+      let sum = 0;
+      arr.forEach((product) => {
+        sum += product.rating;
+      });
+      return sum / arr.length;
+    }
   };
 
   return (
