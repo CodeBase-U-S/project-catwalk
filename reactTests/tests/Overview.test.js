@@ -69,11 +69,22 @@ it('does not render review component if there are no reviews', async () => {
       "results": []
   }
 
+  const testReviews2 = {
+    "product": "16056",
+    "page": 0,
+    "count": 0,
+    "results": [
+      { "rating": 1 }, { "rating": 3 }, { "rating": 5 }, { "rating": 3 }, { "rating": 2 },
+      { "rating": 3 }, { "rating": 5 }, { "rating": 1 }, { "rating": 4 }, { "rating": 5 }
+    ]
+}
+
   act(() => {
-    render(<ProductInformation product={testProduct} rating={[]}/>, container);
+    render(<Overview product={testProduct} reviews={testReviews.results}/>, container);
   });
 
   expect(container.querySelector('#star_rating')).toBeFalsy()
+  expect(container.querySelector('#star_rating')).toBeTruthy()
 
 });
 
