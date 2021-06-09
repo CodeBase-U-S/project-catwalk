@@ -9,7 +9,7 @@ module.exports = {
     filename: 'bundle.js',
     path: DIST_DIR
   },
-  mode: 'production',
+  mode: 'development',
   watch: true,
   // resolve: {
   //   extensions: ['.js', '.jsx']
@@ -21,14 +21,17 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           query: {
-            presets: [['@babel/preset-react'],
-            ['@babel/preset-env']]
+            presets: [['@babel/preset-react'], ['@babel/preset-env']]
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   }
-}
+};
 
 
 

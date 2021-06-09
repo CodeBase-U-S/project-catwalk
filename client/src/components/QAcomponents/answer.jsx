@@ -7,10 +7,10 @@ let Answer = (props) => {
 
   return (
     <div>
-      <div>A: {answer.body}</div>
-      <div>  Helpful?
+      <span>A: {answer.body}</span>
+      <span>  Helpful?
         <span>  Yes {answer.helpfulness}</span>
-      </div>
+      </span>
     </div>
   )
 }
