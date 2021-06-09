@@ -6,6 +6,7 @@ import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import axios from 'axios';
+import App from '../../client/src/components/App.jsx';
 import Overview from '../../client/src/components/Overview/Overview.jsx';
 import ProductInformation from '../../client/src/components/overview/ProductInformation.jsx'
 import productTestData from './test-data-products.js';
@@ -66,16 +67,33 @@ it('does not render review component if there are no reviews', async () => {
       "count": 0,
       "results": []
   }
-  const spy = jest.spyOn(axios, 'get');
 
   act(() => {
-    render(<Overview product={testProduct} reviews={testReviews}/>, container);
+    render(<App product={testProduct} reviews={testReviews.results}/>, container);
   });
 
-  expect(spy).toHaveBeenCalledTimes(2)
+  expect(container.querySelector('#starRating')).toBeFalsy()
+
 });
 
+// #2. Renders the appropriate average rating based on the data
+it('should render star ratings if there are reviews', async () => {
+  const testReviews = {
+      "product": "16056",
+      "page": 0,
+      "count": 0,
+      "results": [
+        { "rating": 1 }, { "rating": 3 }, { "rating": 5 }, { "rating": 3 }, { "rating": 2 },
+        { "rating": 3 }, { "rating": 5 }, { "rating": 1 }, { "rating": 4 }, { "rating": 5 }
+      ]
+  }
 
+  act(() => {
+    render(<ProductInformation product={testProduct} rating={4.3}/>, container);
+  });
+  expect(container.querySelector('#starRating').textContent).toBe('sijef')
+
+});
 
 
 

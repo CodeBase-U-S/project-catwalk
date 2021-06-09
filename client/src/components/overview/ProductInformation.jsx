@@ -7,14 +7,14 @@ import StyleSelector from './StyleSelector.jsx';
 
 
 
-const ProductInformation = (props) => {
+const ProductInformation = ({ product, rating }) => {
 
   return (
     <Jumbotron>
-      {props.rating && <StarRating rating={props.rating} />}
-      <h4 id="category">{props.product.category}</h4>
-      <h1 id="name">{props.product.name}</h1>
-      <div id="price">${props.product.default_price}</div>
+      {rating !== [] && <StarRating rating={rating} />}
+      <h4 id="category">{product.category}</h4>
+      <h1 id="name">{product.name}</h1>
+      <div id="price">${product.default_price}</div>
       {/* <div id="description">{props.data.description}</div> */}
       <StyleSelector />
       <AddToCart />

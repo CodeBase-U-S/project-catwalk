@@ -23,18 +23,19 @@ const Overview = ( {product, reviews} ) => {
     setRating(calculateAvg(reviews));
   }, [reviews]);
 
-  const calculateAvg = (arr) => {
-    if (arr.length > 0) {
-      let sum = 0;
-      arr.forEach((product) => {
-        sum += product.rating;
-      });
-      return sum / arr.length;
+  const calculateAvg = (arr = []) => {
+    if (arr.length === 0) {
+      return [];
     }
+    let sum = 0;
+    arr.forEach((product) => {
+      sum += product.rating;
+    });
+    return sum / arr.length;
   };
 
   return (
-    <Row>
+    <Row id="test">
       <Col md='auto'>
         <ImageGallery />
       </Col>
