@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Answer from './answer.jsx'
 import axios from 'axios'
+import _ from 'underscore'
 
 let Question = (props) => {
 
@@ -19,7 +20,10 @@ let Question = (props) => {
     axios.get(`${url}/qa/questions/${question_id}/answers?page=${page}&count=${count}`, auth)
       .then(({data}) => {
         console.log('answers response: ', data.results)
-        setAnswers(data.results)
+        let sortedAnswers = _.sortBy(data.results, (answer) => {
+          return answer.helpfulness;
+        })
+        setAnswers(sortedAnswers.reverse())
       })
       .catch(err => {
         console.log(err)
