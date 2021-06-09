@@ -35,8 +35,12 @@ let QandA = () => {
   }, [])
 
   let moreQuestionsHandler = () => {
-    setQuestionCount(prevQuestionCount => prevQuestionCount + 2)
-    retrieveQuestions(1, questionCount)
+    setQuestionCount(prevQuestionCount => {
+      let currentCount = prevQuestionCount + 2
+      retrieveQuestions(1, currentCount)
+      return currentCount
+    })
+    // retrieveQuestions(1, questionCount)
   }
 
   return (

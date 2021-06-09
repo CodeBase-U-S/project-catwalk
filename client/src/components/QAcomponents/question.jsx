@@ -33,8 +33,12 @@ let Question = (props) => {
   }, [])
 
   let moreAnswersHandler = () => {
-    setAnswerCount(prevAnswerCount => prevAnswerCount + 2)
-    retrieveAnswers(question_id, 1, answerCount)
+    setAnswerCount(prevAnswerCount => {
+      let currentCount = prevAnswerCount + 2
+      retrieveAnswers(question_id, 1, currentCount)
+      return currentCount;
+    })
+    // retrieveAnswers(question_id, 1, answerCount)
   }
 
   return (
