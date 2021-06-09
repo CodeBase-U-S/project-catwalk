@@ -4,3 +4,4 @@
 **/vendor
 **/*.min.js
 **/config.js
+**/reactTests
