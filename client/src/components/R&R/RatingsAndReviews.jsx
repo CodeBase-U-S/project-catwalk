@@ -11,7 +11,7 @@ const auth = {
   }
 };
 
-const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews }) => {
+const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelpfulness }) => {
 
   return (
     <div>
@@ -23,6 +23,7 @@ const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews }) => {
           <Reviews
             review={review}
             key={index}
+            handleHelpfulness = {handleHelpfulness}
           />
         ))}
         {(moreReviews.length === 0) ? (
