@@ -3,7 +3,7 @@ import { Star } from 'react-bootstrap';
 
 const StarRating = ( {rating, reviewCount} ) => {
   return (
-    <div className="mb-3" id="star_rating">
+    <div className="mb-3 mt-5" id="star_rating">
       {rating <= 0 && <EmptyStar /> }
       {rating >= 0.5 && rating < 1 && <HalfStar />}
       {rating >= 1 && <FullStar /> }

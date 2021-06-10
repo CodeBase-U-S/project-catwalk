@@ -20,10 +20,10 @@ const Overview = ( {product, reviews} ) => {
   return (
     <Container id="overview">
       <Row>
-        <Col>
+        <Col className="col-7">
           <ImageGallery />
         </Col>
-        <Col className="col align-self-center">
+        <Col>
           <ProductInformation product={product} reviews={reviews} />
         </Col>
       </Row>
