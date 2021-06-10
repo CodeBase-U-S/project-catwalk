@@ -46,7 +46,7 @@ const Overview = (props) => {
     axios.get(`${url}reviews/`, options)
       .then(response => {
         setReviews(response);
-        console.log(response.data)
+        console.log(response.data);
         setRating(calculateAvg(response.data.results));
       })
       .catch(err => {
