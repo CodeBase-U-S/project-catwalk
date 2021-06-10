@@ -1,8 +1,25 @@
 
 
-img {
+/* img {
   width: 500px;
+} */
+
+
+#readAll {
+  margin-left: 6px;
+  vertical-align: middle;
 }
+
+.bi {
+  margin-left: 2px;
+}
+
+#star_rating {
+  vertical-align: middle;
+}
+
+
+
 
 .ratings {
   float: left;

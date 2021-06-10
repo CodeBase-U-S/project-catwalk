@@ -179,22 +179,3 @@ describe('Overview renders Product Information', () => {
 
 })
 
-
-
-
-
-  // it('does not render review component if there are no reviews', async () => {
-    //   const testReviews = {
-      //       "product": "16056",
-      //       "page": 0,
-      //       "count": 0,
-      //       "results": []
-      //   }
-      //   const spy = jest.spyOn(axios, 'get');
-
-      //   act(() => {
-        //     render(<Overview />, container);
-        //   });
-
-        //   expect(spy).toHaveBeenCalledTimes(2)
-        // });

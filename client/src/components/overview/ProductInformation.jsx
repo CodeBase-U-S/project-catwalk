@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Jumbotron from 'react-bootstrap/jumbotron';
+import { Container } from 'react-bootstrap';
 
 import StarRating from './StarRating.jsx';
 import AddToCart from './AddToCart.jsx';
@@ -7,18 +7,39 @@ import StyleSelector from './StyleSelector.jsx';
 
 
 
-const ProductInformation = ({ product, rating }) => {
+const ProductInformation = ({ product, reviews }) => {
+
+  const [rating, setRating] = useState(null);
+  const [reviewCount, setReviewCount] = useState([]);
+
+  useEffect(() => {
+    setRating(calculateAvg(reviews));
+    if (reviews) {
+      setReviewCount(reviews.length);
+    }
+  }, [reviews]);
+
+  const calculateAvg = (arr = []) => {
+    if (arr.length === 0) {
+      return null;
+    }
+    let sum = 0;
+    arr.forEach((product) => {
+      sum += product.rating;
+    });
+    return sum / arr.length;
+  };
 
   return (
-    <Jumbotron>
-      {rating && <StarRating rating={rating} />}
-      <h4 id="category">{product.category}</h4>
-      <h1 id="name">{product.name}</h1>
-      <div id="price">${product.default_price}</div>
-      {/* <div id="description">{props.data.description}</div> */}
+    <Container>
+      {rating && <StarRating rating={rating} reviewCount={reviewCount} />}
+      {product.category && <span id="category">{product.category.toUpperCase()}</span>}
+      <h1 id="name" ><strong>{product.name}</strong></h1>
+      <div id="price">${~~product.default_price}</div>
+      <br></br>
       <StyleSelector />
       <AddToCart />
-    </Jumbotron>
+    </Container>
   );
 };
 

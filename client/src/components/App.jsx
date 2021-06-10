@@ -18,7 +18,7 @@ const App = () => {
   const [reviews, setReviews] = useState({
     results: [],
     moreReviews: []
-  }, []);
+  });
   const [product, setProduct] = useState([]);
 
   useEffect(() => {

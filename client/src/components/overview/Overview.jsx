@@ -17,33 +17,17 @@ const token = config.TOKEN;
 
 const Overview = ( {product, reviews} ) => {
 
-  const [rating, setRating] = useState(null);
-
-  useEffect(() => {
-    setRating(calculateAvg(reviews));
-  }, [reviews]);
-
-  const calculateAvg = (arr = []) => {
-    if (arr.length === 0) {
-      return null;
-    }
-    let sum = 0;
-    arr.forEach((product) => {
-      sum += product.rating;
-    });
-    return sum / arr.length;
-  };
-
   return (
-    <Row id="test">
-      <Col md='auto'>
-        <ImageGallery />
-      </Col>
-      <Col>
-        <ProductInformation product={product} rating={rating} />
-
-      </Col>
-    </Row>
+    <Container className="text-muted">
+      <Row>
+        <Col>
+          <ImageGallery />
+        </Col>
+        <Col className="col align-self-center">
+          <ProductInformation product={product} reviews={reviews} />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
