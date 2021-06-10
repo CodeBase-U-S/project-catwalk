@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 
 
-const RelatedItems = () => (
+const RelatedItems = (props) => {
   const [items, setItems] = useState(null);
-  <div></div>
-)
+
+  return (
+    <div>
+
+    </div>
+  );
+};
 
 
 export default RelatedItems;
