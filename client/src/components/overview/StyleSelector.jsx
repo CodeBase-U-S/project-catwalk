@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 
 const StyleSelector = (props) => (
-  <div>
+  <div className="mb-3">
     <div className="mb-2">
       <span><strong>STYLE {'>'}</strong></span> <span style={{fontWeight: 'lighter'}}>SELECTED STYLE</span>
     </div>

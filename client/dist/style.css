@@ -37,6 +37,31 @@
   background-color: lightgray;
 }
 
+#AddToCart {
+  background-color: white;
+  border: black;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: grey;
+  border-width: 1px;
+  color: black;
+  width: 50%;
+  height: 60px;
+  margin-right: 10px;
+}
+
+#favoriteButton {
+  background-color: white;
+  border: black;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: grey;
+  border-width: 1px;
+  color: black;
+  width: 20%;
+  height: 60px;
+}
+
 .ratings {
   float: left;
   max-width: 30%;
