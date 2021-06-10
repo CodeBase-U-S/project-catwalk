@@ -4,6 +4,9 @@
   width: 500px;
 } */
 
+#overview {
+  color: rgb(87, 87, 87);
+}
 
 #readAll {
   margin-left: 6px;
@@ -18,6 +21,9 @@
   vertical-align: middle;
 }
 
+#category {
+  font-weight: lighter;
+}
 
 
 

@@ -33,8 +33,8 @@ const ProductInformation = ({ product, reviews }) => {
   return (
     <Container>
       {rating && <StarRating rating={rating} reviewCount={reviewCount} />}
-      {product.category && <span id="category">{product.category.toUpperCase()}</span>}
-      <h1 id="name" ><strong>{product.name}</strong></h1>
+      {product.category && <h5 id="category" className="mb-0">{product.category.toUpperCase()}</h5>}
+      <h1 id="name" className="mb-2"><strong>{product.name}</strong></h1>
       <div id="price">${~~product.default_price}</div>
       <br></br>
       <StyleSelector />

@@ -18,7 +18,7 @@ const token = config.TOKEN;
 const Overview = ( {product, reviews} ) => {
 
   return (
-    <Container className="text-muted">
+    <Container id="overview">
       <Row>
         <Col>
           <ImageGallery />

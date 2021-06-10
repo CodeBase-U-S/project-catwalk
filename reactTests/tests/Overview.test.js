@@ -57,9 +57,9 @@ describe('Overview renders Product Information', () => {
     act(() => {
       render(<ProductInformation product={testProduct} rating='4.1'/>, container);
     });
-    expect(container.querySelector('#category').textContent).toBe('Jackets');
+    expect(container.querySelector('#category').textContent).toBe('JACKETS');
     expect(container.querySelector('#name').textContent).toBe('Potato Jacket');
-    expect(container.querySelector('#price').textContent).toBe('$140.00');
+    expect(container.querySelector('#price').textContent).toBe('$140');
 
   });
 
