@@ -1,4 +1,12 @@
 
+
+#Overview {
+  display: flex;
+}
+
+img {
+  width: 500px;
+}
 .ratings {
   float: left;
   max-width: 30%;
@@ -7,6 +15,19 @@
 .reviews {
   float: right;
   max-width: 70%;
+}
+
+div.products {
+  display: inline-flex;
+}
+
+div.outfit {
+  display: inline-flex;
+}
+
+img.cardImg {
+  width: 80px;
+  height: auto;
 }
 
 span.letter, .questionBody {

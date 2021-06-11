@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Overview from './Overview.jsx';
 import QandA from './QandA.jsx';
 import RatingsAndReviews from './R&R/RatingsAndReviews.jsx';
-import RelatedItems from './RelatedItems.jsx';
+import RelatedItems from './relatedItems/RelatedItems.jsx';
 import TOKEN from '../../../config.js';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -23,8 +23,8 @@ const App = () => {
     moreReviews: [],
     allReviews: []
   });
-  const [product, setProduct] = useState([]);
 
+  const [product, setProduct] = useState([]);
   useEffect(() => {
     getAllreviews();
   }, []);
@@ -32,7 +32,7 @@ const App = () => {
   useEffect(() => {
     axios.get(`${url}/products/17000`, auth)
       .then(({ data }) => {
-        console.log(data);
+        console.log('data for 17000 here is', data);
         setProduct(data);
       })
       .catch(err => console.error(err));
@@ -83,7 +83,6 @@ const App = () => {
         handleHelpfulness={handleHelpfulness} />
     </div>
   );
-
 };
 
 export default App;
