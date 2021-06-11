@@ -8,9 +8,6 @@
     "start": "nodemon ./server/index.js",
     "test": "jest",
     "test-coverage": "jest --coverage"
-=======
-    "test": "jest --coverage"
->>>>>>> d06e52d8f84440f342b30b3c9c72272c9ef90732
   },
   "repository": {
     "type": "git",
