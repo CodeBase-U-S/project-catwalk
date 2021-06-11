@@ -6,6 +6,7 @@ import RatingsAndReviews from './R&R/RatingsAndReviews.jsx';
 import RelatedItems from './RelatedItems.jsx';
 import TOKEN from '../../../config.js';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const auth = {
@@ -15,6 +16,8 @@ const auth = {
 };
 
 const App = () => {
+  const dispatch = useDispatch();
+
   const [reviews, setReviews] = useState({
     results: [],
     moreReviews: [],
@@ -40,6 +43,7 @@ const App = () => {
       .then(({ data }) => {
         // console.log(data);
         console.log(data.results);
+        dispatch({ type: 'reviews', reviews: data.results })
         setReviews({
           results: data.results.slice(0, 2),
           moreReviews: data.results.slice(2),
