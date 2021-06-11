@@ -29,6 +29,7 @@ let QandA = () => {
           return question.question_helpfulness;
         });
         // console.log('sortedQuestions: ', sortedQuestions.reverse())
+
         setQuestions(sortedQuestions.reverse());
         setSearchQuestions(sortedQuestions.reverse());
         // console.log('searchQuestions:', searchQuestions);
