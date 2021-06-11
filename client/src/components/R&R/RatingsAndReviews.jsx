@@ -12,7 +12,7 @@ const auth = {
 };
 
 const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelpfulness }) => {
-  const reviews = useSelector((state) => state.reviewsReducer.reviews)
+  // const reviews = useSelector((state) => state.reviewsReducer.reviews)
 
 
 

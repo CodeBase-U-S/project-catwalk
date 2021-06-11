@@ -71,18 +71,18 @@ let Question = ({question}) => {
 
   return (
     <div>
-      <span class='letter'>Q:</span>
-      <span class='questionBody'> {question.question_body}{question.question_id}</span>
-      <span class='helpfulInfo'>  Helpful?
-        <span class='yes' onClick={helpfulClickHandler}> Yes</span>
-        <span class='helpfulness'> ({questionHelpfulness})</span>
+      <span className='letter'>Q:</span>
+      <span className='questionBody'> {question.question_body}{question.question_id}</span>
+      <span className='helpfulInfo'>  Helpful?
+        <span className='yes' onClick={helpfulClickHandler}> Yes</span>
+        <span className='helpfulness'> ({questionHelpfulness})</span>
       </span>
       <div>
-        {answers.map(answer => {
-          return <Answer answer={answer}/>;
+        {answers.map((answer, index) => {
+          return <Answer answer={answer} key={index}/>;
         })}
       </div>
-      <div class='moreAnswers' onClick={moreAnswersHandler}>
+      <div className='moreAnswers' onClick={moreAnswersHandler}>
         Load More Answers
       </div>
     </div>
