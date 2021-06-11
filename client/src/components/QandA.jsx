@@ -52,7 +52,7 @@ let QandA = () => {
     });
     // retrieveQuestions(1, questionCount)
   };
-  console.log('searchQuestions before return: ', searchQuestions);
+  // console.log('searchQuestions before return: ', searchQuestions);
   return (
     <>
       <Search setQuestions={setQuestions} questions={questions}
@@ -63,8 +63,8 @@ let QandA = () => {
           return <Question question={question}/>;
         })}
       </div>
-      <div onClick={moreQuestionsHandler}>
-        More Questions
+      <div class='moreQuestions' onClick={moreQuestionsHandler}>
+        More Answered Questions
       </div>
     </>
   );

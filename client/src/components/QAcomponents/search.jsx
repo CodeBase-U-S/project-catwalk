@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 let Search = ({questions, setQuestions, searchQuestions}) => {
-  console.log('searchQuestions in search: ', searchQuestions);
+  // console.log('searchQuestions in search: ', searchQuestions);
   let [value, setValue] = useState('');
 
   let handleSearchChange = (e) => {
@@ -19,7 +19,7 @@ let Search = ({questions, setQuestions, searchQuestions}) => {
 
       setQuestions(matchedQuestions);
     } else {
-      console.log('questions in else: ', searchQuestions);
+      // console.log('questions in else: ', searchQuestions);
       setQuestions(searchQuestions);
     }
 

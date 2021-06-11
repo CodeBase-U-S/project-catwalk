@@ -1,14 +1,4 @@
 
-<<<<<<< HEAD
-
-#Overview {
-  display: flex;
-}
-
-img {
-  width: 500px;
-}
-=======
 .ratings {
   float: left;
   max-width: 30%;
@@ -18,4 +8,28 @@ img {
   float: right;
   max-width: 70%;
 }
->>>>>>> aa7a382abfc4dc222ea9ce99c706af41b64406e2
+
+span.letter, .questionBody {
+  font-weight: bold;
+}
+
+.moreAnswers {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.moreQuestions {
+  border: 1px solid black;
+  width: 200px;
+  padding: 2px;
+  margin: 5px;
+}
+
+div.answerInfo, .helpfulInfo {
+  font-size: 12px;
+  margin: 5px;
+}
+
+div.answer {
+  margin: 5px;
+}

@@ -18,10 +18,10 @@ let Question = ({question}) => {
       Authorization: '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'
     }
   };
-  let retrieveAnswers = (question_id, page, count) => {
-    axios.get(`${url}/qa/questions/${question_id}/answers?page=${page}&count=${count}`, auth)
+  let retrieveAnswers = (page, count) => {
+    axios.get(`${url}/qa/questions/${question.question_id}/answers?page=${page}&count=${count}`, auth)
       .then(({data}) => {
-        console.log('answers response: ', data.results);
+        // console.log('answers response: ', data.results);
         let sortedAnswers = _.sortBy(data.results, (answer) => {
           return answer.helpfulness;
         });
@@ -32,16 +32,19 @@ let Question = ({question}) => {
       });
   };
 
-  let question_id = question.question_id;
+  // let question_id = question.question_id;
 
   useEffect(() => {
-    retrieveAnswers(question_id, 1, 2);
+    retrieveAnswers(1, answerCount);
   }, []);
 
   let moreAnswersHandler = () => {
+    console.log('question id: ', question.question_id);
     setAnswerCount(prevAnswerCount => {
       let currentCount = prevAnswerCount + 2;
-      retrieveAnswers(question_id, 1, currentCount);
+      console.log('current count: ', currentCount);
+      console.log('question_id: ', question.question_id);
+      retrieveAnswers(1, currentCount);
       return currentCount;
     });
     // retrieveAnswers(question_id, 1, answerCount)
@@ -55,9 +58,9 @@ let Question = ({question}) => {
       setQuestionHelpfulness(prevCount => prevCount + 1);
       setHelpfulClicked(true);
       // console.log('auth: ', auth);
-      axios.put(`${url}/qa/questions/${question_id}/helpful`, auth)
+      axios.put(`${url}/qa/questions/${question.question_id}/helpful`, auth)
         .then(data => {
-          console.log('data: ', data);
+          // console.log('data: ', data);
         })
         .catch(err => {
           throw err;
@@ -68,18 +71,19 @@ let Question = ({question}) => {
 
   return (
     <div>
-      <span>Q: {question.question_body}</span>
-      <span>  Helpful?
-        <span onClick={helpfulClickHandler}>Yes</span>
-        <span> {questionHelpfulness}</span>
+      <span class='letter'>Q:</span>
+      <span class='questionBody'> {question.question_body}{question.question_id}</span>
+      <span class='helpfulInfo'>  Helpful?
+        <span class='yes' onClick={helpfulClickHandler}> Yes</span>
+        <span class='helpfulness'> ({questionHelpfulness})</span>
       </span>
       <div>
         {answers.map(answer => {
           return <Answer answer={answer}/>;
         })}
       </div>
-      <div onClick={moreAnswersHandler}>
-        More Answers
+      <div class='moreAnswers' onClick={moreAnswersHandler}>
+        Load More Answers
       </div>
     </div>
   );
