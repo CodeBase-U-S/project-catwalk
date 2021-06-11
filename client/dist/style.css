@@ -29,3 +29,28 @@ img.cardImg {
   width: 80px;
   height: auto;
 }
+
+span.letter, .questionBody {
+  font-weight: bold;
+}
+
+.moreAnswers {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.moreQuestions {
+  border: 1px solid black;
+  width: 200px;
+  padding: 2px;
+  margin: 5px;
+}
+
+div.answerInfo, .helpfulInfo {
+  font-size: 12px;
+  margin: 5px;
+}
+
+div.answer {
+  margin: 5px;
+}

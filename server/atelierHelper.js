@@ -11,7 +11,7 @@ const atelierHelper = {
       method: 'get',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products',
       headers: {
-        'Authorization': `${config.TOKEN}`
+        'Authorization': config.auth.TOKEN
       }
     };
     axios(options)
