@@ -11,9 +11,12 @@ const StarRating = ( {rating, reviewCount} ) => {
   return (
     <div className="mb-3 mt-5" id="star_rating">
       <Ratings
+        style={{verticalAlign: 'middle'}}
         rating={rating}
-        widgetDimensions="16px"
-        widgetSpacings="1px"
+        widgetDimensions="18px"
+        widgetRatedColors="rgb(87, 87, 87)"
+        widgetSpacings="0px"
+
       >
         <Ratings.Widget />
         <Ratings.Widget />

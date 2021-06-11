@@ -12,10 +12,27 @@ import ProductInformation from './ProductInformation.jsx';
 
 // API Options //
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/';
-const token = config.TOKEN;
+const auth = { headers: { Authorization: config.TOKEN } };
+
 
 
 const Overview = ( {product, reviews} ) => {
+
+  const [styles, setStyles] = useState([]);
+
+  const getStyles = () => {
+    console.log('e', product.id);
+    if (product.id) {
+      axios.get(`${url}/products/${product.id}/styles`, auth)
+        .then((response) => {
+          console.log('response', response);
+        });
+    }
+  };
+
+  useEffect(() => {
+    getStyles();
+  }, []);
 
   return (
     <Container id="overview">
