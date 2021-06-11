@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import Header from './Overview/Header.jsx';
 import Overview from './Overview/Overview.jsx';
 import QandA from './QandA.jsx';
 import RatingsAndReviews from './R&R/RatingsAndReviews.jsx';
@@ -54,6 +55,7 @@ const App = () => {
   return (
     <div>
       {/* <div>It worked</div> */}
+      <Header />
       <Overview
         product={product}
         reviews={reviews.allReviews} />

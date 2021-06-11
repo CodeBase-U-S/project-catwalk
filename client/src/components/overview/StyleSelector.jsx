@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 // import Container from 'react-bootstrap/container';
 
 
@@ -39,7 +39,10 @@ const StyleSelector = (props) => (
         </Col>
       </Row>
     </div>
-
+    <Row>
+      <Button id="AddToCart" className="button btn-secondary">SELECT SIZE</Button>
+      <Button id="favoriteButton" className="button btn-secondary">1</Button>
+    </Row>
   </div>
 );
 

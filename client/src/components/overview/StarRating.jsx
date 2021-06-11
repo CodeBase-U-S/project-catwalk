@@ -1,10 +1,28 @@
 import React from 'react';
-import { Star } from 'react-bootstrap';
+import Ratings from 'react-ratings-declarative';
 
 const StarRating = ( {rating, reviewCount} ) => {
+
+  const scrollHandler = () => {
+    const elementToScrollTo = document.getElementsByClassName('ratings')[0];
+    elementToScrollTo.scrollIntoView();
+  };
+
   return (
     <div className="mb-3 mt-5" id="star_rating">
-      {rating <= 0 && <EmptyStar /> }
+      <Ratings
+        rating={rating}
+        widgetDimensions="16px"
+        widgetSpacings="1px"
+      >
+        <Ratings.Widget />
+        <Ratings.Widget />
+        <Ratings.Widget />
+        <Ratings.Widget />
+        <Ratings.Widget />
+      </Ratings>
+
+      {/* {rating <= 0 && <EmptyStar /> }
       {rating >= 0.5 && rating < 1 && <HalfStar />}
       {rating >= 1 && <FullStar /> }
       {rating < 1.5 && <EmptyStar /> }
@@ -18,8 +36,8 @@ const StarRating = ( {rating, reviewCount} ) => {
       {rating >= 4 && <FullStar /> }
       {rating < 4.5 && <EmptyStar /> }
       {rating >= 4.5 && rating < 5 && <HalfStar />}
-      {rating >= 5 && <FullStar /> }
-      <span id="readAll" className="fs-6"><small><u>Read all {reviewCount} reviews</u></small></span>
+      {rating >= 5 && <FullStar /> } */}
+      <span id="readAll" onClick={scrollHandler} style={{cursor: 'pointer'}}><small><u>Read all {reviewCount} reviews</u></small></span>
     </div>
   );
 
@@ -53,60 +71,3 @@ export default StarRating;
 
 
 
-
-// <div className="star-ratings-css">
-// <div className="star-ratings-css-top" style={{width: '84%'}}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-// <div className="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-// </div>
-
-
-// .star-ratings-css {
-//   unicode-bidi: bidi-override;
-//   color: #c5c5c5;
-//   font-size: 25px;
-//   height: 25px;
-//   width: 100px;
-//   margin: 0 auto;
-//   position: relative;
-//   padding: 0;
-// }
-
-// .star-ratings-css-top {
-//     color: #e7711b;
-//     padding: 0;
-//     position: absolute;
-//     z-index: 1;
-//     display: block;
-//     top: 0;
-//     left: 0;
-//     overflow: hidden;
-//   }
-
-// .star-ratings-css-bottom {
-//     padding: 0;
-//     display: block;
-//     z-index: 0;
-// }
-
-
-
-
-// <div id="star_rating">
-
-// {rating <= 0 && <EmptyStar /> }
-// {rating >= 0.5 && rating < 1 && <HalfStar />}
-// {rating >= 1 && <FullStar /> }
-// {rating < 1.5 && <EmptyStar /> }
-// {rating >= 1.5 && rating < 2 && <HalfStar />}
-// {rating >= 2 && <FullStar /> }
-// {rating < 2.5 && <EmptyStar /> }
-// {rating >= 2.5 && rating < 3 && <HalfStar />}
-// {rating >= 3 && <FullStar /> }
-// {rating < 3.5 && <EmptyStar /> }
-// {rating >= 3.5 && rating < 4 && <HalfStar />}
-// {rating >= 4 && <FullStar /> }
-// {rating < 4.5 && <EmptyStar /> }
-// {rating >= 4.5 && rating < 5 && <HalfStar />}
-// {rating >= 5 && <FullStar /> }
-// <span id="readAll" className="fs-6"><small><u>Read all reviews</u></small></span>
-// </div>
