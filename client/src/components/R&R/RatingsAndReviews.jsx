@@ -3,7 +3,7 @@ import Ratings from './Ratings.jsx';
 import Reviews from './Reviews.jsx';
 import TOKEN from '../../../../config.js';
 import axios from 'axios';
-
+import { useSelector } from 'react-redux';
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const auth = {
   headers: {
@@ -11,7 +11,11 @@ const auth = {
   }
 };
 
-const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews }) => {
+const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelpfulness }) => {
+  // const reviews = useSelector((state) => state.reviewsReducer.reviews)
+
+
+
 
   return (
     <div>
@@ -23,6 +27,7 @@ const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews }) => {
           <Reviews
             review={review}
             key={index}
+            handleHelpfulness = {handleHelpfulness}
           />
         ))}
         {(moreReviews.length === 0) ? (

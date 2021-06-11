@@ -33,7 +33,13 @@
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
+<<<<<<< HEAD
     "react-ratings-declarative": "^3.4.1",
+=======
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
+>>>>>>> 56078c9f65d2b580a4f94d826408fa2d3fbd8710
     "style-loader": "^2.0.0"
   },
   "devDependencies": {
