@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Overview from './Overview.jsx';
 import QandA from './QandA.jsx';
 import RatingsAndReviews from './R&R/RatingsAndReviews.jsx';
-import RelatedItems from './RelatedItems.jsx';
+import RelatedItems from './relatedItems/RelatedItems.jsx';
 import TOKEN from '../../../config.js';
 import axios from 'axios';
 
@@ -19,8 +19,8 @@ const App = () => {
     results: [],
     moreReviews: []
   });
-  const [product, setProduct] = useState([]);
 
+  const [product, setProduct] = useState([]);
   useEffect(() => {
     axios.get(`${url}/reviews/?page=1&count=100&product_id=16060`, auth)
       .then(({ data }) => {
@@ -38,7 +38,7 @@ const App = () => {
   useEffect(() => {
     axios.get(`${url}/products/17000`, auth)
       .then(({ data }) => {
-        console.log(data);
+        console.log('data for 17000 here is', data);
         setProduct(data);
       })
       .catch(err => console.error(err));
@@ -65,7 +65,6 @@ const App = () => {
         handleMoreReviews={handleMoreReviews} />
     </div>
   );
-
 };
 
 export default App;

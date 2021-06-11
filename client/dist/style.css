@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 
 #Overview {
   display: flex;
@@ -8,7 +7,6 @@
 img {
   width: 500px;
 }
-=======
 .ratings {
   float: left;
   max-width: 30%;
@@ -18,4 +16,11 @@ img {
   float: right;
   max-width: 70%;
 }
->>>>>>> aa7a382abfc4dc222ea9ce99c706af41b64406e2
+
+div.products {
+  display: inline-flex;
+}
+
+div.outfit {
+  display: inline-flex;
+}
