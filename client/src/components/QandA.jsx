@@ -59,12 +59,12 @@ let QandA = () => {
       <Search setQuestions={setQuestions} questions={questions}
         searchQuestions={searchQuestions}/>
       <div>
-        {questions.map(question => {
+        {questions.map((question, index) => {
           // return <Question question={question.question_body} helpfulCount={question.question_helpfulness}/>//<>Questions...Answers</>
-          return <Question question={question}/>;
+          return <Question question={question} key={index}/>;
         })}
       </div>
-      <div class='moreQuestions' onClick={moreQuestionsHandler}>
+      <div className='moreQuestions' onClick={moreQuestionsHandler}>
         More Answered Questions
       </div>
     </>
