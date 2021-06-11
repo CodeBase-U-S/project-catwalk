@@ -44,7 +44,7 @@ const App = () => {
       .then(({ data }) => {
         // console.log(data);
         console.log(data.results);
-        dispatch({ type: 'reviews', reviews: data.results })
+        dispatch({ type: 'reviews', reviews: data.results });
         setReviews({
           results: data.results.slice(0, 2),
           moreReviews: data.results.slice(2),
