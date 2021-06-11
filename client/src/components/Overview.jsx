@@ -62,7 +62,6 @@ const Overview = (props) => {
     return sum / arr.length;
   };
 
-
   return (
     <Row>
       <Col md='auto'>

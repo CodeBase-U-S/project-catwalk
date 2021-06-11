@@ -1,4 +1,82 @@
 
+
+/* img {
+  width: 500px;
+} */
+
+#header {
+  background-color: grey;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 80px;
+}
+
+#overview {
+  color: rgb(87, 87, 87);
+}
+
+#readAll {
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.bi {
+  margin-left: 2px;
+}
+
+#star_rating {
+  vertical-align: middle;
+}
+
+#StyleSelector {
+  height: 140px;
+  width: 340px;
+}
+
+.style {
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 0.5px;
+  height: 60px;
+  width: 60px;
+  margin-bottom: 10px;
+  color: rgb(53, 53, 53);
+  background-color: lightgray;
+}
+
+#AddToCart {
+  background-color: white;
+  border: black;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: grey;
+  border-width: 1px;
+  color: black;
+  width: 50%;
+  height: 60px;
+  margin-right: 10px;
+}
+
+#favoriteButton {
+  background-color: white;
+  border: black;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: grey;
+  border-width: 1px;
+  color: black;
+  width: 20%;
+  height: 60px;
+}
+
+
+#Overview {
+  display: flex;
+}
+
+img {
+  width: 500px;
+}
 .ratings {
   float: left;
   max-width: 30%;
@@ -7,4 +85,42 @@
 .reviews {
   float: right;
   max-width: 70%;
+}
+
+div.products {
+  display: inline-flex;
+}
+
+div.outfit {
+  display: inline-flex;
+}
+
+img.cardImg {
+  width: 80px;
+  height: auto;
+}
+
+span.letter, .questionBody {
+  font-weight: bold;
+}
+
+.moreAnswers {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.moreQuestions {
+  border: 1px solid black;
+  width: 200px;
+  padding: 2px;
+  margin: 5px;
+}
+
+div.answerInfo, .helpfulInfo {
+  font-size: 12px;
+  margin: 5px;
+}
+
+div.answer {
+  margin: 5px;
 }
