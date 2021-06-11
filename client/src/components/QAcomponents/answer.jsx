@@ -17,15 +17,15 @@ let Answer = ({answer}) => {
   };
 
   return (
-    <div class='answer'>
-      <span class='letter'>A:</span>
-      <span class='answerBody'> {answer.body}</span>
-      <div class='answerInfo'>  By
-        <span class='userName'> {answer.answerer_name}</span>
-        <span class='date'>&nbsp;{new Date(answer.date).toString().slice(4, 16)}</span>
-        <span class='helpful'> | Helpful? </span>
-        <span class='yes' onClick={helpfulClickHandler}> Yes</span>
-        <span class='helpfulness'> ({answerHelpfulness})</span>
+    <div className='answer'>
+      <span className='letter'>A:</span>
+      <span className='answerBody'> {answer.body}</span>
+      <div className='answerInfo'>  By
+        <span className='userName'> {answer.answerer_name}</span>
+        <span className='date'>&nbsp;{new Date(answer.date).toString().slice(4, 16)}</span>
+        <span className='helpful'> | Helpful? </span>
+        <span className='yes' onClick={helpfulClickHandler}> Yes</span>
+        <span className='helpfulness'> ({answerHelpfulness})</span>
       </div>
     </div>
   );
