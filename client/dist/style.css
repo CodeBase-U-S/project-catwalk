@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 
 /* img {
   width: 500px;
@@ -70,8 +69,14 @@
   height: 60px;
 }
 
-=======
->>>>>>> 56078c9f65d2b580a4f94d826408fa2d3fbd8710
+
+#Overview {
+  display: flex;
+}
+
+img {
+  width: 500px;
+}
 .ratings {
   float: left;
   max-width: 30%;
@@ -80,4 +85,42 @@
 .reviews {
   float: right;
   max-width: 70%;
+}
+
+div.products {
+  display: inline-flex;
+}
+
+div.outfit {
+  display: inline-flex;
+}
+
+img.cardImg {
+  width: 80px;
+  height: auto;
+}
+
+span.letter, .questionBody {
+  font-weight: bold;
+}
+
+.moreAnswers {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.moreQuestions {
+  border: 1px solid black;
+  width: 200px;
+  padding: 2px;
+  margin: 5px;
+}
+
+div.answerInfo, .helpfulInfo {
+  font-size: 12px;
+  margin: 5px;
+}
+
+div.answer {
+  margin: 5px;
 }
