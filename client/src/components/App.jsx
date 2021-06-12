@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
+// sub-components //
 import Header from './Overview/Header.jsx';
 import Overview from './Overview/Overview.jsx';
 import QandA from './QandA.jsx';
 import RatingsAndReviews from './R&R/RatingsAndReviews.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
-import TOKEN from '../../../config.js';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
 
+// api option data //
+import TOKEN from '../../../config.js';
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
-const auth = {
-  headers: {
-    Authorization: TOKEN.TOKEN
-  }
-};
+const auth = { headers: { Authorization: TOKEN.TOKEN } };
+
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,25 +28,45 @@ const App = () => {
 
   const [sort, setSort] = useState(reviews.sort);
 
-  const [product, setProduct] = useState([]);
-  useEffect(() => {
-    getAllreviews();
-  }, []);
 
   useEffect(() => {
-    axios.get(`${url}/products/17000`, auth)
+    getAllreviews();
+    getProduct();
+  }, []);
+
+  const getProduct = () => {
+    axios.get(`${url}/products/16056`, auth)
       .then(({ data }) => {
-        console.log('data for 17000 here is', data);
-        setProduct(data);
+        dispatch({ type: 'CHANGE_PRODUCT', product: data });
+        getStyles(data.id);
       })
       .catch(err => console.error(err));
-  }, []);
+  };
+
+  const getStyles = (id) => {
+    if (id) {
+      axios.get(`${url}/products/${id}/styles`, auth)
+        .then(({ data }) => {
+          dispatch({ type: 'SET_STYLES', styles: data.results});
+          dispatch({ type: 'SET_STYLE', style: getDefaultStyle(data)
+          });
+        });
+    }
+  };
+
+  const getDefaultStyle = (data) => {
+    let defaultStyle;
+    data.results.forEach((style) => {
+      if (style['default?']) {
+        defaultStyle = style;
+      }
+    });
+    return defaultStyle;
+  };
 
   const getAllreviews = () => {
     axios.get(`${url}/reviews/?page=1&count=10&product_id=16060`, auth)
       .then(({ data }) => {
-        // console.log(data);
-        console.log(data.results);
         dispatch({ type: 'reviews', reviews: data.results });
         setReviews({
           results: data.results.slice(0, 2),
@@ -96,11 +116,9 @@ const App = () => {
 
   return (
     <div>
-      {/* <div>It worked</div> */}
       <Header />
       <Overview
-        product={product}
-        reviews={reviews.allReviews} />
+      />
       <RelatedItems />
       <QandA />
       <RatingsAndReviews

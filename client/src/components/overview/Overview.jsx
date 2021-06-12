@@ -3,36 +3,13 @@ import axios from 'axios';
 import Container from 'react-bootstrap/container';
 import Row from 'react-bootstrap/row';
 import Col from 'react-bootstrap/col';
-const config = require('../../../../config.js');
 
 // Components //
 import ImageGallery from './ImageGallery.jsx';
 import ProductInformation from './ProductInformation.jsx';
 
 
-// API Options //
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/';
-const auth = { headers: { Authorization: config.TOKEN } };
-
-
-
-const Overview = ( {product, reviews} ) => {
-
-  const [styles, setStyles] = useState([]);
-
-  const getStyles = () => {
-    console.log('e', product.id);
-    if (product.id) {
-      axios.get(`${url}/products/${product.id}/styles`, auth)
-        .then((response) => {
-          console.log('response', response);
-        });
-    }
-  };
-
-  useEffect(() => {
-    getStyles();
-  }, []);
+const Overview = ( {reviews} ) => {
 
   return (
     <Container id="overview">
@@ -41,7 +18,7 @@ const Overview = ( {product, reviews} ) => {
           <ImageGallery />
         </Col>
         <Col>
-          <ProductInformation product={product} reviews={reviews} />
+          <ProductInformation/>
         </Col>
       </Row>
     </Container>
