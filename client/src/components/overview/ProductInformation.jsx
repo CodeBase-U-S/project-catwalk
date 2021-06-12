@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import StarRating from './StarRating.jsx';
 import AddToCart from './AddToCart.jsx';
 import StyleSelector from './StyleSelector.jsx';
@@ -31,6 +31,11 @@ const ProductInformation = ({ reviews }) => {
       <br></br>
 
       <StyleSelector />
+
+      <Row>
+        <Button id="AddToCart" className="button btn-secondary">SELECT SIZE</Button>
+        <Button id="favoriteButton" className="button btn-secondary">1</Button>
+      </Row>
 
       <AddToCart />
 

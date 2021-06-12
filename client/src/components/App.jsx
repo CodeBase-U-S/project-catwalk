@@ -60,6 +60,7 @@ const App = () => {
     return defaultStyle;
   };
 
+
   const getAllreviews = () => {
     axios.get(`${url}/reviews/?page=1&count=10&product_id=16060`, auth)
       .then(({ data }) => {
