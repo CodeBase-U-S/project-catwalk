@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
+// sub-components //
 import Header from './Overview/Header.jsx';
 import Overview from './Overview/Overview.jsx';
 import QandA from './QandA.jsx';
 import RatingsAndReviews from './R&R/RatingsAndReviews.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
-import TOKEN from '../../../config.js';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
 
+// api option data //
+import TOKEN from '../../../config.js';
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
-const auth = {
-  headers: {
-    Authorization: TOKEN.TOKEN
-  }
-};
+const auth = { headers: { Authorization: TOKEN.TOKEN } };
 
 const App = () => {
   const dispatch = useDispatch();
@@ -25,8 +23,6 @@ const App = () => {
     allReviews: []
   });
 
-  const [product, setProduct] = useState([]);
-
   useEffect(() => {
     getAllreviews();
     getProduct();
@@ -35,7 +31,6 @@ const App = () => {
   const getProduct = () => {
     axios.get(`${url}/products/17000`, auth)
       .then(({ data }) => {
-        console.log('data for 17000 here is', data);
         dispatch({ type: 'CHANGE_PRODUCT', product: data });
         getStyles(data.id);
       })
@@ -54,8 +49,6 @@ const App = () => {
   const getAllreviews = () => {
     axios.get(`${url}/reviews/?page=1&count=10&product_id=16060`, auth)
       .then(({ data }) => {
-        // console.log(data);
-        console.log('data', data.results);
         dispatch({ type: 'reviews', reviews: data.results });
         setReviews({
           results: data.results.slice(0, 2),
