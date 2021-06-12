@@ -48,9 +48,10 @@
   border-color: grey;
   border-width: 1px;
   color: black;
-  width: 50%;
+  width: 70%;
   height: 60px;
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 #favoriteButton {

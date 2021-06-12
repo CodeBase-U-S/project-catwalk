@@ -44,21 +44,20 @@ const App = () => {
       axios.get(`${url}/products/${id}/styles`, auth)
         .then(({ data }) => {
           dispatch({ type: 'SET_STYLES', styles: data.results});
-          let defaultStyle = getDefaultStyle(data);
-          dispatch({ type: 'SET_STYLE', style: defaultStyle
+          dispatch({ type: 'SET_STYLE', style: getDefaultStyle(data)
           });
         });
     }
   };
 
   const getDefaultStyle = (data) => {
+    let defaultStyle;
     data.results.forEach((style) => {
       if (style['default?']) {
-        console.log('successsss');
-        return style;
+        defaultStyle = style;
       }
-      console.log('FAIL');
     });
+    return defaultStyle;
   };
 
   const getAllreviews = () => {

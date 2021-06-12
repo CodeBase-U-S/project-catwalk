@@ -21,6 +21,11 @@ const Overview = ( {reviews} ) => {
           <ProductInformation/>
         </Col>
       </Row>
+      <Row>
+        {/* <Container>
+          {product && product.description && <div>{product.description}</div>}
+        </Container> */}
+      </Row>
     </Container>
   );
 };
