@@ -22,8 +22,11 @@ const App = () => {
   const [reviews, setReviews] = useState({
     results: [],
     moreReviews: [],
-    allReviews: []
+    allReviews: [],
+    sort: 'relevance'
   });
+
+  const [sort, setSort] = useState(reviews.sort);
 
   const [product, setProduct] = useState([]);
   useEffect(() => {
@@ -69,6 +72,28 @@ const App = () => {
       .catch(err => console.error(err));
   };
 
+  const handleSortReviews = (e) => {
+    // setSort(e)
+    (async () => {
+      const reviewsList = await axios({
+        method: 'get',
+        url: `${url}/reviews/`,
+        params: {
+          page: 1,
+          count: 10,
+          sort: e,
+          product_id: 16060
+        },
+        headers: auth.headers
+      });
+      setReviews({
+        results: reviewsList.data.results.slice(0, 2),
+        moreReviews: reviewsList.data.results.slice(2),
+        sort: e
+      });
+    })();
+  }
+
   return (
     <div>
       {/* <div>It worked</div> */}
@@ -82,7 +107,8 @@ const App = () => {
         reviews={reviews.results}
         moreReviews={reviews.moreReviews}
         handleMoreReviews={handleMoreReviews}
-        handleHelpfulness={handleHelpfulness} />
+        handleHelpfulness={handleHelpfulness}
+        handleSortReviews={handleSortReviews} />
     </div>
   );
 };
