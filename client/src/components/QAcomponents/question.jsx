@@ -39,7 +39,7 @@ let Question = ({question}) => {
   }, []);
 
   let moreAnswersHandler = () => {
-    console.log('question id: ', question.question_id);
+    // console.log('question id: ', question.question_id);
     setAnswerCount(prevAnswerCount => {
       let currentCount = prevAnswerCount + 2;
       console.log('current count: ', currentCount);
@@ -54,13 +54,10 @@ let Question = ({question}) => {
     // console.log('clicked');
     // console.log('helpfulclicked: ', helpfulClicked);
     if (!helpfulClicked) {
-      // console.log('hi');
       setQuestionHelpfulness(prevCount => prevCount + 1);
       setHelpfulClicked(true);
-      // console.log('auth: ', auth);
       axios.put(`${url}/qa/questions/${question.question_id}/helpful`, auth)
         .then(data => {
-          // console.log('data: ', data);
         })
         .catch(err => {
           throw err;
@@ -68,7 +65,6 @@ let Question = ({question}) => {
     }
 
   };
-
   return (
     <div>
       <span className='letter'>Q:</span>

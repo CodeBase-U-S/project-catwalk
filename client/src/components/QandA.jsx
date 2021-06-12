@@ -3,6 +3,7 @@ import Search from './QAcomponents/search.jsx';
 import Question from './QAcomponents/question.jsx';
 import axios from 'axios';
 import _ from 'underscore';
+import bluebird from 'bluebird';
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 
@@ -19,7 +20,6 @@ let QandA = () => {
   let [questionCount, setQuestionCount] = useState(2);
   let [searchQuestions, setSearchQuestions] = useState([]);
 
-
   let retrieveQuestions = (page, count) => {
     axios.get(`${url}/qa/questions?product_id=16056&page=${page}&count=${count}`, auth)//refactor for product id input
       .then(({data}) => {
@@ -28,11 +28,8 @@ let QandA = () => {
         let sortedQuestions = _.sortBy(data.results, (question) => {
           return question.question_helpfulness;
         });
-        // console.log('sortedQuestions: ', sortedQuestions.reverse())
-
         setQuestions(sortedQuestions.reverse());
         setSearchQuestions(sortedQuestions.reverse());
-        // console.log('searchQuestions:', searchQuestions);
       })
       .catch(err => {
         console.log(err);
@@ -45,6 +42,7 @@ let QandA = () => {
     retrieveQuestions(1, questionCount);
   }, []);
 
+
   let moreQuestionsHandler = () => {
     setQuestionCount(prevQuestionCount => {
       let currentCount = prevQuestionCount + 2;
@@ -54,6 +52,7 @@ let QandA = () => {
     // retrieveQuestions(1, questionCount)
   };
   // console.log('searchQuestions before return: ', searchQuestions);
+
   return (
     <>
       <Search setQuestions={setQuestions} questions={questions}
