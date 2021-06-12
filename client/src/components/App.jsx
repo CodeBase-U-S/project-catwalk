@@ -14,6 +14,8 @@ import TOKEN from '../../../config.js';
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const auth = { headers: { Authorization: TOKEN.TOKEN } };
 
+
+
 const App = () => {
   const dispatch = useDispatch();
 
@@ -29,7 +31,7 @@ const App = () => {
   }, []);
 
   const getProduct = () => {
-    axios.get(`${url}/products/17000`, auth)
+    axios.get(`${url}/products/16056`, auth)
       .then(({ data }) => {
         dispatch({ type: 'CHANGE_PRODUCT', product: data });
         getStyles(data.id);
@@ -41,9 +43,22 @@ const App = () => {
     if (id) {
       axios.get(`${url}/products/${id}/styles`, auth)
         .then(({ data }) => {
-          dispatch({ type: 'SET_STYLE', style: data});
+          dispatch({ type: 'SET_STYLES', styles: data.results});
+          let defaultStyle = getDefaultStyle(data);
+          dispatch({ type: 'SET_STYLE', style: defaultStyle
+          });
         });
     }
+  };
+
+  const getDefaultStyle = (data) => {
+    data.results.forEach((style) => {
+      if (style['default?']) {
+        console.log('successsss');
+        return style;
+      }
+      console.log('FAIL');
+    });
   };
 
   const getAllreviews = () => {

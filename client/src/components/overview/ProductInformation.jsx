@@ -8,13 +8,15 @@ import { useSelector } from 'react-redux';
 const ProductInformation = ({ reviews }) => {
 
   let product = useSelector((state) => state.productReducer.product);
+  let selectedStyle = useSelector((state) => state.styleReducer.style);
+  console.log(selectedStyle);
 
   return (
     <Container>
       <StarRating />
       {product && <h5 id="category" className="mb-0" style={{fontWeight: 'lighter'}}>{product.category.toUpperCase()}</h5>}
       {product && <h1 id="name" className="mb-3"><strong>{product.name}</strong></h1>}
-      {product && <div id="price">${~~product.default_price}</div>}
+      {/* {style && <div id="price">${~~style.original_price}</div>} */}
       <br></br>
       <StyleSelector />
       <AddToCart />
