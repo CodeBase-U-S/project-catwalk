@@ -1,50 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Ratings from 'react-ratings-declarative';
+import { useSelector } from 'react-redux';
 
-const StarRating = ( {rating, reviewCount} ) => {
+const StarRating = () => {
+
+  const reviews = useSelector((state) => state.reviewsReducer.reviews);
+  const [rating, setRating] = useState(null);
+  const [reviewCount, setReviewCount] = useState(0);
+
+  useEffect(() => {
+    if (reviews.length > 0) {
+      setRating(calculateAvg(reviews));
+      setReviewCount(reviews.length);
+    }
+  }, [reviews]);
+
+  const calculateAvg = (arr = null) => {
+
+    if (arr.length === 0) {
+      return null;
+    }
+    let sum = 0;
+    arr.forEach((product) => {
+      sum += product.rating;
+    });
+    return sum / arr.length;
+  };
 
   const scrollHandler = () => {
     const elementToScrollTo = document.getElementsByClassName('ratings')[0];
     elementToScrollTo.scrollIntoView();
   };
 
-  return (
-    <div className="mb-3 mt-5" id="star_rating">
-      <Ratings
-        style={{verticalAlign: 'middle'}}
-        rating={rating}
-        widgetDimensions="18px"
-        widgetRatedColors="rgb(87, 87, 87)"
-        widgetSpacings="0px"
-
-      >
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
-      </Ratings>
-
-      {/* {rating <= 0 && <EmptyStar /> }
-      {rating >= 0.5 && rating < 1 && <HalfStar />}
-      {rating >= 1 && <FullStar /> }
-      {rating < 1.5 && <EmptyStar /> }
-      {rating >= 1.5 && rating < 2 && <HalfStar />}
-      {rating >= 2 && <FullStar /> }
-      {rating < 2.5 && <EmptyStar /> }
-      {rating >= 2.5 && rating < 3 && <HalfStar />}
-      {rating >= 3 && <FullStar /> }
-      {rating < 3.5 && <EmptyStar /> }
-      {rating >= 3.5 && rating < 4 && <HalfStar />}
-      {rating >= 4 && <FullStar /> }
-      {rating < 4.5 && <EmptyStar /> }
-      {rating >= 4.5 && rating < 5 && <HalfStar />}
-      {rating >= 5 && <FullStar /> } */}
-      <span id="readAll" onClick={scrollHandler} style={{cursor: 'pointer'}}><small><u>Read all {reviewCount} reviews</u></small></span>
-    </div>
-  );
-
+  if (rating) {
+    return (
+      <div className="mb-3 mt-5" id="star_rating">
+        <Ratings
+          style={{verticalAlign: 'middle'}}
+          rating={rating}
+          widgetDimensions="18px"
+          widgetRatedColors="rgb(87, 87, 87)"
+          widgetSpacings="0px"
+        >
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+        </Ratings>
+        <span id="readAll" onClick={scrollHandler} style={{cursor: 'pointer'}}><small><u>Read all {reviewCount} reviews</u></small></span>
+      </div>
+    );
+  }
+  return (<div></div>);
 };
+
+
+
+{/* {rating <= 0 && <EmptyStar /> }
+    {rating >= 0.5 && rating < 1 && <HalfStar />}
+    {rating >= 1 && <FullStar /> }
+    {rating < 1.5 && <EmptyStar /> }
+    {rating >= 1.5 && rating < 2 && <HalfStar />}
+    {rating >= 2 && <FullStar /> }
+    {rating < 2.5 && <EmptyStar /> }
+    {rating >= 2.5 && rating < 3 && <HalfStar />}
+    {rating >= 3 && <FullStar /> }
+    {rating < 3.5 && <EmptyStar /> }
+    {rating >= 3.5 && rating < 4 && <HalfStar />}
+    {rating >= 4 && <FullStar /> }
+    {rating < 4.5 && <EmptyStar /> }
+    {rating >= 4.5 && rating < 5 && <HalfStar />}
+    {rating >= 5 && <FullStar /> } */}
 
 const EmptyStar = () => {
   return (

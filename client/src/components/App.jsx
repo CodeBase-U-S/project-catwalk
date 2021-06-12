@@ -26,24 +26,36 @@ const App = () => {
   });
 
   const [product, setProduct] = useState([]);
-  useEffect(() => {
-    getAllreviews();
-  }, []);
 
   useEffect(() => {
+    getAllreviews();
+    getProduct();
+  }, []);
+
+  const getProduct = () => {
     axios.get(`${url}/products/17000`, auth)
       .then(({ data }) => {
         console.log('data for 17000 here is', data);
-        setProduct(data);
+        dispatch({ type: 'CHANGE_PRODUCT', product: data });
+        getStyles(data.id);
       })
       .catch(err => console.error(err));
-  }, []);
+  };
+
+  const getStyles = (id) => {
+    if (id) {
+      axios.get(`${url}/products/${id}/styles`, auth)
+        .then(({ data }) => {
+          dispatch({ type: 'SET_STYLE', style: data});
+        });
+    }
+  };
 
   const getAllreviews = () => {
     axios.get(`${url}/reviews/?page=1&count=10&product_id=16060`, auth)
       .then(({ data }) => {
         // console.log(data);
-        console.log(data.results);
+        console.log('data', data.results);
         dispatch({ type: 'reviews', reviews: data.results });
         setReviews({
           results: data.results.slice(0, 2),
@@ -71,11 +83,9 @@ const App = () => {
 
   return (
     <div>
-      {/* <div>It worked</div> */}
       <Header />
       <Overview
-        product={product}
-        reviews={reviews.allReviews} />
+      />
       <RelatedItems />
       <QandA />
       <RatingsAndReviews
