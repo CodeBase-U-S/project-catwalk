@@ -25,7 +25,8 @@ let Question = ({question}) => {
         let sortedAnswers = _.sortBy(data.results, (answer) => {
           return answer.helpfulness;
         });
-        setAnswers(sortedAnswers.reverse());
+        sortedAnswers = sortedAnswers.reverse();
+        setAnswers(sortedAnswers);
       })
       .catch(err => {
         console.log(err);

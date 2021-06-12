@@ -28,8 +28,9 @@ let QandA = () => {
         let sortedQuestions = _.sortBy(data.results, (question) => {
           return question.question_helpfulness;
         });
-        setQuestions(sortedQuestions.reverse());
-        setSearchQuestions(sortedQuestions.reverse());
+        sortedQuestions = sortedQuestions.reverse();
+        setQuestions(sortedQuestions);
+        setSearchQuestions(sortedQuestions);
       })
       .catch(err => {
         console.log(err);
