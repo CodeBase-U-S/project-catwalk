@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
 let Answer = ({answer}) => {
 
@@ -8,11 +9,27 @@ let Answer = ({answer}) => {
   let [helpfulClicked, setHelpfulClicked] = useState(false);
   // let date = new Date(answer.date);
   // console.log('date: ', date);
+  const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
+
+  const auth = {
+    headers: {
+      Authorization: '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'
+    }
+  };
+
   let helpfulClickHandler = () => {
 
     if (!helpfulClicked) {
       setAnswerHelpfulness(prevCount => prevCount + 1);
       setHelpfulClicked(true);
+
+      axios.put(`${url}/qa/answers/${answer.answer_id}/helpful`, answerHelpfulness,
+        auth)
+        .then(data => {
+        })
+        .catch(err => {
+          throw err;
+        });
     }
   };
 

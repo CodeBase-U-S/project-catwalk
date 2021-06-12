@@ -57,7 +57,8 @@ let Question = ({question}) => {
     if (!helpfulClicked) {
       setQuestionHelpfulness(prevCount => prevCount + 1);
       setHelpfulClicked(true);
-      axios.put(`${url}/qa/questions/${question.question_id}/helpful`, auth)
+      axios.put(`${url}/qa/questions/${question.question_id}/helpful`, questionHelpfulness,
+        auth)
         .then(data => {
         })
         .catch(err => {
@@ -69,7 +70,7 @@ let Question = ({question}) => {
   return (
     <div>
       <span className='letter'>Q:</span>
-      <span className='questionBody'> {question.question_body}{question.question_id}</span>
+      <span className='questionBody'> {question.question_body}</span>
       <span className='helpfulInfo'>  Helpful?
         <span className='yes' onClick={helpfulClickHandler}> Yes</span>
         <span className='helpfulness'> ({questionHelpfulness})</span>
