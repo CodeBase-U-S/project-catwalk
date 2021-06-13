@@ -68,15 +68,15 @@ let AddAnswer = ({open, onClose}) => {
         <button className='x' onClick={onClose}>X</button>
         <div className='addAnswerTitle'>Submit Your Answer</div>
         <div className='answerForm'>
-          <div>Your Answer</div>
+          <div>Your Answer *</div>
           <textarea className='yourAnswer' type='text' placeholder='Example: It is true to size.'
             onChange={handleAnswer}/>
-          <div>Your Nickname</div>
+          <div>Your Nickname *</div>
           <input type='text' className='yourNickname' placeholder='Example: jack11'
             onChange={handleNickname} />
           <div className='addAnswerInfo'>For privacy reasons, do not use your full name or
           email address</div>
-          <div>Your Email</div>
+          <div>Your Email *</div>
           <input type='email' className='yourEmail' placeholder='Example: jack@gmail.com'
             onChange={handleEmail}/>
           <div className='addAnswerInfo'>For authentication reasons, you will

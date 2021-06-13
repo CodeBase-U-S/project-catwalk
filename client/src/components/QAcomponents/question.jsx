@@ -75,7 +75,7 @@ let Question = ({question}) => {
       <span className='questionBody'> {question.question_body}</span>
       <span className='helpfulInfo'>  Helpful?
         <span className='yes' onClick={helpfulClickHandler}> Yes</span>
-        <span className='helpfulness'> {questionHelpfulness} |</span>
+        <span className='helpfulness'> ({questionHelpfulness}) |</span>
         <span className='addAnswer' onClick={() => setAddAnswerIsOpen(true)}> Add Answer</span>
       </span>
       <div>

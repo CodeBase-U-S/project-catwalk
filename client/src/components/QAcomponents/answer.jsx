@@ -4,7 +4,7 @@ import axios from 'axios';
 let Answer = ({answer}) => {
 
   //state hook for helpful count
-  // console.log('answer object: ', answer);
+  console.log('answer object: ', answer);
   let [answerHelpfulness, setAnswerHelpfulness] = useState(answer.helpfulness);
   let [helpfulClicked, setHelpfulClicked] = useState(false);
   // let date = new Date(answer.date);
@@ -37,6 +37,11 @@ let Answer = ({answer}) => {
     <div className='answer'>
       <span className='letter'>A:</span>
       <span className='answerBody'> {answer.body}</span>
+      <div>
+        {answer.photos.map((photo, index) => {
+          return <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}></img>;
+        })}
+      </div>
       <div className='answerInfo'>  By
         <span className='userName'> {answer.answerer_name}</span>
         <span className='date'>&nbsp;{new Date(answer.date).toString().slice(4, 16)}</span>
