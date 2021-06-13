@@ -32,11 +32,6 @@ const ProductInformation = ({ reviews }) => {
 
       <StyleSelector />
 
-      <Row>
-        <Button id="AddToCart" className="button btn-secondary">SELECT SIZE</Button>
-        <Button id="favoriteButton" className="button btn-secondary">1</Button>
-      </Row>
-
       <AddToCart />
 
       <br></br>

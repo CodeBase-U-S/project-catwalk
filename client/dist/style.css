@@ -59,6 +59,43 @@
   top: -4px;
 }
 
+.button-wide {
+  background-color: white;
+  border: black;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: grey;
+  border-width: 1px;
+  color: black;
+  width: 70%;
+  height: 60px;
+  margin-right: 10px;
+
+}
+.button-quantity {
+  background-color: white;
+  border: black;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: grey;
+  border-width: 1px;
+  color: black;
+  width: 20%;
+  height: 60px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.soldOut {
+  width: 95%;
+  text-align: center;
+  padding-top: 15px;
+  color: red;
+
+
+}
+
+
 
 #AddToCart {
   background-color: white;
