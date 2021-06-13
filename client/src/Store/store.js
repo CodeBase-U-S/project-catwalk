@@ -15,7 +15,7 @@ const store = createStore(
     reviewsReducer,
     productReducer,
     stylesReducer,
-    styleReducer,
+    styleReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

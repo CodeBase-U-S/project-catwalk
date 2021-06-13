@@ -6,11 +6,11 @@ const AddToCart = (props) => {
   const dispatch = useDispatch();
   let selectedStyle = useSelector((state) => state.styleReducer.style);
   let hasInventory = useSelector((state) => state.styleReducer.hasInventory);
-  let selectedSize = useSelector((state) => state.sizeReducer.size);
+  // let selectedSize = useSelector((state) => state.sizeReducer.size);
   // LOG!! //
-  // if (selectedStyle) {
-  //   console.log('here', selectedStyle.skus[483563].quantity);
-  // }
+  if (selectedStyle) {
+    console.log('here', Object.entries(selectedStyle.skus));
+  }
 
 
   if (selectedStyle) {
@@ -26,7 +26,7 @@ const AddToCart = (props) => {
                     if (size[1].quantity > 0) {
                       return (
                         <option key={id} value={size[1].size}
-                          onClick={dispatch({type: 'SET_SIZE', size: size[1].size})}> {size[1].size} - {size[1].quantity}</option>
+                          onClick={dispatch({type: 'SET_SIZE', style: selectedStyle, sizeSku: size[0]})}> {size[1].size} - {size[1].quantity}</option>
                       );
                     }
                   })}
