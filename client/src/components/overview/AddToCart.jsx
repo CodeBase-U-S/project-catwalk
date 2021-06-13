@@ -21,6 +21,9 @@ const AddToCart = (props) => {
     });
   };
 
+  const setQuantity = (e) => {
+    console.log(e.target.value);
+  };
 
   if (selectedStyle) {
     return (
@@ -40,7 +43,7 @@ const AddToCart = (props) => {
                     }
                   })}
                 </select>
-                <select className="button-quantity" value="1">
+                <select className="button-quantity" value="1" onChange={setQuantity}>
                   {styleQuantity && styleQuantity.map((count, id) => {
                     return (
                       <option key={id} value={count}> {count} </option>
