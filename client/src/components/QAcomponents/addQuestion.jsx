@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDom from 'react-dom';
+import axios from 'axios';
 
 const MODAL_STYLES = {
   width: '600px',
@@ -29,6 +30,37 @@ let AddQuestion = ({open, onClose}) => {
     return null;
   }
 
+  let [question, setQuestion] = useState('');
+  let [nickname, setNickName] = useState('');
+  let [email, setEmail] = useState('');
+
+  let handleSubmit = () => {
+    if (question === '') {
+      return;
+    }
+    if (nickname === '') {
+      return;
+    }
+    if (email === '') {
+      return;
+    }
+    console.log('question: ', question);
+    console.log('nickname: ', nickname);
+    console.log('email: ', email);
+  };
+
+  let handleQuestion = (e) => {
+    setQuestion(e.target.value);
+  };
+
+  let handleNickname = (e) => {
+    setNickName(e.target.value);
+  };
+
+  let handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
   return ReactDom.createPortal(
     <>
       <div style={OVERLAY_STYLES} />
@@ -37,13 +69,14 @@ let AddQuestion = ({open, onClose}) => {
         <div className='addQuestionTitle'>Ask A Question About This Product</div>
         <div className='questionForm'>
           <div>Your Question</div>
-          <input className='yourQuestion' type='text' />
+          <textarea className='yourQuestion' type='text' onChange={handleQuestion}/>
           <div>Your Nickname</div>
-          <input type='text' />
+          <input type='text' className='yourNickname' onChange={handleNickname} />
           <div>Your Email</div>
-          <input type='email'/>
+          <input type='email' className='yourEmail' placeholder='Example: jack@gmail.com'
+            onChange={handleEmail}/>
         </div>
-        <div className='submitQuestion'>
+        <div className='submitQuestion' onClick={handleSubmit}>
           Submit Question
         </div>
       </div>
