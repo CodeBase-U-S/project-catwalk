@@ -24,18 +24,18 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-let AddQuestion = ({open, onClose}) => {
+let AddAnswer = ({open, onClose}) => {
 
   if (!open) {
     return null;
   }
 
-  let [question, setQuestion] = useState('');
+  let [answer, setAnswer] = useState('');
   let [nickname, setNickName] = useState('');
   let [email, setEmail] = useState('');
 
   let handleSubmit = () => {
-    if (question === '') {
+    if (answer === '') {
       return;
     }
     if (nickname === '') {
@@ -44,13 +44,13 @@ let AddQuestion = ({open, onClose}) => {
     if (email === '') {
       return;
     }
-    console.log('question: ', question);
+    console.log('answer: ', answer);
     console.log('nickname: ', nickname);
     console.log('email: ', email);
   };
 
-  let handleQuestion = (e) => {
-    setQuestion(e.target.value);
+  let handleAnswer = (e) => {
+    setAnswer(e.target.value);
   };
 
   let handleNickname = (e) => {
@@ -66,24 +66,24 @@ let AddQuestion = ({open, onClose}) => {
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         <button className='x' onClick={onClose}>X</button>
-        <div className='addQuestionTitle'>Ask A Question About This Product</div>
-        <div className='questionForm'>
-          <div>Your Question *</div>
-          <textarea className='yourQuestion' placeholder='Example: Is it true to size?'
-            type='text' onChange={handleQuestion}/>
-          <div>Your Nickname *</div>
+        <div className='addAnswerTitle'>Submit Your Answer</div>
+        <div className='answerForm'>
+          <div>Your Answer</div>
+          <textarea className='yourAnswer' type='text' placeholder='Example: It is true to size.'
+            onChange={handleAnswer}/>
+          <div>Your Nickname</div>
           <input type='text' className='yourNickname' placeholder='Example: jack11'
             onChange={handleNickname} />
-          <div className='addQuestionInfo'>For privacy reasons, do not use your full name or
+          <div className='addAnswerInfo'>For privacy reasons, do not use your full name or
           email address</div>
-          <div>Your Email *</div>
+          <div>Your Email</div>
           <input type='email' className='yourEmail' placeholder='Example: jack@gmail.com'
             onChange={handleEmail}/>
-          <div className='addQuestionInfo'>For authentication reasons, you will
+          <div className='addAnswerInfo'>For authentication reasons, you will
           not be emailed</div>
         </div>
-        <div className='submitQuestion' onClick={handleSubmit}>
-          Submit Question
+        <div className='submitAnswer' onClick={handleSubmit}>
+          Submit Answer
         </div>
       </div>
     </>,
@@ -91,4 +91,4 @@ let AddQuestion = ({open, onClose}) => {
   );
 };
 
-export default AddQuestion;
+export default AddAnswer;

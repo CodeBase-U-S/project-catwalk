@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Answer from './answer.jsx';
+import AddAnswer from './addAnswer.jsx';
 import axios from 'axios';
 import _ from 'underscore';
 
@@ -10,6 +11,7 @@ let Question = ({question}) => {
   let [answerCount, setAnswerCount] = useState(2);
   let [questionHelpfulness, setQuestionHelpfulness] = useState(question.question_helpfulness);
   let [helpfulClicked, setHelpfulClicked] = useState(false);
+  let [addAnswerIsOpen, setAddAnswerIsOpen] = useState(false);
 
   const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 
@@ -73,7 +75,8 @@ let Question = ({question}) => {
       <span className='questionBody'> {question.question_body}</span>
       <span className='helpfulInfo'>  Helpful?
         <span className='yes' onClick={helpfulClickHandler}> Yes</span>
-        <span className='helpfulness'> ({questionHelpfulness})</span>
+        <span className='helpfulness'> {questionHelpfulness} |</span>
+        <span className='addAnswer' onClick={() => setAddAnswerIsOpen(true)}> Add Answer</span>
       </span>
       <div>
         {answers.map((answer, index) => {
@@ -83,6 +86,7 @@ let Question = ({question}) => {
       <div className='moreAnswers' onClick={moreAnswersHandler}>
         Load More Answers
       </div>
+      <AddAnswer open={addAnswerIsOpen} onClose={() => setAddAnswerIsOpen(false)}/>
     </div>
   );
 };
