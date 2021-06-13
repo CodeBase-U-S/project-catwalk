@@ -28,7 +28,14 @@ const checkInventory = (style) => {
 };
 
 const getQuantity = (style, sizeSku) => {
-  return style.skus[sizeSku].quantity;
+  let quantity = style.skus[sizeSku].quantity;
+  console.log(quantity, 'quantitt')
+  let quantArr = [];
+  for (var i = 1; i <= quantity; i++) {
+    quantArr.push(i);
+  }
+  console.log(quantArr,' arrarrrar')
+  return quantArr;
 };
 
 export default styleReducer;

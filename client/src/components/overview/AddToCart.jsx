@@ -6,11 +6,20 @@ const AddToCart = (props) => {
   const dispatch = useDispatch();
   let selectedStyle = useSelector((state) => state.styleReducer.style);
   let hasInventory = useSelector((state) => state.styleReducer.hasInventory);
+  let styleQuantity = useSelector((state) => state.styleReducer.quantity);
   // let selectedSize = useSelector((state) => state.sizeReducer.size);
   // LOG!! //
   if (selectedStyle) {
     console.log('here', Object.entries(selectedStyle.skus));
   }
+
+  const setSize = (e) => {
+    dispatch({
+      type: 'SET_SIZE',
+      style: selectedStyle,
+      sizeSku: e.currentTarget.value
+    });
+  };
 
 
   if (selectedStyle) {
@@ -20,24 +29,22 @@ const AddToCart = (props) => {
           <Col>
             {hasInventory ?
               <div>
-                <select className="button-wide" style={{padding: '20px'}}>
+                <select className="button-wide" style={{padding: '20px'}} onChange={setSize}>
                   <option>Select Size</option>
                   {Object.entries(selectedStyle.skus).map((size, id) => {
                     if (size[1].quantity > 0) {
                       return (
-                        <option key={id} value={size[1].size}
-                          onClick={dispatch({type: 'SET_SIZE', style: selectedStyle, sizeSku: size[0]})}> {size[1].size} - {size[1].quantity}</option>
+                        <option key={id} value={size[0]}
+                        > {size[1].size} - {size[1].quantity}</option>
                       );
                     }
                   })}
                 </select>
                 <select className="button-quantity" value="1">
-                  {Object.entries(selectedStyle.skus).map((size, id) => {
-                    if (size[1].quantity > 0) {
-                      return (
-                        <option key={id} value={id} > {id} </option>
-                      );
-                    }
+                  {styleQuantity && styleQuantity.map((count, id) => {
+                    return (
+                      <option key={id} value={count}> {count} </option>
+                    );
                   })}
                 </select>
               </div>
