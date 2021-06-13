@@ -102,7 +102,7 @@ img.cardImg {
 
 /* QandA */
 
-span.letter, .questionBody {
+span.letter, .questionBody, .addQuestionTitle {
   font-weight: bold;
 }
 
@@ -112,7 +112,7 @@ span.letter, .questionBody {
   cursor: pointer;
 }
 
-.moreQuestions, .addQuestion{
+.moreQuestions, .addQuestion {
   border: 1px solid black;
   width: 200px;
   padding: 2px;
@@ -143,4 +143,33 @@ button {
 
 .x {
   float: right;
+}
+
+.search {
+  width: 400px;
+}
+
+.yourQuestion {
+  width: 300px;
+  height: 50px;
+}
+
+.questionForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.submitQuestion {
+  background-color: #2980b9;
+  color: white;
+  width: 150px;
+  padding: 2px;
+  margin: 20px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: center;
 }

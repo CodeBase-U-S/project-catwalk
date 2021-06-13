@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 const MODAL_STYLES = {
-  width: '400px',
+  width: '600px',
   height: '400px',
   position: 'fixed',
   top: '50%',
@@ -34,6 +34,18 @@ let AddQuestion = ({open, onClose}) => {
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         <button className='x' onClick={onClose}>X</button>
+        <div className='addQuestionTitle'>Ask A Question About This Product</div>
+        <div className='questionForm'>
+          <div>Your Question</div>
+          <input className='yourQuestion' type='text' />
+          <div>Your Nickname</div>
+          <input type='text' />
+          <div>Your Email</div>
+          <input type='email'/>
+        </div>
+        <div className='submitQuestion'>
+          Submit Question
+        </div>
       </div>
     </>,
     document.getElementById('app')
