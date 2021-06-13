@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Search from './QAcomponents/search.jsx';
 import Question from './QAcomponents/question.jsx';
+import AddQuestion from './QAcomponents/addQuestion.jsx';
 import axios from 'axios';
 import _ from 'underscore';
 import bluebird from 'bluebird';
@@ -19,6 +20,7 @@ let QandA = () => {
   let [questions, setQuestions] = useState([]);
   let [questionCount, setQuestionCount] = useState(2);
   let [searchQuestions, setSearchQuestions] = useState([]);
+  let [addQuestionIsOpen, setAddQuestionIsOpen] = useState(false);
 
   let retrieveQuestions = (page, count) => {
     axios.get(`${url}/qa/questions?product_id=16056&page=${page}&count=${count}`, auth)//refactor for product id input
@@ -67,6 +69,10 @@ let QandA = () => {
       <div className='moreQuestions' onClick={moreQuestionsHandler}>
         More Answered Questions
       </div>
+      <div className='addQuestion' onClick={() => setAddQuestionIsOpen(true)}>
+        Add A Question +
+      </div>
+      <AddQuestion open={addQuestionIsOpen} onClose={() => setAddQuestionIsOpen(false)}/>
     </>
   );
 

@@ -100,6 +100,8 @@ img.cardImg {
   height: auto;
 }
 
+/* QandA */
+
 span.letter, .questionBody {
   font-weight: bold;
 }
@@ -107,13 +109,15 @@ span.letter, .questionBody {
 .moreAnswers {
   font-weight: bold;
   font-size: 12px;
+  cursor: pointer;
 }
 
-.moreQuestions {
+.moreQuestions, .addQuestion{
   border: 1px solid black;
   width: 200px;
   padding: 2px;
   margin: 5px;
+  cursor: pointer
 }
 
 div.answerInfo, .helpfulInfo {
@@ -123,4 +127,20 @@ div.answerInfo, .helpfulInfo {
 
 div.answer {
   margin: 5px;
+}
+
+.yes {
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 5px;
+  padding: 2px;
+}
+
+.x {
+  float: right;
 }
