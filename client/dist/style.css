@@ -102,7 +102,7 @@ img.cardImg {
 
 /* QandA */
 
-span.letter, .questionBody, .addQuestionTitle {
+span.letter, .questionBody, .addQuestionTitle, .addAnswerTitle{
   font-weight: bold;
 }
 
@@ -158,8 +158,9 @@ button {
   width: 300px;
 }
 
-.addQuestionInfo .addAnswerInfo {
+.addQuestionInfo, .addAnswerInfo {
   font-size: 12px;
+  font-style: italic
 }
 
 .questionForm, .answerForm {
