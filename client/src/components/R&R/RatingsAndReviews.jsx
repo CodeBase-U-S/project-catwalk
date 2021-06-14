@@ -14,6 +14,7 @@ const auth = {
 
 const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelpfulness, handleSortReviews }) => {
   // const reviews = useSelector((state) => state.reviewsReducer.reviews)
+
   const handleSort = (e) => {
     handleSortReviews(e.target.value)
   }
@@ -21,26 +22,27 @@ const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelp
 
   return (
     <div>
-      <div className="ratings">
+      <div className="ratingsJG">
         <Ratingss />
       </div>
       <div className="reviews">
-        <label ><b>{reviews.length} </b>Sorted by</label>
+        <label className="reviewSort"><b>{reviews.length} </b>reviews, sorted by</label>
       <select
        className="reviewDropDown"
         onChange={handleSort}>
-        <option value="relevance">Relevance</option>
-        <option value="helpful">Helpful</option>
-        <option value="newest">Newest</option>
+        <option value="relevance">relevance</option>
+        <option value="helpful">helpful</option>
+        <option value="newest">newest</option>
       </select>
         <div className="reviewsList">
-          {reviews.map((review, index) => (
-            <Reviews
+          {reviews.map((review, index) => {
+            console.log("REVIEW in R&R", review)
+            return (<Reviews
               review={review}
               key={index}
               handleHelpfulness={handleHelpfulness}
-            />
-          ))}
+            />)
+          })}
         </div>
         <div className="more_reviews">
           {(moreReviews.length === 0) ? (

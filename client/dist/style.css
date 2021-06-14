@@ -83,20 +83,53 @@ img {
   float: right;
   max-width: 70%;
   margin-bottom: 5%;
+  padding-right: 4vh;
 }
 /* end Overview */
 
+.ratingsAndReviewsTitle {
+  font-size: 74%;
+  color: #717070;
+}
 
+.starAndAveRating {
+  position: relative;
+  margin-top: 0vh;
+  font-size: 7vh;
+  font-weight: 700;
+  margin-left: 2px;
+  color: #5d5d5d;
+  font-family: inherit;
+}
 
+.starAve {
+  margin: -13.5vh -2vh 2vh 12vh;
+}
 
+.ratingAve {
+  display: inline;
+}
+
+.ratingsJG {
+  float: left;
+  margin-left: 13.5vh;
+  max-width: 22%;
+  width: 22%;
+}
+
+.reviewSort {
+  color: #636262;
+  font-weight: bold;
+  font-size: 88%;
+}
 
 
 .reviewsList {
   overflow: auto;
   max-height: 45vh;
-  padding-right: 23%;
-  max-width: 100vh;
-  width: 100vh;
+  padding-right: 30%;
+  max-width: 150vh;
+  width: 112vh;
 }
 
 .more_reviews_button {
@@ -132,8 +165,10 @@ img {
 }
 
 .reviewSummary {
-  color: rgb(63, 63, 63);
-  padding-top: 1em;
+  color: #636262;
+  padding-top: 11px;
+  font-size: 90%;
+  font-weight: bold;
 }
 
 .reviewThumbnail {
@@ -144,15 +179,21 @@ img {
 
 .reviewRecommend {
   padding-top: 3vh;
+  font-size: 74%;
+  color: #636262;
 }
 
 .reviewBody {
-  color: rgb(85, 85, 85);
+  color: #636262;
+  font-size: 74%;
 }
 
 .reviewDropDown {
   border: none;
   text-decoration: underline;
+  color: #636262;
+  font-weight: bold;
+  font-size: 88%;
 }
 
 

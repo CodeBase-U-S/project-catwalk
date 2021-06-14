@@ -67,14 +67,15 @@ const App = () => {
   const getAllreviews = () => {
     axios.get(`${url}/reviews/?page=1&count=10&product_id=16060`, auth)
       .then(({ data }) => {
-        dispatch({ type: 'reviews', reviews: data.results });
         setReviews({
           results: data.results.slice(0, 2),
           moreReviews: data.results.slice(2),
           allReviews: data.results
         });
+        dispatch({ type: 'reviews', reviews: data.results });
       })
       .catch(err => console.error(err));
+      console.log("handleSortReviews called")
   };
 
   const handleMoreReviews = (e) => {
@@ -85,18 +86,20 @@ const App = () => {
   };
 
   const handleHelpfulness = (id, helpfulnessNumber) => {
+    console.log("helpfulness number", helpfulnessNumber)
     let updatedHelpfulness = {
       helpfulness: helpfulnessNumber + 1
     };
+    console.log("updatedHelpfulness", updatedHelpfulness)
     axios.put(`${url}/reviews/${id}/helpful`, updatedHelpfulness, auth)
       .catch(err => console.error(err));
   };
 
-  const handleSortReviews = (e) => {
+  const handleSortReviews = async (e) => {
     // setSort(e)
-    (async () => {
+    // (async () => {
       const reviewsList = await axios({
-        method: 'get',
+        method: 'GET',
         url: `${url}/reviews/`,
         params: {
           page: 1,
@@ -106,12 +109,13 @@ const App = () => {
         },
         headers: auth.headers
       });
+      console.log("handleSortReviews called")
       setReviews({
         results: reviewsList.data.results.slice(0, 2),
         moreReviews: reviewsList.data.results.slice(2),
         sort: e
       });
-    })();
+    // })();
   }
 
   return (

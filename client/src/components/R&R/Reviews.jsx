@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Ratings from 'react-ratings-declarative';
+import { useDispatch } from 'react-redux';
 
 
 
 const Reviews = ({ review, handleHelpfulness }) => {
-
-  const [helpful, setHelpful] = useState(review.helpfulness);
+  console.log("REVIEW", review)
+  // const [helpful, setHelpful] = useState(review.helpfulness);
   const [click, setClick] = useState(false);
+
+  // const dispatch = useDispatch();
+
 
   // let photos = '';
   // for (var i =0; i < review.photos.length; i++) {
   //   photos += review.photos[i].url;
   // }
   // console.log("PHOTOS", photos)
-
 
   return (
     < div >
@@ -39,12 +42,13 @@ const Reviews = ({ review, handleHelpfulness }) => {
       </div>
       <div className="reviewSummary">
         {review.summary.length >= 60 ? (
-          <h4>{review.summary.slice(0, 60)}...</h4>
+          <span>{review.summary.slice(0, 60)}...</span>
         ) : (
-          <h4>{review.summary}</h4>
+          <span>{review.summary}</span>
         )}
       </div>
-      <p className="reviewBody">{review.body}</p>
+      <span className="reviewBody">{review.body}</span>
+      &nbsp;
       {review.photos.length >= 1 ? (
         review.photos.map((photo, index) => (
           <img src={photo.url} className="reviewThumbnail" key={index} />
@@ -67,12 +71,12 @@ const Reviews = ({ review, handleHelpfulness }) => {
       {!click ? (
         <div className="helpfulReview"
           onClick={() => {
+            // setHelpful(helpful + 1);
+            setClick(true);
             handleHelpfulness(review.review_id, review.helpfulness);
-            setHelpful(helpful + 1);
-            setClick(true)
-          }} >Helpful? <u>Yes</u> ({helpful})</div>
+          }} >Helpful? <u>Yes</u> ({review.helpfulness})</div>
       ) : (
-        <div className="helpfulReview">Helpful? <u>Yes</u> ({helpful})</div>
+        <div className="helpfulReview">Helpful? <u>Yes</u> ({review.helpfulness + 1}) </div>
       )}
       <hr />
     </div >
