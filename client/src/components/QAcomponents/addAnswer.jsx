@@ -24,7 +24,15 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-let AddAnswer = ({open, onClose}) => {
+const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
+
+const auth = {
+  headers: {
+    Authorization: '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'
+  }
+};
+
+let AddAnswer = ({open, onClose, question_id, question_body}) => {
 
   if (!open) {
     return null;
@@ -47,6 +55,18 @@ let AddAnswer = ({open, onClose}) => {
     console.log('answer: ', answer);
     console.log('nickname: ', nickname);
     console.log('email: ', email);
+
+    let body = {
+      body: answer,
+      name: nickname,
+      email: email,
+      photos: []
+    };
+
+    axios.post(`${url}/qa/questions/${question_id}/answers`, body, auth)
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   let handleAnswer = (e) => {
@@ -67,6 +87,7 @@ let AddAnswer = ({open, onClose}) => {
       <div style={MODAL_STYLES}>
         <button className='x' onClick={onClose}>X</button>
         <div className='addAnswerTitle'>Submit Your Answer</div>
+        <div className='addAnswerSubtitle'>Product Name: {question_body}</div>
         <div className='answerForm'>
           <div>Your Answer *</div>
           <textarea className='yourAnswer' type='text' placeholder='Example: It is true to size.'

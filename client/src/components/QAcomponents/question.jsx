@@ -4,7 +4,7 @@ import AddAnswer from './addAnswer.jsx';
 import axios from 'axios';
 import _ from 'underscore';
 
-let Question = ({question}) => {
+let Question = ({question, PRODUCT_ID}) => {
   // console.log('input questions: ', question);
   //state hook for helpful count
   let [answers, setAnswers] = useState([]);
@@ -80,13 +80,14 @@ let Question = ({question}) => {
       </span>
       <div>
         {answers.map((answer, index) => {
-          return <Answer answer={answer} key={index}/>;
+          return <Answer answer={answer} key={index} PRODUCT_ID={PRODUCT_ID}/>;
         })}
       </div>
       <div className='moreAnswers' onClick={moreAnswersHandler}>
         Load More Answers
       </div>
-      <AddAnswer open={addAnswerIsOpen} onClose={() => setAddAnswerIsOpen(false)}/>
+      <AddAnswer question_id={question.question_id} question_body={question.question_body}
+        open={addAnswerIsOpen} onClose={() => setAddAnswerIsOpen(false)}/>
     </div>
   );
 };

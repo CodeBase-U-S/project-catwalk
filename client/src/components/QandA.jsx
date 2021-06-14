@@ -65,7 +65,7 @@ let QandA = () => {
       <div>
         {questions.map((question, index) => {
           // return <Question question={question.question_body} helpfulCount={question.question_helpfulness}/>//<>Questions...Answers</>
-          return <Question question={question} key={index}/>;
+          return <Question question={question} key={index} PRODUCT_ID={PRODUCT_ID}/>;
         })}
       </div>
       <div className='moreQuestions' onClick={moreQuestionsHandler}>
