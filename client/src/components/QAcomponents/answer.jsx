@@ -4,7 +4,7 @@ import axios from 'axios';
 let Answer = ({answer}) => {
 
   //state hook for helpful count
-  console.log('answer object: ', answer);
+  // console.log('answer object: ', answer);
   let [answerHelpfulness, setAnswerHelpfulness] = useState(answer.helpfulness);
   let [helpfulClicked, setHelpfulClicked] = useState(false);
   // let date = new Date(answer.date);

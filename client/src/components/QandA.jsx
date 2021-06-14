@@ -16,6 +16,8 @@ const auth = {
 
 let QandA = () => {
 
+  let PRODUCT_ID = 16056;//refactor for product Id as input
+
   //function to get info from atelier api
   let [questions, setQuestions] = useState([]);
   let [questionCount, setQuestionCount] = useState(2);
@@ -23,7 +25,7 @@ let QandA = () => {
   let [addQuestionIsOpen, setAddQuestionIsOpen] = useState(false);
 
   let retrieveQuestions = (page, count) => {
-    axios.get(`${url}/qa/questions?product_id=16056&page=${page}&count=${count}`, auth)//refactor for product id input
+    axios.get(`${url}/qa/questions?product_id=${PRODUCT_ID}&page=${page}&count=${count}`, auth)//refactor for product id input
       .then(({data}) => {
         console.log('questions response:', data.results);
         //perform sort here
@@ -72,7 +74,8 @@ let QandA = () => {
       <div className='addQuestion' onClick={() => setAddQuestionIsOpen(true)}>
         Add A Question +
       </div>
-      <AddQuestion open={addQuestionIsOpen} onClose={() => setAddQuestionIsOpen(false)}/>
+      <AddQuestion open={addQuestionIsOpen} PRODUCT_ID = {PRODUCT_ID}
+        onClose={() => setAddQuestionIsOpen(false)}/>
     </>
   );
 

@@ -24,7 +24,15 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-let AddQuestion = ({open, onClose}) => {
+const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
+
+const auth = {
+  headers: {
+    Authorization: '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'
+  }
+};
+
+let AddQuestion = ({open, onClose, PRODUCT_ID}) => {
 
   if (!open) {
     return null;
@@ -47,6 +55,18 @@ let AddQuestion = ({open, onClose}) => {
     console.log('question: ', question);
     console.log('nickname: ', nickname);
     console.log('email: ', email);
+
+    let body = {
+      body: question,
+      name: nickname,
+      email: email,
+      product_id: PRODUCT_ID
+    };
+
+    axios.post(`${url}/qa/questions`, body, auth)
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   let handleQuestion = (e) => {
