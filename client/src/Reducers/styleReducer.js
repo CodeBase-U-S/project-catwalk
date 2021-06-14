@@ -8,7 +8,7 @@ const styleReducer = (state = [], action) => {
   case 'SET_SIZE':
     return {
       style: action.style,
-      size: action.style.skus[action.sizeSku].size,
+      sizeSelected: action.sizeSelected,
       quantity: getQuantity(action.style, action.sizeSku),
       hasInventory: checkInventory(action.style)
     };
@@ -28,14 +28,15 @@ const checkInventory = (style) => {
 };
 
 const getQuantity = (style, sizeSku) => {
-  let quantity = style.skus[sizeSku].quantity;
-  console.log(quantity, 'quantitt')
-  let quantArr = [];
-  for (var i = 1; i <= quantity; i++) {
-    quantArr.push(i);
+  if (sizeSku) {
+    let quantity = style.skus[sizeSku].quantity;
+    let quantArr = [];
+    for (var i = 1; i <= quantity; i++) {
+      quantArr.push(i);
+    }
+    return quantArr;
   }
-  console.log(quantArr,' arrarrrar')
-  return quantArr;
+  return null;
 };
 
 export default styleReducer;
