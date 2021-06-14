@@ -11,6 +11,7 @@ let Question = ({question, PRODUCT_ID}) => {
   let [answerCount, setAnswerCount] = useState(2);
   let [questionHelpfulness, setQuestionHelpfulness] = useState(question.question_helpfulness);
   let [helpfulClicked, setHelpfulClicked] = useState(false);
+  let [reportClicked, setReportClicked] = useState(false);
   let [addAnswerIsOpen, setAddAnswerIsOpen] = useState(false);
 
   const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
@@ -69,6 +70,18 @@ let Question = ({question, PRODUCT_ID}) => {
     }
 
   };
+
+  let reportClickHandler = () => {
+    if (!reportClicked) {
+      setReportClicked(true);
+
+      axios.put(`${url}/qa/questions/${question.question_id}/report`, 'report', auth)
+        .catch(err => {
+          throw err;
+        });
+    }
+  };
+
   return (
     <div>
       <span className='letter'>Q:</span>
@@ -76,7 +89,8 @@ let Question = ({question, PRODUCT_ID}) => {
       <span className='helpfulInfo'>  Helpful?
         <span className='yes' onClick={helpfulClickHandler}> Yes</span>
         <span className='helpfulness'> ({questionHelpfulness}) |</span>
-        <span className='addAnswer' onClick={() => setAddAnswerIsOpen(true)}> Add Answer</span>
+        <span className='report' onClick={reportClickHandler}> Report </span>
+        <span className='addAnswer' onClick={() => setAddAnswerIsOpen(true)}>| Add Answer</span>
       </span>
       <div>
         {answers.map((answer, index) => {

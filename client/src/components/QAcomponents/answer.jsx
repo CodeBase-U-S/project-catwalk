@@ -7,6 +7,7 @@ let Answer = ({answer}) => {
   // console.log('answer object: ', answer);
   let [answerHelpfulness, setAnswerHelpfulness] = useState(answer.helpfulness);
   let [helpfulClicked, setHelpfulClicked] = useState(false);
+  let [reportClicked, setReportClicked] = useState(false);
   // let date = new Date(answer.date);
   // console.log('date: ', date);
   const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
@@ -33,6 +34,17 @@ let Answer = ({answer}) => {
     }
   };
 
+  let reportClickHandler = () => {
+    if (!reportClicked) {
+      setReportClicked(true);
+
+      axios.put(`${url}/qa/answers/${answer.answer_id}/report`, 'report', auth)
+        .catch(err => {
+          throw err;
+        });
+    }
+  };
+
   return (
     <div className='answer'>
       <span className='letter'>A:</span>
@@ -47,7 +59,8 @@ let Answer = ({answer}) => {
         <span className='date'>&nbsp;{new Date(answer.date).toString().slice(4, 16)}</span>
         <span className='helpful'> | Helpful? </span>
         <span className='yes' onClick={helpfulClickHandler}> Yes</span>
-        <span className='helpfulness'> ({answerHelpfulness})</span>
+        <span className='helpfulness'> ({answerHelpfulness}) |</span>
+        <span className='report' onClick={reportClickHandler}> Report</span>
       </div>
     </div>
   );
