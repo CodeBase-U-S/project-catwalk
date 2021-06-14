@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Button, Select } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
+import apiHandlers from '../apiHandlers.js';
 
 const AddToCart = (props) => {
   const dispatch = useDispatch();
   let selectedStyle = useSelector((state) => state.styleReducer.style);
   let hasInventory = useSelector((state) => state.styleReducer.hasInventory);
   let sizeSelected = useSelector((state) => state.styleReducer.sizeSelected);
+  let skuSelected = useSelector((state) => state.styleReducer.sku);
   let styleQuantity = useSelector((state) => state.styleReducer.quantity);
   // let selectedSize = useSelector((state) => state.sizeReducer.size);
   // LOG!! //
-  if (selectedStyle) {
-    console.log('here', Object.entries(selectedStyle.skus));
-  }
+  // if (selectedStyle) {
+  //   console.log('here', Object.entries(selectedStyle.skus));
+  // }
 
   const setSize = (e) => {
     if (e.currentTarget.value === 'select size') {
@@ -26,13 +28,17 @@ const AddToCart = (props) => {
         type: 'SET_SIZE',
         style: selectedStyle,
         sizeSelected: true,
-        sizeSku: e.currentTarget.value
+        sku: e.currentTarget.value
       });
     }
   };
 
   const setQuantity = (e) => {
     console.log(e.target.value);
+  };
+
+  const addToBag = (e) => {
+    apiHandlers.addToCart(dispatch, skuSelected);
   };
 
   if (selectedStyle) {
@@ -67,7 +73,7 @@ const AddToCart = (props) => {
 
         <Row>
           <Col>
-            <input type="button" className="button-wide" value="ADD TO BAG"></input>
+            <input type="button" className="button-wide" value="ADD TO BAG" onClick={addToBag}></input>
             <input type="button" className="button-quantity" value="★"></input>
           </Col>
         </Row>
