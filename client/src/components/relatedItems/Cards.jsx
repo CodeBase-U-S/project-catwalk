@@ -27,43 +27,23 @@ const Cards = (props) => {
   // }, []);
 
   if (styles && rating) { // whether the data exists.
-    if (!isMoved) {
-      return (
-        <div className="cards" style={{width: '240px', height: '335px', margin: '4px', border: '2px black solid', padding: '4px'}}>
-          {/* <span>{styles}</span> */}
-          <img className="cardImg" src={styles.results[0].photos[0].thumbnail_url} alt="img is here"></img>
+    return (
+      <div className="cards" style={{width: '240px', height: '335px', margin: '4px', border: '2px black solid', padding: '4px'}}>
+        {/* <span>{styles}</span> */}
+        <img className="cardImg" src={styles.results[0].photos[0].thumbnail_url} alt="img is here"></img>
 
-          <button onClick={addToOutfit} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
-          <div className="cardCategory" ><span>CATEGORY</span></div>
-          <div className="cardName">
-            <span ref={inputEl}><strong>{props.product.name}</strong></span>
-            <br></br>
-            <span>{props.product.slogan}</span>
-          </div>
-          <div className="cardDescription">{props.product.description}</div>
-          <div className="cardPrice">${props.product.default_price}</div>
-          <div className="stars">{rating.results.length === 0 ? 0 : rating.results[0].rating}</div>
+        <button onClick={addToOutfit} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
+        <div className="cardCategory" ><span>CATEGORY</span></div>
+        <div className="cardName">
+          <span ref={inputEl}><strong>{props.product.name}</strong></span>
+          <br></br>
+          <span>{props.product.slogan}</span>
         </div>
-      );
-    } else {
-      ReactDOM.render(
-        <div className="cards" style={{width: '240px', height: '335px', margin: '4px', border: '2px black solid', padding: '4px'}}>
-          {/* <span>{styles}</span> */}
-          <img className="cardImg" src={styles.results[0].photos[0].thumbnail_url} alt="img is here"></img>
-
-          <button onClick={addToOutfit} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
-          <div className="cardCategory" ><span>CATEGORY</span></div>
-          <div className="cardName">
-            <span ref={inputEl}><strong>{props.product.name}</strong></span>
-            <br></br>
-            <span>{props.product.slogan}</span>
-          </div>
-          <div className="cardDescription">{props.product.description}</div>
-          <div className="cardPrice">${props.product.default_price}</div>
-          <div className="stars">{rating.results.length === 0 ? 0 : rating.results[0].rating}</div>
-        </div>
-        , document.getElementsByClassName('outfit'));
-    }
+        <div className="cardDescription">{props.product.description}</div>
+        <div className="cardPrice">${props.product.default_price}</div>
+        <div className="stars">{rating.results.length === 0 ? 0 : rating.results[0].rating}</div>
+      </div>
+    );
   } else {
     return <div></div>;
   }
