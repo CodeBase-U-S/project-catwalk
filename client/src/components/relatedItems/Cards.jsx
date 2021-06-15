@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import Ratings from 'react-ratings-declarative';
 
 const Cards = (props) => {
   const [styles, setStyles] = useState(props.stylesInfo);
@@ -28,21 +29,33 @@ const Cards = (props) => {
 
   if (styles && rating) { // whether the data exists.
     return (
-      <div className="cards" style={{width: '240px', height: '335px', margin: '4px', border: '2px black solid', padding: '4px'}}>
+      <li className="cards">
         {/* <span>{styles}</span> */}
-        <img className="cardImg" src={styles.results[0].photos[0].thumbnail_url} alt="img is here"></img>
+        <div className="divcardimg">
+          <img className="cardImg" src={styles.results[0].photos[0].thumbnail_url} alt="img is here"></img>
 
-        <button onClick={addToOutfit} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
+          <button onClick={addToOutfit} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
+        </div>
+
         <div className="cardCategory" ><span>CATEGORY</span></div>
         <div className="cardName">
           <span ref={inputEl}><strong>{props.product.name}</strong></span>
           <br></br>
           <span>{props.product.slogan}</span>
         </div>
-        <div className="cardDescription">{props.product.description}</div>
+        {/* <div className="cardDescription">{props.product.description}</div> */}
         <div className="cardPrice">${props.product.default_price}</div>
-        <div className="stars">{rating.results.length === 0 ? 0 : rating.results[0].rating}</div>
-      </div>
+        <div className="stars">
+          {/* Waiting for further avg rating, if necessary */}
+          <Ratings rating={rating.results.length === 0 ? 0 : rating.results[0].rating} widgetRatedColors="blue" widgetDimensions="15px" widgetRatedColors="rgb(87, 87, 87)" widgetSpacings="0px">
+            <Ratings.Widget />
+            <Ratings.Widget />
+            <Ratings.Widget />
+            <Ratings.Widget />
+            <Ratings.Widget />
+          </Ratings>
+        </div>
+      </li>
     );
   } else {
     return <div></div>;

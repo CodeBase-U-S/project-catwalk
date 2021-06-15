@@ -80,8 +80,10 @@ const Products = (props) => {
 
   if (relatedProducts && productStyles && review) {
     return (
-      // <div className="cardsDisplay">
-      <Cards product={relatedProducts} stylesInfo={productStyles} reviewInfo={review}/>
+    // <div className="cardsDisplay">
+      <ul>
+        <Cards product={relatedProducts} stylesInfo={productStyles} reviewInfo={review}/>
+      </ul>
     );
   } else {
     return (

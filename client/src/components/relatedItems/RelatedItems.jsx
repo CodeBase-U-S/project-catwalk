@@ -42,6 +42,11 @@ const RelatedItems = (props) => {
       </div>
       <div className="outfit">
         <span>YOUR OUTFIT</span>
+        <div className="cardsDisplay" style={{display: 'inline-flex'}}>
+          {/* {relatedProductsId.map((item, index) => (
+            <Products testdata={item} key={index}/>
+          ))} */}
+        </div>
       </div>
     </div>
   );

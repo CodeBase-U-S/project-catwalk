@@ -73,6 +73,7 @@
 
 img {
   width: 500px;
+  height: fit-content;
 }
 .ratings {
   float: left;
@@ -107,17 +108,35 @@ div.outfit {
   /* padding: 20px; */
 }
 
+ul {
+  list-style-type: none;
+}
+
+li.cards {
+  width:240px;
+  height: 340px;
+  margin: 5px;
+  border: 2px #3498DB solid;
+  padding: 4px;
+}
+
+
 div.cardDescription {
   font-size: 15px;
   word-break: break-all;
+  overflow: hidden;
 }
 
 div.cardPrice {
   font-size: 13px;
 }
 
+/* div.divcardimg {
+  overflow: hidden;
+} */
+
 img.cardImg {
-  width: 80px;
+  width: 120px;
   height: auto;
 }
 
