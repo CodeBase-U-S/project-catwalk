@@ -103,7 +103,8 @@ div.products {
 }
 
 div.outfit {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   margin: 20px;
   /* padding: 20px; */
 }
@@ -118,6 +119,7 @@ li.cards {
   margin: 5px;
   border: 2px #3498DB solid;
   padding: 4px;
+  overflow: hidden;
 }
 
 
@@ -131,7 +133,7 @@ div.cardPrice {
   font-size: 13px;
 }
 
-/* div.divcardimg {
+/* div.divcardimg {fle
   overflow: hidden;
 } */
 
