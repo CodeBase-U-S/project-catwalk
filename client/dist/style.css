@@ -118,7 +118,7 @@
 
 
 #thumbnail {
-  opacity: 100%
+  opacity: 100%;
 }
 
 #thumbnail:hover {
@@ -126,12 +126,11 @@
   cursor: pointer;
 }
 
-#thumbnails {
-  /* height: 600px; */
-  /* overflow: scroll; */
+.carouselThumbnail {
+  height: 120px;
+  max-width: 330px;
+  object-fit: cover;
 }
-
-
 
 
 
@@ -151,6 +150,7 @@ img {
   float: right;
   max-width: 70%;
 }
+
 /* end Overview */
 
 
