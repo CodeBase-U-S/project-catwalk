@@ -5,6 +5,7 @@ import AddQuestion from './QAcomponents/addQuestion.jsx';
 import axios from 'axios';
 import _ from 'underscore';
 import bluebird from 'bluebird';
+import {useSelector} from 'react-redux';
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 
@@ -17,6 +18,7 @@ const auth = {
 let QandA = () => {
 
   let PRODUCT_ID = 16056;//refactor for product Id as input
+  // let PRODUCT_ID = useSelector(state => state.productReducer.product);
 
   //function to get info from atelier api
   let [questions, setQuestions] = useState([]);

@@ -86,7 +86,7 @@ let Question = ({question, PRODUCT_ID}) => {
     <div>
       <span className='letter'>Q:</span>
       <span className='questionBody'> {question.question_body}</span>
-      <span className='helpfulInfo'>  Helpful?
+      <span className='helpfulInfo question'>  Helpful?
         <span className='yes' onClick={helpfulClickHandler}> Yes</span>
         <span className='helpfulness'> ({questionHelpfulness}) |</span>
         <span className='report' onClick={reportClickHandler}> Report </span>
