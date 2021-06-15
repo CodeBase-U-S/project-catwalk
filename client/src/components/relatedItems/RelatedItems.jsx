@@ -13,6 +13,7 @@ const options = {
 const RelatedItems = (props) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
   const [isMoved, setIsMoved] = useState(false);
+  const [cardsPosition, setCardsPosition] = useState('products');
 
   const getRelatedProductsId = (incomingProductId) => {
     axios.get(`${url}/products/${incomingProductId}/related`, options)
@@ -21,6 +22,11 @@ const RelatedItems = (props) => {
         setRelatedProductsId(res.data);
       })
       .catch(err => console.log(err));
+  };
+
+
+  const switchCardsPosition = () => {
+    setCardsPosition(cardsPosition === 'products' ? 'outfit' : 'products');
   };
 
   //get all related products
@@ -36,16 +42,17 @@ const RelatedItems = (props) => {
         {/* <span>{relatedProducts.id}</span> */}
         <div className="cardsDisplay" style={{display: 'inline-flex'}}>
           {relatedProductsId.map((item, index) => (
-            <Products testdata={item} key={index}/>
+
+            <Products testdata={item} key={index} handleSwitch={switchCardsPosition}/>
           ))}
         </div>
       </div>
       <div className="outfit">
         <span>YOUR OUTFIT</span>
         <div className="cardsDisplay" style={{display: 'inline-flex'}}>
-          {/* {relatedProductsId.map((item, index) => (
-            <Products testdata={item} key={index}/>
-          ))} */}
+          {relatedProductsId.map((item, index) => (
+            <Products testdata={item} key={index} handleSwitch={switchCardsPosition}/>
+          ))}
         </div>
       </div>
     </div>
