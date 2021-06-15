@@ -16,9 +16,9 @@ const ImageGallery = (props) => {
     return (
       <Jumbotron>
         <Row>
-          <Col id="thumbnails" xs={2}>
+          <Col id="thumbnails" xs={2} overflow="scroll" height="100px">
             {selectedStyle && selectedStyle.photos.map((photo, id) => (
-              <div id='thumbnail' key={id} className="mb-1">
+              <div id='thumbnail' key={id} className="mb-1" >
                 {selectedPhoto === photo ?
                   <Image src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo)} style={{opacity: '60%'}}/> :
                   <Image src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo)} />

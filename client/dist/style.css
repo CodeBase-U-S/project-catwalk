@@ -126,6 +126,13 @@
   cursor: pointer;
 }
 
+#thumbnails {
+  /* height: 600px; */
+  /* overflow: scroll; */
+}
+
+
+
 
 
 #Overview {
