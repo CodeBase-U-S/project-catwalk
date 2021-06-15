@@ -7,6 +7,7 @@ import productReducer from '../Reducers/productReducer.js';
 import stylesReducer from '../Reducers/stylesReducer.js';
 import styleReducer from '../Reducers/styleReducer.js';
 import sizeReducer from '../Reducers/styleReducer.js';
+import quantityReducer from '../Reducers/quantityReducer.js';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -15,7 +16,8 @@ const store = createStore(
     reviewsReducer,
     productReducer,
     stylesReducer,
-    styleReducer
+    styleReducer,
+    quantityReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

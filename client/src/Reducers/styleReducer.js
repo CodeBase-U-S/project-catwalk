@@ -9,9 +9,9 @@ const styleReducer = (state = [], action) => {
     return {
       style: action.style,
       sizeSelected: action.sizeSelected,
+      hasInventory: checkInventory(action.style),
       sku: action.sku,
       quantity: getQuantity(action.style, action.sku),
-      hasInventory: checkInventory(action.style)
     };
   default:
     return state;

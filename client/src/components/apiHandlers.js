@@ -29,10 +29,8 @@ export default {
 
     axios(options)
       .then((res) => {
-        console.log(`${sku} was added to the cart`);
         axios.get(`${url}/cart`, auth)
           .then((res) => {
-            console.log('get req', res.data);
             return dispatch({type: 'GET_CART', cart: res.data});
           });
       })

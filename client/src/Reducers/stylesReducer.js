@@ -18,7 +18,6 @@ const styleParser = (styleArray) => {
   styleArray.forEach((style, key) => {
     styles[style['style_id']] = style;
   });
-  console.log(styles);
   return styles;
 };
 
