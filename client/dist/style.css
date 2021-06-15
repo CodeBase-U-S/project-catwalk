@@ -113,12 +113,15 @@ span.letter, .questionBody, .addQuestionTitle, .addAnswerTitle{
   font-weight: bold;
   font-size: 12px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .moreQuestions, .addQuestion {
+  display: inline-block;
   border: 1px solid black;
-  width: 200px;
-  padding: 2px;
+  width: auto;
+  height: 50px;
+  padding: 10px;
   margin: 5px;
   cursor: pointer
 }
@@ -149,7 +152,11 @@ button {
 }
 
 .search {
-  width: 400px;
+  border: 1px solid black;
+  width: 800px;
+  height: 50px;
+  padding: 10px;
+  margin: 5px;
 }
 
 .yourQuestion, .yourAnswer{
@@ -197,11 +204,26 @@ button {
 
 .QandA {
   width: 800px;
+  height: auto;
   margin: 50px auto;
-
+  padding: 5px;
 }
 
 .helpfulInfo.question {
   font-size: 10px;
   float: right;
+}
+
+.questionAndAnswer {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.buttonContainer {
+  margin: 20px;
+}
+
+.answersContainer {
+  max-height: 40vh;
+  overflow: auto;
 }

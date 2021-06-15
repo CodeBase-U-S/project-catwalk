@@ -22,7 +22,7 @@ let QandA = () => {
 
   //function to get info from atelier api
   let [questions, setQuestions] = useState([]);
-  let [questionCount, setQuestionCount] = useState(2);
+  let [questionCount, setQuestionCount] = useState(4);
   let [searchQuestions, setSearchQuestions] = useState([]);
   let [addQuestionIsOpen, setAddQuestionIsOpen] = useState(false);
 
@@ -62,19 +62,22 @@ let QandA = () => {
 
   return (
     <>
+      <h5>Questions and Answers</h5>
       <Search setQuestions={setQuestions} questions={questions}
         searchQuestions={searchQuestions}/>
-      <div>
+      <div className='questionAndAnswer'>
         {questions.map((question, index) => {
           // return <Question question={question.question_body} helpfulCount={question.question_helpfulness}/>//<>Questions...Answers</>
           return <Question question={question} key={index} PRODUCT_ID={PRODUCT_ID}/>;
         })}
       </div>
-      <div className='moreQuestions' onClick={moreQuestionsHandler}>
-        More Answered Questions
-      </div>
-      <div className='addQuestion' onClick={() => setAddQuestionIsOpen(true)}>
-        Add A Question +
+      <div className='buttonContainer'>
+        <span className='moreQuestions' onClick={moreQuestionsHandler}>
+          More Answered Questions
+        </span>
+        <span className='addQuestion' onClick={() => setAddQuestionIsOpen(true)}>
+          Add A Question +
+        </span>
       </div>
       <AddQuestion open={addQuestionIsOpen} PRODUCT_ID = {PRODUCT_ID}
         onClose={() => setAddQuestionIsOpen(false)}/>

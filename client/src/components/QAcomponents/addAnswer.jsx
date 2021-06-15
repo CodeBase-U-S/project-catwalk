@@ -3,8 +3,8 @@ import ReactDom from 'react-dom';
 import axios from 'axios';
 
 const MODAL_STYLES = {
-  width: '600px',
-  height: '400px',
+  width: '700px',
+  height: '500px',
   position: 'fixed',
   top: '50%',
   left: '50%',
@@ -81,6 +81,12 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
     setEmail(e.target.value);
   };
 
+  let fileHandler = (e) => {
+    console.log(e.target.files[0]);
+
+
+  };
+
   return ReactDom.createPortal(
     <>
       <div style={OVERLAY_STYLES} />
@@ -92,6 +98,7 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
           <div>Your Answer *</div>
           <textarea className='yourAnswer' type='text' placeholder='Example: It is true to size.'
             onChange={handleAnswer}/>
+          <input type='file' onChange={fileHandler}/>
           <div>Your Nickname *</div>
           <input type='text' className='yourNickname' placeholder='Example: jack11'
             onChange={handleNickname} />

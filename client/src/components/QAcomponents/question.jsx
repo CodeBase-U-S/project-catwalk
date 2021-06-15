@@ -92,7 +92,7 @@ let Question = ({question, PRODUCT_ID}) => {
         <span className='report' onClick={reportClickHandler}> Report </span>
         <span className='addAnswer' onClick={() => setAddAnswerIsOpen(true)}>| Add Answer</span>
       </span>
-      <div>
+      <div className='answersContainer'>
         {answers.map((answer, index) => {
           return <Answer answer={answer} key={index} PRODUCT_ID={PRODUCT_ID}/>;
         })}
