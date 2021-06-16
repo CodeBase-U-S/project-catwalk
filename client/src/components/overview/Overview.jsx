@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { Container, Row, Col } from 'react-bootstrap';
+import Container from 'react-bootstrap/container';
+import Row from 'react-bootstrap/row';
+import Col from 'react-bootstrap/col';
 
 // Components //
 import ImageGallery from './ImageGallery.jsx';
