@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useReducer } from 'react';
 import Token from '../../../../config.js';
 import axios from 'axios';
-import Outfit from './Outfit.jsx';
 import Products from './Products.jsx';
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
@@ -12,51 +11,39 @@ const options = {
 };
 
 const RelatedItems = (props) => {
-  const [product, setProduct] = useState([]);
-  const [productStyles, setProductStyles] = useState([]);
+  const [relatedProductsId, setRelatedProductsId] = useState([]);
+  // const [isMoved, setIsMoved] = useState(false);
+  // const [cardsPosition, setCardsPosition] = useState('products');
 
-  //get products from page 1.
-  const getProducts = () => {
-    axios.get(`${url}/products`, options)
+  const getRelatedProductsId = (incomingProductId) => {
+    axios.get(`${url}/products/${incomingProductId}/related`, options)
       .then(res => {
-        console.log('res herer is ', res.data);
-        setProduct(res.data);
-      })
-      .catch(err => console.log(err));
-
-  };
-
-  const getProductStyles = (incomingProductId) => {
-    const tempProductId = 16056;
-    axios.get(`${url}/products/${tempProductId}/styles`, options)
-      .then(res => {
-        console.log('data in styles', res.data.results[0].photos[0].thumbnail_url);
-        setProductStyles(res.data.results[0].photos[0].thumbnail_url);
+        // console.log('res herer is ', res.data);
+        setRelatedProductsId(res.data);
       })
       .catch(err => console.log(err));
   };
 
+
+  const switchCardsPosition = () => {
+    setCardsPosition(cardsPosition === 'products' ? 'outfit' : 'products');
+  };
+
+  //get all related products
   useEffect(() => {
-    const fetchData= async () => {
-      const tempProductId = 16056;
-      const res = await axios.get(`${url}/products/${tempProductId}/styles`, options);
-      setProductStyles(res.data.results);
-      await getProducts();
-      // await getProductStyles();
-    };
-    fetchData();
+    getRelatedProductsId(16057);
+
   }, []);
 
-
   return (
-    <div className="Related-Products">
-      {/* <span>{productStyles}</span> */}
-      <Products testdata={product} testStyles={productStyles}/>
-      <br></br>
-      <Outfit testdata={product}/>
+    <div className="Related-Products" >
+      <Products testdata={relatedProductsId} handleSwitch={switchCardsPosition}/>
     </div>
   );
 };
 
-
 export default RelatedItems;
+
+// {relatedProductsId.map((item, index) => (
+//   <Products testdata={item} key={index} handleSwitch={switchCardsPosition}/>
+// ))}

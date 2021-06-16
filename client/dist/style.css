@@ -73,6 +73,7 @@
 
 img {
   width: 500px;
+  height: fit-content;
 }
 .ratings {
   float: left;
@@ -85,21 +86,59 @@ img {
 }
 /* end Overview */
 
-
-
-
+div.Related-Products {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  border: 20px;
+  padding: 20px;
+}
 
 
 div.products {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  /* padding: 20px; */
 }
 
 div.outfit {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  /* padding: 20px; */
 }
 
+ul {
+  display: inline-flex;
+  list-style-type: none;
+}
+
+li.cards {
+  width:240px;
+  height: 340px;
+  border: 1px #3498DB solid;
+  padding: 3px;
+  overflow: hidden;
+}
+
+
+div.cardDescription {
+  font-size: 15px;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+div.cardPrice {
+  font-size: 13px;
+}
+
+/* div.divcardimg {fle
+  overflow: hidden;
+} */
+
 img.cardImg {
-  width: 80px;
+  width: 120px;
   height: auto;
 }
 
@@ -135,6 +174,38 @@ div.answer {
   margin: 5px;
 }
 
+/* Swiper style */
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 12px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 60%;
+  height: 100%;
+}
 .yes {
   cursor: pointer;
 }
