@@ -1,4 +1,17 @@
 /* Overview */
+button {
+  border-style: none;
+  box-shadow: none;
+}
+button:focus {
+  outline: none;
+  outline-offset: none;
+}
+
+button:active {
+  transform: none;
+}
+
 #header {
   background-color: grey;
   width: 100%;
@@ -23,22 +36,72 @@
   vertical-align: middle;
 }
 
-#StyleSelector {
-  height: 160px;
-  width: 340px;
-}
 
 .style {
   border-radius: 100%;
-  /* border-style: solid;
-  border-width: 0.5px; */
   height: 60px;
   width: 60px;
   margin-bottom: 10px;
   color: rgb(53, 53, 53);
   background-color: lightgray;
   object-fit: cover;
+  cursor: pointer;
 }
+
+
+.style:hover {
+  opacity: 0.7;
+}
+
+#selected-style {
+  border-radius: 100%;
+  border-color: black;
+  border-width: 0.2px;
+  border-style: solid;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  z-index: 99;
+  position: absolute;
+  right: 12px;
+  top: -4px;
+}
+
+.button-wide {
+  background-color: white;
+  border: black;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: grey;
+  border-width: 1px;
+  color: black;
+  width: 70%;
+  height: 60px;
+  margin-right: 10px;
+
+}
+.button-quantity {
+  background-color: white;
+  border: black;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: grey;
+  border-width: 1px;
+  color: black;
+  width: 20%;
+  height: 60px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.soldOut {
+  width: 95%;
+  text-align: center;
+  padding-top: 15px;
+  color: red;
+}
+
+
 
 #AddToCart {
   background-color: white;
@@ -67,6 +130,23 @@
 }
 
 
+#thumbnail {
+  opacity: 100%;
+}
+
+#thumbnail:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.carouselThumbnail {
+  height: 120px;
+  max-width: 330px;
+  object-fit: cover;
+}
+
+
+
 #Overview {
   display: flex;
 }
@@ -84,6 +164,37 @@ img {
   float: right;
   max-width: 70%;
 }
+
+#navigation {
+  position: absolute;
+  height: 75vh;
+  width: 10%;
+  background-color: black;
+  opacity: 0%;
+}
+
+#navigation:hover {
+  opacity: 20%;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  cursor: pointer;
+}
+
+
+.right {
+  right: 0;
+}
+
+#test {
+  scrollbar-width: none;
+}
+
+
+
+
 /* end Overview */
 
 div.Related-Products {

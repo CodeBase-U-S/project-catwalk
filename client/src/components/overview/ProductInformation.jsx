@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import StarRating from './StarRating.jsx';
 import AddToCart from './AddToCart.jsx';
 import StyleSelector from './StyleSelector.jsx';

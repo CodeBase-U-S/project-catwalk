@@ -4,6 +4,7 @@ import App from './components/App.jsx';
 
 // import bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'swiper/swiper-bundle.css';
 import { Provider } from 'react-redux';
 import store from './Store/store.js';
 
