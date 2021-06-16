@@ -99,37 +99,3 @@ const ImageGallery = (props) => {
 
 export default ImageGallery;
 
-
-
-
-
-
-// <Swiper
-//               slidesPerView={1}
-//               navigation={true}
-
-//               // centerInsufficientSlides={true}
-//               // controller={{ control: firstSwiper }}
-//               onSwiper={setSecondSwiper}>
-//               {selectedStyle && selectedStyle.photos.map((photo, id) => (
-//                 <SwiperSlide key={id}>
-//                   {selectedStyle && photoIndex &&
-//                 <Image src={selectedStyle.photos[photoIndex].url} fluid alt="Responsive image" />}
-//                   {selectedStyle && !photoIndex &&
-//                 <Image src={photo.url} fluid alt="Responsive image" />}
-
-//                   {/* {selectedPhoto === photo ?
-//                     <Image src={photo.thumbnail_url} key={id} value={photo} style={{opacity: '60%'}}/> :
-//                     <Image src={photo.url} key={id} value={photo} />
-//                   } */}
-//                 </SwiperSlide>
-//               ))}
-
-
-//               {/* <SwiperSlide>
-//                 {selectedStyle && selectedPhoto &&
-//                 <Image src={selectedPhoto.url} fluid alt="Responsive image" />}
-//                 {selectedStyle && !selectedPhoto &&
-//                 <Image src={selectedStyle.photos[0].url} fluid alt="Responsive image" />}
-//               </SwiperSlide> */}
-//             </Swiper>
