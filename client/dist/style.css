@@ -146,25 +146,6 @@ button:active {
 }
 
 
-
-#Overview {
-  display: flex;
-}
-
-img {
-  width: 500px;
-  height: fit-content;
-}
-.ratings {
-  float: left;
-  max-width: 30%;
-}
-
-.reviews {
-  float: right;
-  max-width: 70%;
-}
-
 #navigation {
   position: absolute;
   height: 75vh;
@@ -183,15 +164,69 @@ img {
   cursor: pointer;
 }
 
+#navigation-vert {
+  position: absolute;
+  margin: .25rem;
+  height: 4%;
+  width: 70%;
+  background-color: black;
+  opacity: 0%;
+  z-index: 100;
+}
 
-.right {
+#navigation-vert:hover {
+  opacity: 20%;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  cursor: pointer;
+}
+
+
+
+
+.tg-right {
   right: 0;
 }
 
-#test {
+.tg-top {
+  top: 0;
+}
+
+.tg-bottom {
+  bottom: 0;
+}
+
+#thumbnailGallery {
   scrollbar-width: none;
 }
 
+#thumbnailGallery::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+
+/* Overview end */
+
+
+
+
+
+
+
+
+.ratings {
+  float: left;
+  max-width: 30%;
+}
+
+.reviews {
+  float: right;
+  max-width: 70%;
+}
 
 .ratingsJG {
   float: left;
@@ -211,30 +246,12 @@ img {
   color: #717070;
 }
 
-.starAndAveRating {
-  position: relative;
-  margin-top: 0vh;
-  font-size: 7vh;
-  font-weight: 700;
-  margin-left: 2px;
-  color: #5d5d5d;
-  font-family: inherit;
-}
 
-.starAve {
-  margin: -13.5vh -2vh 2vh 12vh;
-}
 
 .ratingAve {
   display: inline;
 }
 
-.ratingsJG {
-  float: left;
-  margin-left: 13.5vh;
-  max-width: 22%;
-  width: 22%;
-}
 
 
 
@@ -268,9 +285,6 @@ img {
 }
 
 
-/* .addReviewPosition {
-  position: relative;
-} */
 
 .addReviewButton {
   background-color: white;
@@ -337,7 +351,7 @@ img {
 .starBarJG {
   display: inline-flex;
   margin-bottom: 2vh;
-}
+} */
 
 .percentLine  {
   width: 19vh;
@@ -377,13 +391,6 @@ div.products {
 }
 
 div.outfit {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-  /* padding: 20px; */
-}
-
-ul {
   display: inline-flex;
   list-style-type: none;
 }
@@ -395,21 +402,6 @@ li.cards {
   padding: 3px;
   overflow: hidden;
 }
-
-
-div.cardDescription {
-  font-size: 15px;
-  word-break: break-all;
-  overflow: hidden;
-}
-
-div.cardPrice {
-  font-size: 13px;
-}
-
-/* div.divcardimg {fle
-  overflow: hidden;
-} */
 
 img.cardImg {
   width: 120px;
@@ -425,8 +417,6 @@ span.letter, .questionBody, .addQuestionTitle, .addAnswerTitle{
 .moreAnswers {
   font-weight: bold;
   font-size: 12px;
-  cursor: pointer;
-  margin: 10px;
 }
 
 .moreQuestions, .addQuestion {
@@ -436,7 +426,6 @@ span.letter, .questionBody, .addQuestionTitle, .addAnswerTitle{
   height: 50px;
   padding: 10px;
   margin: 5px;
-  cursor: pointer
 }
 
 div.answerInfo, .helpfulInfo {
