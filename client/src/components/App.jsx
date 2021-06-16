@@ -47,6 +47,9 @@ const App = () => {
           dispatch({ type: 'SET_STYLES', styles: data.results});
           dispatch({ type: 'SET_STYLE', style: getDefaultStyle(data)
           });
+        })
+        .then(() => {
+          dispatch({ type: 'SET_PHOTO', photoIndex: 0 });
         });
     }
   };
