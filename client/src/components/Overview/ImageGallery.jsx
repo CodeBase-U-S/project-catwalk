@@ -49,7 +49,7 @@ const ImageGallery = (props) => {
       <Jumbotron>
         <Container>
           <Row>
-            <Col xs={2} id="thumbnailGallery" style={{height: '75vh'}}>
+            <Col xs={2} style={{height: '75vh'}}>
               <button id='navigation-vert' className='tg-top' onClick={navRight}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact tg-up" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
