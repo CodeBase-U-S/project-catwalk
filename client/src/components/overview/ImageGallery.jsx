@@ -18,25 +18,31 @@ const ImageGallery = (props) => {
     if (photoIndex < selectedStyle.photos.length - 1) {
       dispatch({ type: 'SET_PHOTO', photoIndex: photoIndex + 1});
     }
-    scrollTo();
+    scrollTo(scrollPositionFinderRight);
   };
 
   const navLeft = () => {
     if (photoIndex > 0) {
       dispatch({ type: 'SET_PHOTO', photoIndex: photoIndex - 1});
     }
-    scrollTo();
+    scrollTo(scrollPositionFinderLeft);
   };
 
-  const scrollTo = () => {
+  const scrollTo = (scrollPositionFinder) => {
     let scrollContainer = document.getElementById('thumbnailGallery');
     scrollContainer.scrollTo({top: scrollPositionFinder(), behavior: 'smooth'});
   };
 
-  const scrollPositionFinder = () => {
+  const scrollPositionFinderRight = () => {
     let viewportHeight = window.innerHeight;
     let avgHeight = viewportHeight / selectedStyle.photos.length;
     return (avgHeight * (photoIndex + 1));
+  };
+
+  const scrollPositionFinderLeft = () => {
+    let viewportHeight = window.innerHeight;
+    let avgHeight = viewportHeight / selectedStyle.photos.length;
+    return (avgHeight * (photoIndex - 1));
   };
 
   SwiperCore.use([Navigation]);
