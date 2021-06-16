@@ -146,17 +146,6 @@ button:active {
 }
 
 
-/*
-#Overview {
-  display: flex;
-}
-
-img {
-  width: 500px;
-} */
-
-
-
 #navigation {
   position: absolute;
   height: 75vh;
@@ -175,9 +164,39 @@ img {
   cursor: pointer;
 }
 
+#navigation-vert {
+  position: absolute;
+  margin: .25rem;
+  height: 4%;
+  width: 70%;
+  background-color: black;
+  opacity: 0%;
+  z-index: 100;
+}
 
-.right {
+#navigation-vert:hover {
+  opacity: 20%;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  cursor: pointer;
+}
+
+
+
+
+.tg-right {
   right: 0;
+}
+
+.tg-top {
+  top: 0;
+}
+
+.tg-bottom {
+  bottom: 0;
 }
 
 #thumbnailGallery {
