@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col, Image, Jumbotron, Container } from 'react-bootstrap';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Controller } from 'swiper/core';
 
 const ImageGallery = (props) => {
   const dispatch = useDispatch();
@@ -45,11 +43,6 @@ const ImageGallery = (props) => {
     return (avgHeight * (photoIndex - 1));
   };
 
-  SwiperCore.use([Navigation]);
-  SwiperCore.use([Controller]);
-  const [firstSwiper, setFirstSwiper] = useState(null);
-  const [secondSwiper, setSecondSwiper] = useState(null);
-
 
   if (selectedStyle) {
     return (
@@ -59,7 +52,7 @@ const ImageGallery = (props) => {
             <Col xs={2} id="thumbnailGallery" style={{height: '75vh', overflowY: 'scroll'}}>
               <div>
                 {selectedStyle && selectedStyle.photos.map((photo, id) => (
-                  <div id='thumbnail' key={id} className="mb-5" >
+                  <div id='thumbnail' key={id} className="mb-4" >
                     {photoIndex === id ?
                       <Image id={`pIndex${id}`} src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
                       :
@@ -86,25 +79,6 @@ const ImageGallery = (props) => {
                 <Image src={selectedStyle.photos[photoIndex].url} style={{height: '75vh', objectFit: 'cover', width: '102%'}}/>}
             </Col>
           </Row>
-{/*
-        <div>
-          <Swiper
-            spaceBetween={50}
-            slidesPerView={5}
-            navigation={true}
-            onSlideChange={() => console.log('slide changed')}
-            onSwiper={(swiper) => console.log(swiper)}>
-            {selectedStyle && selectedStyle.photos.map((photo, id) => (
-              <SwiperSlide key={id}>
-                {photoIndex === photo ?
-                  <Image className="carouselThumbnail" thumbnail src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
-                  :
-                  <Image className="carouselThumbnail" thumbnail src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
-                }
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div> */}
         </Container>
       </Jumbotron>
     );
