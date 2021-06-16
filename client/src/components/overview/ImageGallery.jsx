@@ -37,8 +37,18 @@ const ImageGallery = (props) => {
       <Jumbotron>
         <Container>
           <Row>
-            <Col xs={2} id="test" style={{height: '65vh', overflowY: 'scroll'}}>
-              <div>
+            <Col xs={2} id="thumbnailGallery" style={{height: '75vh'}}>
+              <button id='navigation-vert' className='tg-top' onClick={navRight}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact tg-up" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+                </svg>
+              </button>
+              <button id='navigation-vert' className='tg-bottom' onClick={navLeft}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-chevron-compact tg-down" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                </svg>
+              </button>
+              <div id="thumbnailGallery" style={{height: '75vh', overflowY: 'scroll'}}>
                 {selectedStyle && selectedStyle.photos.map((photo, id) => (
                   <div id='thumbnail' key={id} className="mb-5" >
                     {photoIndex === id ?
@@ -96,37 +106,3 @@ const ImageGallery = (props) => {
 
 export default ImageGallery;
 
-
-
-
-
-
-// <Swiper
-//               slidesPerView={1}
-//               navigation={true}
-
-//               // centerInsufficientSlides={true}
-//               // controller={{ control: firstSwiper }}
-//               onSwiper={setSecondSwiper}>
-//               {selectedStyle && selectedStyle.photos.map((photo, id) => (
-//                 <SwiperSlide key={id}>
-//                   {selectedStyle && photoIndex &&
-//                 <Image src={selectedStyle.photos[photoIndex].url} fluid alt="Responsive image" />}
-//                   {selectedStyle && !photoIndex &&
-//                 <Image src={photo.url} fluid alt="Responsive image" />}
-
-//                   {/* {selectedPhoto === photo ?
-//                     <Image src={photo.thumbnail_url} key={id} value={photo} style={{opacity: '60%'}}/> :
-//                     <Image src={photo.url} key={id} value={photo} />
-//                   } */}
-//                 </SwiperSlide>
-//               ))}
-
-
-//               {/* <SwiperSlide>
-//                 {selectedStyle && selectedPhoto &&
-//                 <Image src={selectedPhoto.url} fluid alt="Responsive image" />}
-//                 {selectedStyle && !selectedPhoto &&
-//                 <Image src={selectedStyle.photos[0].url} fluid alt="Responsive image" />}
-//               </SwiperSlide> */}
-//             </Swiper>
