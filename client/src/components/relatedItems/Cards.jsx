@@ -36,7 +36,6 @@ const Cards = (props) => {
 
           <button onClick={addToOutfit} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
         </div>
-
         <div className="cardCategory" ><span>CATEGORY</span></div>
         <div className="cardName">
           <span ref={inputEl}><strong>{props.product.name}</strong></span>

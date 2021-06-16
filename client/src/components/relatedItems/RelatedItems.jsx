@@ -12,8 +12,8 @@ const options = {
 
 const RelatedItems = (props) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
-  const [isMoved, setIsMoved] = useState(false);
-  const [cardsPosition, setCardsPosition] = useState('products');
+  // const [isMoved, setIsMoved] = useState(false);
+  // const [cardsPosition, setCardsPosition] = useState('products');
 
   const getRelatedProductsId = (incomingProductId) => {
     axios.get(`${url}/products/${incomingProductId}/related`, options)
@@ -37,17 +37,7 @@ const RelatedItems = (props) => {
 
   return (
     <div className="Related-Products" >
-      <div className="products">
-        <span>RELATED PRODUCTS</span>
-        {/* <span>{relatedProducts.id}</span> */}
-        <ul>
-          <Products testdata={relatedProductsId} handleSwitch={switchCardsPosition}/>
-        </ul>
-      </div>
-      <div className="outfit">
-        <span>YOUR OUTFIT</span>
-
-      </div>
+      <Products testdata={relatedProductsId} handleSwitch={switchCardsPosition}/>
     </div>
   );
 };

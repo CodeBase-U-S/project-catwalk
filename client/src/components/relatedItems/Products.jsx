@@ -13,7 +13,7 @@ const options = {
 const Products = (props) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productStyles, setProductStyles] = useState([]);
-  // const [isloaded, setIsLoaded] = useState(false);
+  const [isMoved, setIsMoved] = useState(false);
   const [review, setReview] = useState([]);
 
 
@@ -22,11 +22,6 @@ const Products = (props) => {
     props.testdata.map((id, index) => {
       return axios.get(`${url}/products/${id}/styles`, options)
         .then(res => {
-          // console.log('after get', res.data);
-          // if (!isrun) {
-          // setProductStyles(res.data);
-          // }
-          // setProductStyles([...productStyles, res.data]);
           stylesArr.push(res.data);
           return res.data;
         })
@@ -37,6 +32,10 @@ const Products = (props) => {
       prevStyles = stylesArr;
       return prevStyles;
     });
+  };
+
+  const handleMoveCard = () => {
+    setIsMoved(isMoved ? false : false);
   };
 
   // const getProduct = () => {
@@ -91,9 +90,19 @@ const Products = (props) => {
   //   setReview(fetchReview);
   // }
 
+  const createCard = () => {
+    // if (!isMoved) {
+    //   return (
+    //     <Cards product={product} key={index} stylesInfo={productStyles[index]} reviewInfo={review[index]}  position={isMoved}/>
+    //   )
+    // } else {
+    // }
+    return relatedProducts.map((product, index) => (
+      <Cards product={product} key={index} stylesInfo={productStyles[index]} reviewInfo={review[index]} position={isMoved}/>
+    ));
+  };
+
   useEffect(() => {
-    // data();
-    // getProduct();
     let productArr = [];
     let stylesArr = [];
     let reviewArr = [];
@@ -130,9 +139,19 @@ const Products = (props) => {
   if (relatedProducts && productStyles && review) {
     return (
       <React.Fragment>
-        {relatedProducts.map((product, index) => (
-          <Cards product={product} key={index} stylesInfo={productStyles[index]} reviewInfo={review[index]}/>
-        ))}
+        <div className="products">
+          <span>RELATED PRODUCTS</span>
+          {/* <span>{relatedProducts.id}</span> */}
+          <ul>
+            {createCard()}
+          </ul>
+        </div>
+        <div className="outfit">
+          <span>YOUR OUTFIT</span>
+          <ul>
+            {/* {createCard()} */}
+          </ul>
+        </div>
       </React.Fragment>
     );
   } else {
