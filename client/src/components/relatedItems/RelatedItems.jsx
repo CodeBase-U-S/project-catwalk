@@ -40,23 +40,20 @@ const RelatedItems = (props) => {
       <div className="products">
         <span>RELATED PRODUCTS</span>
         {/* <span>{relatedProducts.id}</span> */}
-        <div className="cardsDisplay" style={{display: 'inline-flex'}}>
-          {relatedProductsId.map((item, index) => (
-
-            <Products testdata={item} key={index} handleSwitch={switchCardsPosition}/>
-          ))}
-        </div>
+        <ul>
+          <Products testdata={relatedProductsId} handleSwitch={switchCardsPosition}/>
+        </ul>
       </div>
       <div className="outfit">
         <span>YOUR OUTFIT</span>
-        <div className="cardsDisplay" style={{display: 'inline-flex'}}>
-          {relatedProductsId.map((item, index) => (
-            <Products testdata={item} key={index} handleSwitch={switchCardsPosition}/>
-          ))}
-        </div>
+
       </div>
     </div>
   );
 };
 
 export default RelatedItems;
+
+// {relatedProductsId.map((item, index) => (
+//   <Products testdata={item} key={index} handleSwitch={switchCardsPosition}/>
+// ))}

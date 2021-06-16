@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import Ratings from 'react-ratings-declarative';
 
 const Cards = (props) => {
-  const [styles, setStyles] = useState(props.stylesInfo);
+  const [styles, setStyles] = useState();
   const [isMoved, setIsMoved] = useState(false);
-  const [rating, setRating] = useState(props.reviewInfo);
+  const [rating, setRating] = useState();
   const inputEl = useRef(null);
 
 
@@ -22,10 +22,10 @@ const Cards = (props) => {
   const removeFromOutfit = () => {
   };
 
-  // useEffect(()=> {
-  //   setStyles(props.stylesInfo);
-  //   setRating(props.reviewInfo);
-  // }, []);
+  useEffect(()=> {
+    setStyles(props.stylesInfo);
+    setRating(props.reviewInfo);
+  }, []);
 
   if (styles && rating) { // whether the data exists.
     return (

@@ -11,45 +11,70 @@ const options = {
 };
 
 const Products = (props) => {
-  const [relatedProducts, setRelatedProducts] = useState();
-  const [productStyles, setProductStyles] = useState();
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [productStyles, setProductStyles] = useState([]);
   // const [isloaded, setIsLoaded] = useState(false);
-  const [review, setReview] = useState();
+  const [review, setReview] = useState([]);
 
 
   const getStyles = () => {
-    return axios.get(`${url}/products/${props.testdata}/styles`, options)
-      .then(res => {
-        // console.log('after get', res.data);
-        // if (!isrun) {
-        // setProductStyles(res.data);
-        // }
-        setProductStyles(res.data);
-        return res.data;
-      })
-      .catch(err => console.log(err));
+    let stylesArr = [];
+    props.testdata.map((id, index) => {
+      return axios.get(`${url}/products/${id}/styles`, options)
+        .then(res => {
+          // console.log('after get', res.data);
+          // if (!isrun) {
+          // setProductStyles(res.data);
+          // }
+          // setProductStyles([...productStyles, res.data]);
+          stylesArr.push(res.data);
+          return res.data;
+        })
+        .catch(err => console.log(err));
+    });
+    console.log('styles run and data here si', stylesArr);
+    setProductStyles(prevStyles => {
+      prevStyles = stylesArr;
+      return prevStyles;
+    });
   };
 
-  const getProduct = () => {
-    return axios.get(`${url}/products/${props.testdata}`, options)
-      .then(res => {
-        // console.log('after get', res.data);
-        // if (!isrun) {
-        setRelatedProducts(res.data);
-        // }
-        return res.data;
-      })
-      .catch(err => console.log(err));
-  };
+  // const getProduct = () => {
+  //   let productsArr = [];
+  //   props.testdata.map((id, index) => {
+  //     return axios.get(`${url}/products/${id}`, options)
+  //       .then(res => {
+  //         // console.log('after get', res.data);
+  //         // if (!isrun) {
+  //         // setRelatedProducts([...relatedProducts, res.data]);
+  //         // }
+  //         productsArr.push(res.data);
+  //         return res.data;
+  //       })
+  //       .catch(err => console.log(err));
+  //   });
+  //   setRelatedProducts(prevProducts => {
+  //     prevProducts = productsArr;
+  //     return prevProducts;
+  //   });
+  // };
 
   const getReview = () => {
-    return axios.get(`${url}/reviews?product_id=${props.testdata}`, options)
-      .then(res => {
-        setReview(res.data);
-        // console.log('data in review', res.data);
-        return res.data;
-      })
-      .catch(err => console.log(err));
+    let reviewArr = [];
+    props.testdata.map((id, index) => {
+      return axios.get(`${url}/reviews?product_id=${id}`, options)
+        .then(res => {
+          // setReview([review, res.data]);
+          // console.log('data in review', res.data);
+          reviewArr.push(res.data);
+          return res.data;
+        })
+        .catch(err => console.log(err));
+    });
+    setReview(prevReview => {
+      prevReview = reviewArr;
+      return prevReview;
+    });
   };
 
   // This is for async and promist.all usage. Before using this, comment out the setState in each method.
@@ -67,27 +92,52 @@ const Products = (props) => {
   // }
 
   useEffect(() => {
-
     // data();
-    getProduct();
+    // getProduct();
+    let productArr = [];
+    let stylesArr = [];
+    let reviewArr = [];
+    const fetchProduct = async () => {
+      // props.testdata.map((id) => {
+      //   const result = await axios.get(`${url}/products/${id}`, options);
+      //   productsArr.push(result.data);
+      // });
+      for (let id of props.testdata) {
+        const result = await axios.get(`${url}/products/${id}`, options);
+        productArr.push(result.data);
+      }
+      setRelatedProducts(productArr);
+    };
+
+    const fetchStyles = async () => {
+      for (let id of props.testdata) {
+        const result = await axios.get(`${url}/products/${id}/styles`, options);
+        stylesArr.push(result.data);
+      }
+      setProductStyles(stylesArr);
+    };
+
+    fetchProduct();
+    // fetchStyles();
+
     getStyles();
     getReview();
 
     // console.log('props here is ', props.testdata);
-
   }, [props.testdata]);
 
 
   if (relatedProducts && productStyles && review) {
     return (
-    // <div className="cardsDisplay">
-      <ul>
-        <Cards product={relatedProducts} stylesInfo={productStyles} reviewInfo={review}/>
-      </ul>
+      <React.Fragment>
+        {relatedProducts.map((product, index) => (
+          <Cards product={product} key={index} stylesInfo={productStyles[index]} reviewInfo={review[index]}/>
+        ))}
+      </React.Fragment>
     );
   } else {
     return (
-      <span></span>
+      <span>Test </span>
     );
   }
 };
