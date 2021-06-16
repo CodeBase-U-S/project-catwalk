@@ -163,8 +163,6 @@ img {
 .reviews {
   float: right;
   max-width: 70%;
-  margin-bottom: 5%;
-  padding-right: 4vh;
 }
 
 #navigation {
@@ -193,6 +191,20 @@ img {
 #test {
   scrollbar-width: none;
 }
+
+
+.ratingsJG {
+  float: left;
+  max-width: 30%;
+}
+
+.reviewsJG {
+  float: right;
+  max-width: 70%;
+  margin-bottom: 5%;
+  padding-right: 4vh;
+}
+
 
 .ratingsAndReviewsTitle {
   font-size: 74%;
@@ -322,7 +334,7 @@ img {
   font-size: 88%;
 }
 
-.container {
+.starBarJG {
   display: inline-flex;
   margin-bottom: 2vh;
 }

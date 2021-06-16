@@ -27,7 +27,7 @@ const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelp
       <div className="ratingsJG">
         <Ratingss />
       </div>
-      <div className="reviews">
+      <div className="reviewsJG">
         <label className="reviewSort"><b>{reviews.length} </b>reviews, sorted by</label>
       <select
        className="reviewDropDown"
