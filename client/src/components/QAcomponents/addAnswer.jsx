@@ -52,9 +52,9 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
     if (email === '') {
       return;
     }
-    console.log('answer: ', answer);
-    console.log('nickname: ', nickname);
-    console.log('email: ', email);
+    // console.log('answer: ', answer);
+    // console.log('nickname: ', nickname);
+    // console.log('email: ', email);
 
     let body = {
       body: answer,
@@ -83,7 +83,6 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
 
   let fileHandler = (e) => {
     console.log(e.target.files[0]);
-
 
   };
 

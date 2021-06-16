@@ -45,9 +45,10 @@ let Question = ({question, PRODUCT_ID}) => {
   let moreAnswersHandler = () => {
     // console.log('question id: ', question.question_id);
     setAnswerCount(prevAnswerCount => {
-      let currentCount = prevAnswerCount + 2;
-      console.log('current count: ', currentCount);
-      console.log('question_id: ', question.question_id);
+      // let currentCount = prevAnswerCount + 2;
+      let currentCount = prevAnswerCount + 100;
+      // console.log('current count: ', currentCount);
+      // console.log('question_id: ', question.question_id);
       retrieveAnswers(1, currentCount);
       return currentCount;
     });
