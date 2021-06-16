@@ -50,12 +50,12 @@ const ImageGallery = (props) => {
         <Container>
           <Row>
             <Col xs={2} style={{height: '75vh'}}>
-              <button id='navigation-vert' className='tg-top' onClick={navRight}>
+              <button id='navigation-vert' className='tg-top' onClick={navLeft}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact tg-up" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                 </svg>
               </button>
-              <button id='navigation-vert' className='tg-bottom' onClick={navLeft}>
+              <button id='navigation-vert' className='tg-bottom' onClick={navRight}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-chevron-compact tg-down" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
                 </svg>
@@ -86,7 +86,7 @@ const ImageGallery = (props) => {
               </svg>
             </button>}
               {photoIndex >= 0 &&
-                <Image src={selectedStyle.photos[photoIndex].url} style={{height: '75vh', objectFit: 'cover', width: '102%'}}/>}
+                <Image id="selectedImage" src={selectedStyle.photos[photoIndex].url} style={{height: '75vh', objectFit: 'cover', width: '102%'}}/>}
             </Col>
           </Row>
         </Container>
