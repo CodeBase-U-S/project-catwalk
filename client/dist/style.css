@@ -142,20 +142,27 @@ img.cardImg {
   height: auto;
 }
 
-span.letter, .questionBody {
+/* QandA */
+
+span.letter, .questionBody, .addQuestionTitle, .addAnswerTitle{
   font-weight: bold;
 }
 
 .moreAnswers {
   font-weight: bold;
   font-size: 12px;
+  cursor: pointer;
+  margin: 10px;
 }
 
-.moreQuestions {
+.moreQuestions, .addQuestion {
+  display: inline-block;
   border: 1px solid black;
-  width: 200px;
-  padding: 2px;
+  width: auto;
+  height: 50px;
+  padding: 10px;
   margin: 5px;
+  cursor: pointer
 }
 
 div.answerInfo, .helpfulInfo {
@@ -198,4 +205,96 @@ div.answer {
   display: block;
   width: 60%;
   height: 100%;
+}
+.yes {
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 5px;
+  padding: 2px;
+}
+
+.x {
+  float: right;
+}
+
+.search {
+  border: 1px solid black;
+  width: 800px;
+  height: 50px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.yourQuestion, .yourAnswer{
+  width: 300px;
+  height: 50px;
+}
+
+.yourEmail, .yourNickname {
+  width: 300px;
+}
+
+.addQuestionInfo, .addAnswerInfo {
+  font-size: 12px;
+  font-style: italic
+}
+
+.questionForm, .answerForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.submitQuestion, .submitAnswer {
+  background-color: #2980b9;
+  color: white;
+  width: 150px;
+  padding: 2px;
+  margin: 20px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+}
+
+.addAnswer, .report {
+  cursor: pointer;
+}
+
+.addAnswerSubtitle {
+  margin: 4px;
+  font-size: 14px;
+}
+
+.QandA {
+  width: 800px;
+  height: auto;
+  margin: 50px auto;
+  padding: 5px;
+}
+
+.helpfulInfo.question {
+  font-size: 10px;
+  float: right;
+}
+
+.questionAndAnswer {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.buttonContainer {
+  margin: 20px;
+}
+
+.answersContainer {
+  max-height: 40vh;
+  overflow: auto;
 }
