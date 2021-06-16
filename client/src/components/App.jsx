@@ -67,6 +67,7 @@ const App = () => {
   const getAllreviews = () => {
     axios.get(`${url}/reviews/?page=1&count=10&product_id=16060`, auth)
       .then(({ data }) => {
+        console.log('DATA', data)
         setReviews({
           results: data.results.slice(0, 2),
           moreReviews: data.results.slice(2),
@@ -75,7 +76,7 @@ const App = () => {
         dispatch({ type: 'reviews', reviews: data.results });
       })
       .catch(err => console.error(err));
-      console.log("handleSortReviews called")
+
   };
 
   const handleMoreReviews = (e) => {
@@ -86,7 +87,7 @@ const App = () => {
   };
 
   const handleHelpfulness = (id, helpfulnessNumber) => {
-    console.log("helpfulness number", helpfulnessNumber)
+
     let updatedHelpfulness = {
       helpfulness: helpfulnessNumber + 1
     };

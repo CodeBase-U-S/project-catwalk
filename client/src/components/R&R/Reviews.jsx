@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 
 const Reviews = ({ review, handleHelpfulness }) => {
-  console.log("REVIEW", review)
+
   // const [helpful, setHelpful] = useState(review.helpfulness);
   const [click, setClick] = useState(false);
 

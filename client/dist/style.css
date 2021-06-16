@@ -117,6 +117,8 @@ img {
   width: 22%;
 }
 
+
+
 .reviewSort {
   color: #636262;
   font-weight: bold;
@@ -127,8 +129,7 @@ img {
 .reviewsList {
   overflow: auto;
   max-height: 45vh;
-  padding-right: 30%;
-  max-width: 150vh;
+  max-width: 80vh;
   width: 112vh;
 }
 
@@ -140,11 +141,29 @@ img {
     border-color: grey;
     border-width: 1px;
     color: rgb(71, 71, 71);
-    width: 22%;
+    width: 28%;
     height: 60px;
     font-weight: 500;
 
     /* margin-right: 10px; */
+}
+
+
+/* .addReviewPosition {
+  position: relative;
+} */
+
+.addReviewButton {
+  background-color: white;
+    border: black;
+    border-style: solid;
+    border-radius: 0%;
+    border-color: grey;
+    border-width: 1px;
+    color: rgb(71, 71, 71);
+    width: 28%;
+    height: 60px;
+    font-weight: 500;
 }
 
 .more_reviews{
@@ -194,6 +213,31 @@ img {
   color: #636262;
   font-weight: bold;
   font-size: 88%;
+}
+
+.container {
+  display: inline-flex;
+  margin-bottom: 2vh;
+}
+
+.percentLine  {
+  width: 19vh;
+  position: relative;
+  left: -1%;
+}
+
+
+.lemon {
+  max-width: 75%;
+  margin: 30px auto;
+}
+
+.starsJ {
+  color: #717070;
+  text-decoration: underline;
+  width: 8vh;
+  font-size: 74%;
+  padding-top: 5px;
 }
 
 

@@ -23,7 +23,7 @@ let QandA = () => {
   let retrieveQuestions = (page, count) => {
     axios.get(`${url}/qa/questions?product_id=16056&page=${page}&count=${count}`, auth)//refactor for product id input
       .then(({data}) => {
-        console.log('questions response:', data.results);
+
         //perform sort here
         let sortedQuestions = _.sortBy(data.results, (question) => {
           return question.question_helpfulness;

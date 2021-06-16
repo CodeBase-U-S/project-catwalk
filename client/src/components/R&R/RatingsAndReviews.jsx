@@ -4,6 +4,7 @@ import Reviews from './Reviews.jsx';
 import TOKEN from '../../../../config.js';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import ReviewModal from './ReviewModal.jsx'
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const auth = {
@@ -15,13 +16,14 @@ const auth = {
 const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelpfulness, handleSortReviews }) => {
   // const reviews = useSelector((state) => state.reviewsReducer.reviews)
 
+
   const handleSort = (e) => {
     handleSortReviews(e.target.value)
   }
 
 
   return (
-    <div>
+    <div className="lemon">
       <div className="ratingsJG">
         <Ratingss />
       </div>
@@ -36,7 +38,7 @@ const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelp
       </select>
         <div className="reviewsList">
           {reviews.map((review, index) => {
-            console.log("REVIEW in R&R", review)
+
             return (<Reviews
               review={review}
               key={index}
@@ -55,10 +57,12 @@ const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelp
               onClick={() => handleMoreReviews()} />
           )}
         </div>
+         <ReviewModal />
       </div>
     </div>
   );
 };
+
 
 
 export default RatingsAndReviews;
