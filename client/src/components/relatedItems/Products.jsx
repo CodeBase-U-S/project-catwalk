@@ -5,6 +5,11 @@ import Cards from './Cards.jsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Navigation } from 'swiper/core';
 
+import 'swiper/swiper.min.css';
+import 'swiper/components/pagination/pagination.min.css';
+import 'swiper/components/navigation/navigation.min.css';
+
+
 SwiperCore.use([Pagination,Navigation]);
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
@@ -31,7 +36,7 @@ const Products = (props) => {
         })
         .catch(err => console.log(err));
     });
-    console.log('styles run and data here si', stylesArr);
+    // console.log('styles run and data here si', stylesArr);
     setProductStyles(prevStyles => {
       prevStyles = stylesArr;
       return prevStyles;
@@ -102,7 +107,9 @@ const Products = (props) => {
     // } else {
     // }
     return relatedProducts.map((product, index) => (
-      <Cards product={product} key={index} stylesInfo={productStyles[index]} reviewInfo={review[index]} position={isMoved}/>
+      <SwiperSlide key={index}>
+        <Cards product={product} key={index} stylesInfo={productStyles[index]} reviewInfo={review[index]} position={isMoved}/>
+      </SwiperSlide>
     ));
   };
 
@@ -147,7 +154,9 @@ const Products = (props) => {
           <span>RELATED PRODUCTS</span>
           {/* <span>{relatedProducts.id}</span> */}
           <ul>
-            {createCard()}
+            <Swiper slidesPerView={4} spaceBetween={10} slidesPerGroup={2} loop={true} loopFillGroupWithBlank={true} pagination={{ "clickable": true }} navigation={true} className="mySwiper">
+              {createCard()}
+            </Swiper>
           </ul>
         </div>
         <div className="outfit">
