@@ -151,6 +151,36 @@ img {
   max-width: 70%;
 }
 
+#navigation {
+  position: absolute;
+  height: 100%;
+  width: 10%;
+  background-color: black;
+  opacity: 0%;
+}
+
+#navigation:hover {
+  opacity: 20%;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  cursor: pointer;
+}
+.right {
+  right: 0;
+}
+
+.bi-chevron-compact {
+  position: relative;
+  top: 50%;
+  fill: white;
+}
+
+
+
+
 /* end Overview */
 
 

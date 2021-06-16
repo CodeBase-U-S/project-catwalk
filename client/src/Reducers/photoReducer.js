@@ -1,9 +1,9 @@
 
 
-const photoReducer = (state = [], action) => {
+const photoReducer = (state = {photoIndex: 'notSet'}, action) => {
   switch (action.type) {
   case 'SET_PHOTO':
-    return { photo: action.photo };
+    return { photoIndex: action.photoIndex };
   default:
     return state;
   }

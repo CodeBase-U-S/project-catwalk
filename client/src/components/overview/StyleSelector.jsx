@@ -12,7 +12,7 @@ const StyleSelector = (props) => {
   const selectStyle = (e) => {
     let styleId = e.currentTarget.getAttribute('style-index');
     dispatch({ type: 'SET_STYLE', style: stylesObj[styleId] });
-    dispatch({ type: 'SET_PHOTO', photo: stylesObj[styleId].photos[0] });
+    dispatch({ type: 'SET_PHOTO', photoIndex: 0 });
   };
 
   if (selectedStyle) {
