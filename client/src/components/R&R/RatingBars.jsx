@@ -10,7 +10,7 @@ const RatingBars = ({ countRatings, reviews }) => {
 
   return (
     <div>
-      <div className="container">
+      <div className="starBarJG">
         <div className="starsJ" >5 stars</div>
         <span className="percentLine" >
           <Line percent={findPercent(5)}
@@ -22,7 +22,7 @@ const RatingBars = ({ countRatings, reviews }) => {
         </span>
       </div>
 
-      <div className="container">
+      <div className="starBarJG">
         <div className="starsJ">4 stars </div>
         <span className="percentLine">
           <Line percent={findPercent(4)} strokeWidth="4"
@@ -33,7 +33,7 @@ const RatingBars = ({ countRatings, reviews }) => {
       </div>
 
 
-      <div className="container">
+      <div className="starBarJG">
         <div className="starsJ">3 stars</div>
         <span className="percentLine">
           <Line percent={findPercent(3)} strokeWidth="4"
@@ -44,7 +44,7 @@ const RatingBars = ({ countRatings, reviews }) => {
       </div>
 
 
-      <div className="container">
+      <div className="starBarJG">
         <div className="starsJ">2 stars</div>
         <span className="percentLine">
           <Line percent={findPercent(2)} strokeWidth="4"
@@ -54,7 +54,7 @@ const RatingBars = ({ countRatings, reviews }) => {
         </span>
       </div>
 
-      <div className="container">
+      <div className="starBarJG">
         <div className="starsJ">1 stars</div>
         <span className="percentLine">
           <Line percent={findPercent(1)} strokeWidth="4"

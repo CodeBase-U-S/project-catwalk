@@ -18,12 +18,25 @@ const ImageGallery = (props) => {
     if (photoIndex < selectedStyle.photos.length - 1) {
       dispatch({ type: 'SET_PHOTO', photoIndex: photoIndex + 1});
     }
+    scrollTo();
   };
 
   const navLeft = () => {
     if (photoIndex > 0) {
       dispatch({ type: 'SET_PHOTO', photoIndex: photoIndex - 1});
     }
+    scrollTo();
+  };
+
+  const scrollTo = () => {
+    let scrollContainer = document.getElementById('thumbnailGallery');
+    scrollContainer.scrollTo({top: scrollPositionFinder(), behavior: 'smooth'});
+  };
+
+  const scrollPositionFinder = () => {
+    let viewportHeight = window.innerHeight;
+    let avgHeight = viewportHeight / selectedStyle.photos.length;
+    return (avgHeight * (photoIndex + 1));
   };
 
   SwiperCore.use([Navigation]);
@@ -37,14 +50,14 @@ const ImageGallery = (props) => {
       <Jumbotron>
         <Container>
           <Row>
-            <Col xs={2} id="test" style={{height: '65vh', overflowY: 'scroll'}}>
+            <Col xs={2} id="thumbnailGallery" style={{height: '75vh', overflowY: 'scroll'}}>
               <div>
                 {selectedStyle && selectedStyle.photos.map((photo, id) => (
                   <div id='thumbnail' key={id} className="mb-5" >
                     {photoIndex === id ?
-                      <Image src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
+                      <Image id={`pIndex${id}`} src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
                       :
-                      <Image src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
+                      <Image id={`pIndex${id}`} src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
                     }
                   </div>
                 ))}

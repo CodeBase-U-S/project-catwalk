@@ -146,24 +146,16 @@ button:active {
 }
 
 
-
+/*
 #Overview {
   display: flex;
 }
 
 img {
   width: 500px;
-}
+} */
 
-.ratings {
-  float: left;
-  max-width: 30%;
-}
 
-.reviews {
-  float: right;
-  max-width: 70%;
-}
 
 #navigation {
   position: absolute;
@@ -188,9 +180,47 @@ img {
   right: 0;
 }
 
-#test {
+#thumbnailGallery {
   scrollbar-width: none;
 }
+
+#thumbnailGallery::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+
+/* Overview end */
+
+
+
+
+
+
+
+
+.ratings {
+  float: left;
+  max-width: 30%;
+}
+
+.reviews {
+  float: right;
+  max-width: 70%;
+}
+
+.ratingsJG {
+  float: left;
+  max-width: 30%;
+}
+
+.reviewsJG {
+  float: right;
+  max-width: 70%;
+  margin-bottom: 5%;
+  padding-right: 4vh;
+}
+
 
 .ratingsAndReviewsTitle {
   font-size: 74%;
@@ -236,9 +266,6 @@ img {
 }
 
 
-/* .addReviewPosition {
-  position: relative;
-} */
 
 .addReviewButton {
   background-color: white;
@@ -302,7 +329,7 @@ img {
   font-size: 88%;
 }
 
-/* .container {
+.starBarJG {
   display: inline-flex;
   margin-bottom: 2vh;
 } */
