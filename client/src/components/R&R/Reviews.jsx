@@ -36,7 +36,7 @@ const Reviews = ({ review, handleHelpfulness }) => {
         </Ratings>
         <span className="reviewerName">
           {review.reviewer_name},
-          &nbsp;
+        &nbsp;
           {new Date(review.date).toString().slice(4, 16)}
         </span>
       </div>

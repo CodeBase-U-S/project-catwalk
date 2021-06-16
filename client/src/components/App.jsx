@@ -34,6 +34,7 @@ const App = () => {
     getProduct();
   }, []);
 
+
   const getProduct = () => {
     axios.get(`${url}/products/16056`, auth)
       .then(({ data }) => {
@@ -50,6 +51,9 @@ const App = () => {
           dispatch({ type: 'SET_STYLES', styles: data.results});
           dispatch({ type: 'SET_STYLE', style: getDefaultStyle(data)
           });
+        })
+        .then(() => {
+          dispatch({ type: 'SET_PHOTO', photoIndex: 0 });
         });
     }
   };
@@ -63,6 +67,7 @@ const App = () => {
     });
     return defaultStyle;
   };
+
 
   const getAllreviews = () => {
     axios.get(`${url}/reviews/?page=1&count=10&product_id=16060`, auth)
@@ -125,7 +130,9 @@ const App = () => {
       <Overview
       />
       <RelatedItems />
-      <QandA />
+      <div className='QandA'>
+        <QandA />
+      </div>
       <RatingsAndReviews
         reviews={reviews.results}
         moreReviews={reviews.moreReviews}

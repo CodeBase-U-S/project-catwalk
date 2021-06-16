@@ -1,4 +1,17 @@
 /* Overview */
+button {
+  border-style: none;
+  box-shadow: none;
+}
+button:focus {
+  outline: none;
+  outline-offset: none;
+}
+
+button:active {
+  transform: none;
+}
+
 #header {
   background-color: grey;
   width: 100%;
@@ -23,22 +36,72 @@
   vertical-align: middle;
 }
 
-#StyleSelector {
-  height: 160px;
-  width: 340px;
-}
 
 .style {
   border-radius: 100%;
-  /* border-style: solid;
-  border-width: 0.5px; */
   height: 60px;
   width: 60px;
   margin-bottom: 10px;
   color: rgb(53, 53, 53);
   background-color: lightgray;
   object-fit: cover;
+  cursor: pointer;
 }
+
+
+.style:hover {
+  opacity: 0.7;
+}
+
+#selected-style {
+  border-radius: 100%;
+  border-color: black;
+  border-width: 0.2px;
+  border-style: solid;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  z-index: 99;
+  position: absolute;
+  right: 12px;
+  top: -4px;
+}
+
+.button-wide {
+  background-color: white;
+  border: black;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: grey;
+  border-width: 1px;
+  color: black;
+  width: 70%;
+  height: 60px;
+  margin-right: 10px;
+
+}
+.button-quantity {
+  background-color: white;
+  border: black;
+  border-style: solid;
+  border-radius: 0%;
+  border-color: grey;
+  border-width: 1px;
+  color: black;
+  width: 20%;
+  height: 60px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.soldOut {
+  width: 95%;
+  text-align: center;
+  padding-top: 15px;
+  color: red;
+}
+
+
 
 #AddToCart {
   background-color: white;
@@ -67,12 +130,30 @@
 }
 
 
+#thumbnail {
+  opacity: 100%;
+}
+
+#thumbnail:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.carouselThumbnail {
+  height: 120px;
+  max-width: 330px;
+  object-fit: cover;
+}
+
+
+
 #Overview {
   display: flex;
 }
 
 img {
   width: 500px;
+  height: fit-content;
 }
 .ratings {
   float: left;
@@ -85,7 +166,33 @@ img {
   margin-bottom: 5%;
   padding-right: 4vh;
 }
-/* end Overview */
+
+#navigation {
+  position: absolute;
+  height: 75vh;
+  width: 10%;
+  background-color: black;
+  opacity: 0%;
+}
+
+#navigation:hover {
+  opacity: 20%;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  cursor: pointer;
+}
+
+
+.right {
+  right: 0;
+}
+
+#test {
+  scrollbar-width: none;
+}
 
 .ratingsAndReviewsTitle {
   font-size: 74%;
@@ -238,36 +345,86 @@ img {
   width: 8vh;
   font-size: 74%;
   padding-top: 5px;
+/* end Overview */
+}
+
+div.Related-Products {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  border: 20px;
+  padding: 20px;
 }
 
 
 div.products {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  /* padding: 20px; */
 }
 
 div.outfit {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  /* padding: 20px; */
 }
 
+ul {
+  display: inline-flex;
+  list-style-type: none;
+}
+
+li.cards {
+  width:240px;
+  height: 340px;
+  border: 1px #3498DB solid;
+  padding: 3px;
+  overflow: hidden;
+}
+
+
+div.cardDescription {
+  font-size: 15px;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+div.cardPrice {
+  font-size: 13px;
+}
+
+/* div.divcardimg {fle
+  overflow: hidden;
+} */
+
 img.cardImg {
-  width: 80px;
+  width: 120px;
   height: auto;
 }
 
-span.letter, .questionBody {
+/* QandA */
+
+span.letter, .questionBody, .addQuestionTitle, .addAnswerTitle{
   font-weight: bold;
 }
 
 .moreAnswers {
   font-weight: bold;
   font-size: 12px;
+  cursor: pointer;
+  margin: 10px;
 }
 
-.moreQuestions {
+.moreQuestions, .addQuestion {
+  display: inline-block;
   border: 1px solid black;
-  width: 200px;
-  padding: 2px;
+  width: auto;
+  height: 50px;
+  padding: 10px;
   margin: 5px;
+  cursor: pointer
 }
 
 div.answerInfo, .helpfulInfo {
@@ -277,4 +434,129 @@ div.answerInfo, .helpfulInfo {
 
 div.answer {
   margin: 5px;
+}
+
+/* Swiper style */
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 12px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 60%;
+  height: 100%;
+}
+.yes {
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 5px;
+  padding: 2px;
+}
+
+.x {
+  float: right;
+}
+
+.search {
+  border: 1px solid black;
+  width: 800px;
+  height: 50px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.yourQuestion, .yourAnswer{
+  width: 300px;
+  height: 50px;
+}
+
+.yourEmail, .yourNickname {
+  width: 300px;
+}
+
+.addQuestionInfo, .addAnswerInfo {
+  font-size: 12px;
+  font-style: italic
+}
+
+.questionForm, .answerForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.submitQuestion, .submitAnswer {
+  background-color: #2980b9;
+  color: white;
+  width: 150px;
+  padding: 2px;
+  margin: 20px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+}
+
+.addAnswer, .report {
+  cursor: pointer;
+}
+
+.addAnswerSubtitle {
+  margin: 4px;
+  font-size: 14px;
+}
+
+.QandA {
+  width: 800px;
+  height: auto;
+  margin: 50px auto;
+  padding: 5px;
+}
+
+.helpfulInfo.question {
+  font-size: 10px;
+  float: right;
+}
+
+.questionAndAnswer {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.buttonContainer {
+  margin: 20px;
+}
+
+.answersContainer {
+  max-height: 40vh;
+  overflow: auto;
 }

@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import Answer from './answer.jsx';
+import AddAnswer from './addAnswer.jsx';
 import axios from 'axios';
 import _ from 'underscore';
 
-let Question = ({question}) => {
+let Question = ({question, PRODUCT_ID}) => {
   // console.log('input questions: ', question);
   //state hook for helpful count
   let [answers, setAnswers] = useState([]);
   let [answerCount, setAnswerCount] = useState(2);
   let [questionHelpfulness, setQuestionHelpfulness] = useState(question.question_helpfulness);
   let [helpfulClicked, setHelpfulClicked] = useState(false);
+  let [reportClicked, setReportClicked] = useState(false);
+  let [addAnswerIsOpen, setAddAnswerIsOpen] = useState(false);
 
   const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 
@@ -25,7 +28,8 @@ let Question = ({question}) => {
         let sortedAnswers = _.sortBy(data.results, (answer) => {
           return answer.helpfulness;
         });
-        setAnswers(sortedAnswers.reverse());
+        sortedAnswers = sortedAnswers.reverse();
+        setAnswers(sortedAnswers);
       })
       .catch(err => {
         console.log(err);
@@ -39,11 +43,12 @@ let Question = ({question}) => {
   }, []);
 
   let moreAnswersHandler = () => {
-    console.log('question id: ', question.question_id);
+    // console.log('question id: ', question.question_id);
     setAnswerCount(prevAnswerCount => {
-      let currentCount = prevAnswerCount + 2;
-      console.log('current count: ', currentCount);
-      console.log('question_id: ', question.question_id);
+      // let currentCount = prevAnswerCount + 2;
+      let currentCount = prevAnswerCount + 100;
+      // console.log('current count: ', currentCount);
+      // console.log('question_id: ', question.question_id);
       retrieveAnswers(1, currentCount);
       return currentCount;
     });
@@ -54,13 +59,11 @@ let Question = ({question}) => {
     // console.log('clicked');
     // console.log('helpfulclicked: ', helpfulClicked);
     if (!helpfulClicked) {
-      // console.log('hi');
       setQuestionHelpfulness(prevCount => prevCount + 1);
       setHelpfulClicked(true);
-      // console.log('auth: ', auth);
-      axios.put(`${url}/qa/questions/${question.question_id}/helpful`, auth)
+      axios.put(`${url}/qa/questions/${question.question_id}/helpful`, questionHelpfulness,
+        auth)
         .then(data => {
-          // console.log('data: ', data);
         })
         .catch(err => {
           throw err;
@@ -69,22 +72,37 @@ let Question = ({question}) => {
 
   };
 
+  let reportClickHandler = () => {
+    if (!reportClicked) {
+      setReportClicked(true);
+
+      axios.put(`${url}/qa/questions/${question.question_id}/report`, 'report', auth)
+        .catch(err => {
+          throw err;
+        });
+    }
+  };
+
   return (
     <div>
       <span className='letter'>Q:</span>
-      <span className='questionBody'> {question.question_body}{question.question_id}</span>
-      <span className='helpfulInfo'>  Helpful?
+      <span className='questionBody'> {question.question_body}</span>
+      <span className='helpfulInfo question'>  Helpful?
         <span className='yes' onClick={helpfulClickHandler}> Yes</span>
-        <span className='helpfulness'> ({questionHelpfulness})</span>
+        <span className='helpfulness'> ({questionHelpfulness}) |</span>
+        <span className='report' onClick={reportClickHandler}> Report </span>
+        <span className='addAnswer' onClick={() => setAddAnswerIsOpen(true)}>| Add Answer</span>
       </span>
-      <div>
+      <div className='answersContainer'>
         {answers.map((answer, index) => {
-          return <Answer answer={answer} key={index}/>;
+          return <Answer answer={answer} key={index} PRODUCT_ID={PRODUCT_ID}/>;
         })}
       </div>
       <div className='moreAnswers' onClick={moreAnswersHandler}>
         Load More Answers
       </div>
+      <AddAnswer question_id={question.question_id} question_body={question.question_body}
+        open={addAnswerIsOpen} onClose={() => setAddAnswerIsOpen(false)}/>
     </div>
   );
 };
