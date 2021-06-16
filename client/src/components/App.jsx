@@ -99,7 +99,9 @@ const App = () => {
       <Overview
       />
       <RelatedItems />
-      <QandA />
+      <div className='QandA'>
+        <QandA />
+      </div>
       <RatingsAndReviews
         reviews={reviews.results}
         moreReviews={reviews.moreReviews}

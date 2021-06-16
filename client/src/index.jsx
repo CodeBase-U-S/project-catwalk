@@ -8,8 +8,6 @@ import 'swiper/swiper-bundle.css';
 import { Provider } from 'react-redux';
 import store from './Store/store.js';
 
-
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

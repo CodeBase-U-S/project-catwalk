@@ -13,7 +13,7 @@ const Reviews = ({ review, handleHelpfulness }) => {
         <span>
           {review.reviewer_name},
         &nbsp;
-        {new Date(review.date).toString().slice(4, 16)}
+          {new Date(review.date).toString().slice(4, 16)}
         </span>
       </div>
       <div>
