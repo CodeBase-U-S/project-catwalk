@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Ratings from './Ratings.jsx';
+import Ratingss from './Ratingss.jsx';
 import Reviews from './Reviews.jsx';
 import TOKEN from '../../../../config.js';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import ReviewModal from './ReviewModal.jsx'
+
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const auth = {
   headers: {
@@ -11,37 +13,56 @@ const auth = {
   }
 };
 
-const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelpfulness }) => {
+const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelpfulness, handleSortReviews }) => {
   // const reviews = useSelector((state) => state.reviewsReducer.reviews)
 
 
+  const handleSort = (e) => {
+    handleSortReviews(e.target.value)
+  }
 
 
   return (
-    <div>
-      <div className="ratings">
-        <Ratings />
+    <div className="lemon">
+      <div className="ratingsJG">
+        <Ratingss />
       </div>
       <div className="reviews">
-        {reviews.map((review, index) => (
-          <Reviews
-            review={review}
-            key={index}
-            handleHelpfulness = {handleHelpfulness}
-          />
-        ))}
-        {(moreReviews.length === 0) ? (
-          <b>No More Reviews</b>
-        ) : (
-          <input
-            type="button"
-            value="MORE REVIEWS"
-            onClick={() => handleMoreReviews()} />
-        )}
+        <label className="reviewSort"><b>{reviews.length} </b>reviews, sorted by</label>
+      <select
+       className="reviewDropDown"
+        onChange={handleSort}>
+        <option value="relevance">relevance</option>
+        <option value="helpful">helpful</option>
+        <option value="newest">newest</option>
+      </select>
+        <div className="reviewsList">
+          {reviews.map((review, index) => {
+
+            return (<Reviews
+              review={review}
+              key={index}
+              handleHelpfulness={handleHelpfulness}
+            />)
+          })}
+        </div>
+        <div className="more_reviews">
+          {(moreReviews.length === 0) ? (
+            <b>No More Reviews</b>
+          ) : (
+            <input
+              type="button"
+              value="MORE REVIEWS"
+              className="more_reviews_button"
+              onClick={() => handleMoreReviews()} />
+          )}
+        </div>
+         <ReviewModal />
       </div>
     </div>
   );
 };
+
 
 
 export default RatingsAndReviews;

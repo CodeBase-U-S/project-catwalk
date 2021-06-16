@@ -163,6 +163,8 @@ img {
 .reviews {
   float: right;
   max-width: 70%;
+  margin-bottom: 5%;
+  padding-right: 4vh;
 }
 
 #navigation {
@@ -192,10 +194,159 @@ img {
   scrollbar-width: none;
 }
 
+.ratingsAndReviewsTitle {
+  font-size: 74%;
+  color: #717070;
+}
+
+.starAndAveRating {
+  position: relative;
+  margin-top: 0vh;
+  font-size: 7vh;
+  font-weight: 700;
+  margin-left: 2px;
+  color: #5d5d5d;
+  font-family: inherit;
+}
+
+.starAve {
+  margin: -13.5vh -2vh 2vh 12vh;
+}
+
+.ratingAve {
+  display: inline;
+}
+
+.ratingsJG {
+  float: left;
+  margin-left: 13.5vh;
+  max-width: 22%;
+  width: 22%;
+}
 
 
 
+.reviewSort {
+  color: #636262;
+  font-weight: bold;
+  font-size: 88%;
+}
+
+
+.reviewsList {
+  overflow: auto;
+  max-height: 45vh;
+  max-width: 80vh;
+  width: 112vh;
+}
+
+.more_reviews_button {
+  background-color: white;
+    border: black;
+    border-style: solid;
+    border-radius: 0%;
+    border-color: grey;
+    border-width: 1px;
+    color: rgb(71, 71, 71);
+    width: 28%;
+    height: 60px;
+    font-weight: 500;
+
+    /* margin-right: 10px; */
+}
+
+
+/* .addReviewPosition {
+  position: relative;
+} */
+
+.addReviewButton {
+  background-color: white;
+    border: black;
+    border-style: solid;
+    border-radius: 0%;
+    border-color: grey;
+    border-width: 1px;
+    color: rgb(71, 71, 71);
+    width: 28%;
+    height: 60px;
+    font-weight: 500;
+}
+
+.more_reviews{
+  margin-top: 10%;
+}
+
+.helpfulReview{
+  font-size: 11px;
+  cursor: pointer;
+  color: rgb(97, 97, 97);
+}
+
+.reviewerName {
+  float: right;
+  font-size: 12px;
+  padding-right: 2em;
+  color: grey;
+}
+
+.reviewSummary {
+  color: #636262;
+  padding-top: 11px;
+  font-size: 90%;
+  font-weight: bold;
+}
+
+.reviewThumbnail {
+  object-fit: cover;
+  height: 10vh;
+  width: 8vh;
+}
+
+.reviewRecommend {
+  padding-top: 3vh;
+  font-size: 74%;
+  color: #636262;
+}
+
+.reviewBody {
+  color: #636262;
+  font-size: 74%;
+}
+
+.reviewDropDown {
+  border: none;
+  text-decoration: underline;
+  color: #636262;
+  font-weight: bold;
+  font-size: 88%;
+}
+
+.container {
+  display: inline-flex;
+  margin-bottom: 2vh;
+}
+
+.percentLine  {
+  width: 19vh;
+  position: relative;
+  left: -1%;
+}
+
+
+.lemon {
+  max-width: 75%;
+  margin: 30px auto;
+}
+
+.starsJ {
+  color: #717070;
+  text-decoration: underline;
+  width: 8vh;
+  font-size: 74%;
+  padding-top: 5px;
 /* end Overview */
+}
 
 div.Related-Products {
   display: flex;

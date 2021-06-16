@@ -1,30 +1,60 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
+import Ratings from 'react-ratings-declarative';
+import { useDispatch } from 'react-redux';
 
 
 
 const Reviews = ({ review, handleHelpfulness }) => {
 
-  const [helpful, setHelpful] = useState(review.helpfulness);
+  // const [helpful, setHelpful] = useState(review.helpfulness);
   const [click, setClick] = useState(false);
+
+  // const dispatch = useDispatch();
+
+
+  // let photos = '';
+  // for (var i =0; i < review.photos.length; i++) {
+  //   photos += review.photos[i].url;
+  // }
+  // console.log("PHOTOS", photos)
+
   return (
     < div >
+
       <div>
-        {review.ratings}
-        <span>
+        <Ratings
+          rating={review.rating}
+          widgetDimensions="16px"
+          widgetRatedColors="rgb(87, 87, 87)"
+          widgetSpacings="0px"
+        >
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+        </Ratings>
+        <span className="reviewerName">
           {review.reviewer_name},
         &nbsp;
           {new Date(review.date).toString().slice(4, 16)}
         </span>
       </div>
-      <div>
+      <div className="reviewSummary">
         {review.summary.length >= 60 ? (
-          <h3>{review.summary.slice(0, 60)}...</h3>
+          <span>{review.summary.slice(0, 60)}...</span>
         ) : (
-          <h3>{review.summary}</h3>
+          <span>{review.summary}</span>
         )}
       </div>
-      <p>{review.body}</p>
-      <p>
+      <span className="reviewBody">{review.body}</span>
+      &nbsp;
+      {review.photos.length >= 1 ? (
+        review.photos.map((photo, index) => (
+          <img src={photo.url} className="reviewThumbnail" key={index} />
+        ))
+      ) : (null)}
+      <p className="reviewRecommend">
         {review.recommend ? (
           '√  I recommend this product.'
         ) : (
@@ -39,14 +69,16 @@ const Reviews = ({ review, handleHelpfulness }) => {
         )}
       </p>
       {!click ? (
-        <div onClick={() => {
-          handleHelpfulness(review.review_id, review.helpfulness);
-          setHelpful(helpful + 1);
-          setClick(true)
-        }} >yes({helpful})</div>
+        <div className="helpfulReview"
+          onClick={() => {
+            // setHelpful(helpful + 1);
+            setClick(true);
+            handleHelpfulness(review.review_id, review.helpfulness);
+          }} >Helpful? <u>Yes</u> ({review.helpfulness})</div>
       ) : (
-        <div>yes({helpful})</div>
+        <div className="helpfulReview">Helpful? <u>Yes</u> ({review.helpfulness + 1}) </div>
       )}
+      <hr />
     </div >
   )
 };

@@ -22,8 +22,12 @@ const App = () => {
   const [reviews, setReviews] = useState({
     results: [],
     moreReviews: [],
-    allReviews: []
+    allReviews: [],
+    sort: 'relevance'
   });
+
+  const [sort, setSort] = useState(reviews.sort);
+
 
   useEffect(() => {
     getAllreviews();
@@ -68,14 +72,16 @@ const App = () => {
   const getAllreviews = () => {
     axios.get(`${url}/reviews/?page=1&count=10&product_id=16060`, auth)
       .then(({ data }) => {
-        dispatch({ type: 'reviews', reviews: data.results });
+        console.log('DATA', data)
         setReviews({
           results: data.results.slice(0, 2),
           moreReviews: data.results.slice(2),
           allReviews: data.results
         });
+        dispatch({ type: 'reviews', reviews: data.results });
       })
       .catch(err => console.error(err));
+
   };
 
   const handleMoreReviews = (e) => {
@@ -86,12 +92,37 @@ const App = () => {
   };
 
   const handleHelpfulness = (id, helpfulnessNumber) => {
+
     let updatedHelpfulness = {
       helpfulness: helpfulnessNumber + 1
     };
+    console.log("updatedHelpfulness", updatedHelpfulness)
     axios.put(`${url}/reviews/${id}/helpful`, updatedHelpfulness, auth)
       .catch(err => console.error(err));
   };
+
+  const handleSortReviews = async (e) => {
+    // setSort(e)
+    // (async () => {
+      const reviewsList = await axios({
+        method: 'GET',
+        url: `${url}/reviews/`,
+        params: {
+          page: 1,
+          count: 10,
+          sort: e,
+          product_id: 16060
+        },
+        headers: auth.headers
+      });
+      console.log("handleSortReviews called")
+      setReviews({
+        results: reviewsList.data.results.slice(0, 2),
+        moreReviews: reviewsList.data.results.slice(2),
+        sort: e
+      });
+    // })();
+  }
 
   return (
     <div>
@@ -106,7 +137,8 @@ const App = () => {
         reviews={reviews.results}
         moreReviews={reviews.moreReviews}
         handleMoreReviews={handleMoreReviews}
-        handleHelpfulness={handleHelpfulness} />
+        handleHelpfulness={handleHelpfulness}
+        handleSortReviews={handleSortReviews} />
     </div>
   );
 };
