@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Token from '../../../../config.js';
 import Cards from './Cards.jsx';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Pagination, Navigation } from 'swiper/core';
+
+SwiperCore.use([Pagination,Navigation]);
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const options = {
