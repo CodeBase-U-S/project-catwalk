@@ -15,8 +15,15 @@ const ImageGallery = (props) => {
   };
 
   const navRight = () => {
-    console.log('clicked', photoIndex, photoIndex + 1)
-    dispatch({ type: 'SET_PHOTO', photoIndex: photoIndex + 1});
+    if (photoIndex < selectedStyle.photos.length - 1) {
+      dispatch({ type: 'SET_PHOTO', photoIndex: photoIndex + 1});
+    }
+  };
+
+  const navLeft = () => {
+    if (photoIndex > 0) {
+      dispatch({ type: 'SET_PHOTO', photoIndex: photoIndex - 1});
+    }
   };
 
   SwiperCore.use([Navigation]);
@@ -30,45 +37,38 @@ const ImageGallery = (props) => {
       <Jumbotron>
         <Container>
           <Row>
-            <Col xs={2}>
-              <Swiper
-                spaceBetween={'20px'}
-                allowSlideNext={false}
-                allowSlidePrev={false}
-                slidesPerView={6}
-                direction={'vertical'}
-                navigation={true}>
+            <Col xs={2} id="test" style={{height: '65vh', overflowY: 'scroll'}}>
+              <div>
                 {selectedStyle && selectedStyle.photos.map((photo, id) => (
-                  <SwiperSlide id='thumbnail' key={id} className="mb-1" >
+                  <div id='thumbnail' key={id} className="mb-5" >
                     {photoIndex === id ?
                       <Image src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
                       :
                       <Image src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
                     }
-                  </SwiperSlide>
+                  </div>
                 ))}
-              </Swiper>
+              </div>
             </Col>
             <Col xs={10} style={{justifyContent: 'center'}}>
-              <div id='navigation' className='left'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact left" viewBox="0 0 16 16">
-                  <path fillRule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
-                </svg>
-              </div>
-
-              <div id='navigation' className='right' onClick={navRight}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact right" viewBox="0 0 16 16">
-                  <path fillRule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
-                </svg>
-              </div>
+              {photoIndex > 0 &&
+            <button id='navigation' className='left' onClick={navLeft}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact left" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+              </svg>
+            </button>}
+              {photoIndex < selectedStyle.photos.length - 1 &&
+            <button id='navigation' className='right' onClick={navRight}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact right" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+              </svg>
+            </button>}
               {photoIndex >= 0 &&
-                  <Image src={selectedStyle.photos[photoIndex].url} fluid />}
-              {photoIndex < 0 &&
-                  <Image src={selectedStyle.photos[0].url} fluid />}
+                <Image src={selectedStyle.photos[photoIndex].url} style={{height: '75vh', objectFit: 'cover', width: '102%'}}/>}
             </Col>
           </Row>
-
-        {/* <div>
+{/*
+        <div>
           <Swiper
             spaceBetween={50}
             slidesPerView={5}
@@ -78,9 +78,9 @@ const ImageGallery = (props) => {
             {selectedStyle && selectedStyle.photos.map((photo, id) => (
               <SwiperSlide key={id}>
                 {photoIndex === photo ?
-                  <Image className="carouselThumbnail" thumbnail src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo)} style={{opacity: '60%'}}/>
+                  <Image className="carouselThumbnail" thumbnail src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
                   :
-                  <Image className="carouselThumbnail" thumbnail src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo)} />
+                  <Image className="carouselThumbnail" thumbnail src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
                 }
               </SwiperSlide>
             ))}

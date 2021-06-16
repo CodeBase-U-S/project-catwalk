@@ -1,4 +1,17 @@
 /* Overview */
+button {
+  border-style: none;
+  box-shadow: none;
+}
+button:focus {
+  outline: none;
+  outline-offset: none;
+}
+
+button:active {
+  transform: none;
+}
+
 #header {
   background-color: grey;
   width: 100%;
@@ -153,7 +166,7 @@ img {
 
 #navigation {
   position: absolute;
-  height: 100%;
+  height: 75vh;
   width: 10%;
   background-color: black;
   opacity: 0%;
@@ -168,14 +181,14 @@ img {
   transition: all 500ms ease;
   cursor: pointer;
 }
+
+
 .right {
   right: 0;
 }
 
-.bi-chevron-compact {
-  position: relative;
-  top: 50%;
-  fill: white;
+#test {
+  scrollbar-width: none;
 }
 
 
