@@ -126,7 +126,7 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
           {/* <input type='file' onChange={fileHandler}/> */}
           <div>Your Photos</div>
           <input type='text' className='yourPhoto answerInput' placeholder='Place photo URL here...' onChange={handleYourPhoto}/>
-          <span onClick={handleAddPhoto}>Add Photo</span>
+          <span className='addPhoto' onClick={handleAddPhoto}>Add Photo</span>
           <div>
             {photos.map((photo, index) => {
               return <img key={index} className='answerInput' style={{height: '50px', width: 'auto'}} src={photo}></img>;

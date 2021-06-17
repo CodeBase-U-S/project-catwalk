@@ -427,6 +427,7 @@ span.letter, .questionBody, .addQuestionTitle, .addAnswerTitle{
   height: 50px;
   padding: 10px;
   margin: 5px;
+  cursor: pointer;
 }
 
 div.answerInfo, .helpfulInfo {
@@ -499,7 +500,7 @@ button {
   height: 50px;
 }
 
-.yourEmail, .yourNickname {
+.yourEmail, .yourNickname, .yourPhoto {
   width: 300px;
 }
 
@@ -518,14 +519,27 @@ button {
 .submitQuestion, .submitAnswer {
   background-color: #2980b9;
   color: white;
-  width: 150px;
-  padding: 2px;
+  font-size: 18px;
+  width: fit-content;
+  padding: 8px;
   margin: 20px;
   cursor: pointer;
   position: absolute;
   bottom: 0;
   right: 0;
   text-align: center;
+  border-radius: 2px;
+}
+
+.addPhoto {
+  background-color: #2980b9;
+  color: white;
+  width: fit-content;
+  padding: 3px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  border-radius: 2px;
 }
 
 .addAnswer, .report {
@@ -561,5 +575,9 @@ button {
 .answersContainer {
   max-height: 40vh;
   overflow: auto;
+}
+
+.yourPhoto {
+  display: inline-block;
 }
 
