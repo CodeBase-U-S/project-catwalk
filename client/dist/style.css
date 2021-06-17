@@ -240,6 +240,17 @@ button:active {
   height: 0;
 }
 
+.imageGallery-expanded {
+  padding: 0;
+  margin: 0;
+}
+.modal-dialog {
+  margin: 0 20vw;
+}
+
+
+
+
 
 /* Overview end */
 

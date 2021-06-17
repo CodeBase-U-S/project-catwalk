@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Row, Col, Image, Jumbotron, Container } from 'react-bootstrap';
+import { Row, Col, Image, Jumbotron, Container, Modal, ModalDialog } from 'react-bootstrap';
 
 const ImageGallery = (props) => {
   const dispatch = useDispatch();
 
+  // State Managers //
   let selectedStyle = useSelector((state) => state.styleReducer.style);
   let photoIndex = useSelector((state) => state.photoReducer.photoIndex);
+  let modalState = useSelector((store) => store.modalReducer.modalState);
 
+
+  // Event Handler Functions //
   const selectPhoto = (photo, index) => {
     dispatch({ type: 'SET_PHOTO', photoIndex: index });
   };
@@ -26,6 +30,12 @@ const ImageGallery = (props) => {
     scrollTo(scrollPositionFinderLeft);
   };
 
+  const toggleModal = () => {
+    dispatch({ type: 'TOGGLE_MODAL', modalState: !modalState });
+  };
+
+
+  // Helper Functions //
   const scrollTo = (scrollPositionFinder) => {
     let scrollContainer = document.getElementById('thumbnailGallery');
     scrollContainer.scrollTo({top: scrollPositionFinder(), behavior: 'smooth'});
@@ -44,6 +54,7 @@ const ImageGallery = (props) => {
   };
 
 
+
   if (selectedStyle) {
     return (
       <Jumbotron>
@@ -52,12 +63,12 @@ const ImageGallery = (props) => {
             <Col xs={2} style={{height: '75vh'}}>
               <button id='navigation-vert' className='tg-top' onClick={navLeft}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact tg-up" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+                  <path fillRule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                 </svg>
               </button>
               <button id='navigation-vert' className='tg-bottom' onClick={navRight}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-chevron-compact tg-down" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact tg-down" viewBox="0 0 16 16">
+                  <path fillRule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
                 </svg>
               </button>
               <div id="thumbnailGallery" style={{height: '75vh', overflowY: 'scroll'}}>
@@ -86,10 +97,26 @@ const ImageGallery = (props) => {
               </svg>
             </button>}
               {photoIndex >= 0 &&
-                <Image id="selectedImage" src={selectedStyle.photos[photoIndex].url} style={{height: '75vh', objectFit: 'cover', width: '102%'}}/>}
+                <Image id="selectedImage" src={selectedStyle.photos[photoIndex].url} onClick={toggleModal} style={{height: '75vh', objectFit: 'cover', width: '102%'}}/>}
             </Col>
           </Row>
         </Container>
+        <Modal
+          show={modalState}
+          onHide={toggleModal}
+          className="imageGallery-expanded"
+          dialogClassName="imageGallery-expanded-dialog"
+          style={{padding: 0, minWidth: '100vw'}}
+        >
+          <ModalDialog style={{width: '100vw'}}>
+
+          </ModalDialog>
+          <div style={{height: '10vh', width: '100vw', borderStyle: 'none'}}> {'<'}Back to product</div>
+          {photoIndex >= 0 &&
+            <Image id="expandedImage" src={selectedStyle.photos[photoIndex].url}
+              onClick={toggleModal}
+              style={{maxHeight: '100vh', objectFit: 'cover', maxWidth: '70vh', margin: '0 20vw'}}/>}
+        </Modal>
       </Jumbotron>
     );
   } else {
