@@ -415,6 +415,18 @@ li.cards {
   text-align: left;
 }
 
+.modal-content {
+  width: 1000px;
+}
+
+.modal-dialog {
+  width: 1000px;
+}
+
+.modal-90w {
+  width: 1000px;
+}
+
 td.tdName {
   font-size: 15px;
 }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Ratings from 'react-ratings-declarative';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
+import Comparing from './Comparing.jsx';
 
 const Cards = (props) => {
   const [styles, setStyles] = useState(props.stylesInfo);
@@ -11,38 +12,9 @@ const Cards = (props) => {
   const inputEl = useRef(null);
   const [isShow, setIsShow] = useState(false);
 
-  let product = useSelector((state) => state.productReducer.product);
-
   const switchShow = () => {
-    console.log('Clicked');
+    // console.log('Clicked');
     setIsShow(isShow ? false : true);
-
-  };
-
-  const onButtonClick = () => {
-    // `current` points to the mounted text input element
-    // inputEl.current.focus();
-  };
-
-  const comparingCards = () => {
-    // alert('Clicked');
-    return (
-      <Modal>
-        <Modal.Dialog show={true}>
-          <Modal.Header>
-            <Modal.Title>Comparing</Modal.Title>
-          </Modal.Header>
-        </Modal.Dialog>
-      </Modal>
-    );
-  };
-
-  const addToOutfit = () => {
-    setIsMoved(isMoved ? false : true);
-    // alert('clicked');
-  };
-
-  const removeFromOutfit = () => {
   };
 
   useEffect(()=> {
@@ -77,40 +49,7 @@ const Cards = (props) => {
             <Ratings.Widget />
           </Ratings>
         </div>
-        <Modal show={isShow} onHide={switchShow}>
-          <Modal.Dialog >
-            <Modal.Body>
-              <Modal.Title style={{fontSize: '15px'}}>Comparing</Modal.Title>
-              <br></br>
-              <div className='comparingCards'>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td className='tdName'>{props.product.name}</td>
-                      <td className='tdName'></td>
-                      <td className='tdName'>{product.name}</td>
-                    </tr>
-                    <tr>
-                      <td>{props.product.category}</td>
-                      <td>Category</td>
-                      <td>{product.category}</td>
-                    </tr>
-                    <tr>
-                      <td>{props.product.description}</td>
-                      <td>Description</td>
-                      <td>{product.description}</td>
-                    </tr>
-                    <tr>
-                      <td>${props.product.default_price}</td>
-                      <td>Default Price</td>
-                      <td>${product.default_price}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </Modal.Body>
-          </Modal.Dialog>
-        </Modal>
+        {<Comparing product={props.product} handleShow={isShow} handleSwitch={switchShow}/>}
       </li>
     );
   } else {
