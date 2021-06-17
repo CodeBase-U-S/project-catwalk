@@ -31,7 +31,7 @@ const RelatedItems = (props) => {
 
   //get all related products
   useEffect(() => {
-    getRelatedProductsId(16057);
+    getRelatedProductsId(16056);
 
   }, []);
 

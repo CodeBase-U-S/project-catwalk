@@ -5,12 +5,13 @@ import Cards from './Cards.jsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Navigation } from 'swiper/core';
 
+
 import 'swiper/swiper.min.css';
 import 'swiper/components/pagination/pagination.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 
 
-SwiperCore.use([Pagination,Navigation]);
+SwiperCore.use([Pagination, Navigation]);
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const options = {
@@ -154,7 +155,7 @@ const Products = (props) => {
           <span>RELATED PRODUCTS</span>
           {/* <span>{relatedProducts.id}</span> */}
           <ul>
-            <Swiper slidesPerView={4} spaceBetween={10} slidesPerGroup={2} loop={true} loopFillGroupWithBlank={true} pagination={{ "clickable": true }} navigation={true} className="mySwiper">
+            <Swiper slidesPerView={4} spaceBetween={10} slidesPerGroup={2} loop={false} loopFillGroupWithBlank={true} pagination={{'clickable': true }} navigation={true} className='mySwiper'>
               {createCard()}
             </Swiper>
           </ul>
