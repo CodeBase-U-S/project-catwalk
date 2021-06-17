@@ -40,5 +40,6 @@ const getQuantity = (style, sizeSku) => {
   return null;
 };
 
+
 export default styleReducer;
 

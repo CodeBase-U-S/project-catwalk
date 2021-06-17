@@ -12,10 +12,6 @@ const AddToCart = (props) => {
   let styleQuantity = useSelector((state) => state.styleReducer.quantity);
   let quantity = useSelector((state) => state.quantityReducer.quantity);
 
-  // LOG!! //
-  // if (selectedStyle) {
-  //   console.log('here', Object.entries(selectedStyle.skus));
-  // }
 
   const setSize = (e) => {
     if (e.currentTarget.value === 'select size') {
