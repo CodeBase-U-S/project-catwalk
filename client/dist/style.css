@@ -417,6 +417,7 @@ span.letter, .questionBody, .addQuestionTitle, .addAnswerTitle{
 .moreAnswers {
   font-weight: bold;
   font-size: 12px;
+  cursor: pointer;
 }
 
 .moreQuestions, .addQuestion {
