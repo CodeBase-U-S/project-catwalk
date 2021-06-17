@@ -31,6 +31,8 @@ const ImageGallery = (props) => {
   };
 
   const toggleModal = () => {
+    !modalState ?
+      document.body.classList.add('modal-open') : document.body.classList.remove('modal-open');
     dispatch({ type: 'TOGGLE_MODAL', modalState: !modalState });
   };
 
@@ -101,22 +103,45 @@ const ImageGallery = (props) => {
             </Col>
           </Row>
         </Container>
-        <Modal
+        {modalState &&
+        <div id="modalGallery" style={{zIndex: '1080', minWidth: '100vw', minHeight: '120vh', position: 'fixed',
+          left: '0', top: '0', backgroundColor: 'white'}}>
+          <div style={{fontSize: '14px', height: '10vh', margin: '6vh'}}>{'<'} BACK TO PRODUCT </div>
+          <div style={{display: 'flex', justifyContent: 'center', overflow: 'scroll'}}>
+            {photoIndex > 0 &&
+            <button id='navigation-expanded' className='tg-left-ex' onClick={navLeft}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact tg-left" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+              </svg>
+            </button>}
+            {photoIndex < selectedStyle.photos.length - 1 &&
+            <button id='navigation-expanded' className='tg-right-ex' onClick={navRight}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact tg-right" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+              </svg>
+            </button>}
+
+            <Image id="expandedImage" src={selectedStyle.photos[photoIndex].url}
+              onClick={toggleModal}
+              style={{objectFit: 'cover', maxHeight: '100vh', maxWidth: '80vw'}}/>
+          </div>
+        </div>}
+
+
+
+        {/* <Modal
           show={modalState}
           onHide={toggleModal}
           className="imageGallery-expanded"
           dialogClassName="imageGallery-expanded-dialog"
           style={{padding: 0, minWidth: '100vw'}}
         >
-          <ModalDialog style={{width: '100vw'}}>
-
-          </ModalDialog>
-          <div style={{height: '10vh', width: '100vw', borderStyle: 'none'}}> {'<'}Back to product</div>
+          <div style={{height: '10vh', minWidth: '100vw', borderStyle: 'none'}}> {'<'}Back to product</div>
           {photoIndex >= 0 &&
             <Image id="expandedImage" src={selectedStyle.photos[photoIndex].url}
               onClick={toggleModal}
-              style={{maxHeight: '100vh', objectFit: 'cover', maxWidth: '70vh', margin: '0 20vw'}}/>}
-        </Modal>
+              style={{maxHeight: '100vh', objectFit: 'cover', minWidth: '70vh'}}/>}
+        </Modal> */}
       </Jumbotron>
     );
   } else {
