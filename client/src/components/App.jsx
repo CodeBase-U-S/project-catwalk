@@ -73,7 +73,7 @@ const App = () => {
 
 
   const getAllreviews = () => {
-    axios.get(`${url}/reviews/?page=1&count=10&product_id=${product.id}`, auth)
+    axios.get(`${url}/reviews/?page=1&count=100&product_id=${product.id}`, auth)
       .then(({ data }) => {
         // console.log('DATA', data);
         setReviews({
