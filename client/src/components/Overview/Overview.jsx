@@ -7,7 +7,7 @@ import ImageGallery from './ImageGallery.jsx';
 import ProductInformation from './ProductInformation.jsx';
 
 
-const Overview = ( {reviews} ) => {
+const Overview = () => {
 
   return (
     <Container id="overview">

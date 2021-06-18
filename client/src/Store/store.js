@@ -10,6 +10,10 @@ import ratingsReducer from '../Reducers/ratingsReducer.js';
 import sizeReducer from '../Reducers/styleReducer.js';
 import quantityReducer from '../Reducers/quantityReducer.js';
 import photoReducer from '../Reducers/photoReducer.js';
+import modalReducer from '../Reducers/modalReducer.js';
+import zoomifyReducer from '../Reducers/zoomifyReducer.js';
+import addToCartReducer from '../Reducers/addToCartReducer.js';
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,7 +25,10 @@ const store = createStore(
     styleReducer,
     ratingsReducer,
     quantityReducer,
-    photoReducer
+    photoReducer,
+    modalReducer,
+    zoomifyReducer,
+    addToCartReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );
