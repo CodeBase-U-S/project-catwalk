@@ -63,13 +63,13 @@ let Answer = ({answer}) => {
           // console.log('beasdfas;dfkaljsdfas');
           // let [fullImageIsOpen, setFullImageIsOpen] = useState(false);
           return (
-            <>
-              <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}></img>&nbsp;
+            <div key={index}>
+              <img  style={{height: '70px', width: 'auto'}} src={photo.url}></img>&nbsp;
               {/* <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}
                 onClick={() => setFullImageIsOpen(true)}></img>&nbsp;
               <FullImage open={fullImageIsOpen} onClose={() => setFullImageIsOpen(false)}
                 src={photo.url}/> */}
-            </>
+            </div>
           );
         })}
       </div>
