@@ -1,8 +1,8 @@
 
-// const initialState = { product: [] };
+const initialState = { product: {id: 16056} };
 
 
-const productReducer = (state = {}, action) => {
+const productReducer = (state = initialState, action) => {
   switch (action.type) {
   case 'CHANGE_PRODUCT':
     return { product: action.product };

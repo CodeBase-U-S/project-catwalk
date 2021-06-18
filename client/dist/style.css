@@ -1,3 +1,9 @@
+/* font family */
+@font-face {
+  font-family: 'AdobeClean';
+  src: url('./AdobeCleanSerif-Regular.otf');
+}
+
 /* Overview */
 button {
   border-style: none;
@@ -395,18 +401,57 @@ div.outfit {
   list-style-type: none;
 }
 
+div.comparingCards {
+  font-family: 'AdobeClean';
+  font-size: 12px;
+}
+
 li.cards {
   width:240px;
   height: 340px;
   border: 1px #3498DB solid;
   padding: 3px;
   overflow: hidden;
+  text-align: left;
 }
 
-img.cardImg {
-  width: 120px;
-  height: auto;
+.modal-content {
+  width: 1000px;
 }
+
+.modal-dialog {
+  width: 1000px;
+}
+
+span.title {
+  left: 10%;
+}
+
+.modal-90w {
+  width: 1000px;
+}
+
+td.tdName {
+  font-size: 15px;
+}
+
+div.divcardimg {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  overflow: hidden;
+}
+
+/* img.cardImg {
+  max-width: 100%;
+  max-height: 100%;
+} */
+
+/* img.cardImg :hover{
+  -webkit-transform: scale(1.5);
+} */
 
 /* QandA */
 
@@ -561,4 +606,6 @@ button {
   max-height: 40vh;
   overflow: auto;
 }
+
+
 
