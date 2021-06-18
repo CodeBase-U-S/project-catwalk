@@ -16,12 +16,10 @@ const MyVerticallyCenteredModal = ({ onHide, show, metaReview }) => {
 
   }
 
- console.log("LOOOK HERE BITCH", metaReview)
 
   const handleUserEmail = (e) => {
     setUserEmail(e.target.value)
   }
-  console.log('EMAAAAAAAIIIIIIIL', userEmail)
 
   const handleNickNamed = (e) => {
     setNickNamed(e.target.value)
@@ -137,10 +135,10 @@ const MyVerticallyCenteredModal = ({ onHide, show, metaReview }) => {
           <tbody>
             {charArray.map((char, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{char}</td>
                   {characteristics[char].map((description, index) => (
-                    <td>{description} {radioButton}</td>
+                    <td key={index}>{description} {radioButton}</td>
                   ))}
                 </tr>
               )
