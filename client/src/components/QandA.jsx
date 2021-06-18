@@ -17,17 +17,10 @@ const auth = {
 
 let QandA = () => {
 
-<<<<<<< HEAD
-  let PRODUCT_ID = 16056;//refactor for product Id as input
-  // let PRODUCT_ID = useSelector(state => state.productReducer.product);
-  //product name
-  // console.log('state: ', PRODUCT_ID);
-=======
   // let PRODUCT_ID = 16056;//refactor for product Id as input
   let PRODUCT_ID = useSelector(state => state.productReducer.product.id);
   // console.log('product id her eis ,', PRODUCT_ID);
 
->>>>>>> 09f9a2665b5248d8a6ffb5879fbbc4fc03aee070
   //function to get info from atelier api
   let [questions, setQuestions] = useState([]);
   let [questionCount, setQuestionCount] = useState(4);
