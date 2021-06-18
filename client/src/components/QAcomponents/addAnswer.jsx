@@ -131,7 +131,7 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
           <div>
             {photos.map((photo, index) => {
               let style = {height: '50px', width: 'auto'};
-              return <Image src={photo} style={style}/>;
+              return <Image key={index} src={photo} style={style}/>;
               // return <img key={index} className='answerInput' style={{height: '50px', width: 'auto'}} src={photo}></img>;
             })}
           </div>

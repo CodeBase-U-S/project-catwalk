@@ -16,7 +16,6 @@ const auth = {
 };
 
 let QandA = ({productId}) => {
-  console.log('productId in QandA: ', productId);
   // let PRODUCT_ID = 16056;//refactor for product Id as input
   // let PRODUCT_ID = useSelector(state => state.productReducer.product.id);
   let PRODUCT_ID = productId;

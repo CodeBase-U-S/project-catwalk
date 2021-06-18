@@ -42,8 +42,6 @@ const App = () => {
     getStyles(product.id);
   }, [product]);
 
-  console.log('productId: ', productId);
-
   const getProduct = () => {
     axios.get(`${url}/products/16056`, auth)
       .then(({ data }) => {

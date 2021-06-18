@@ -66,7 +66,7 @@ let Answer = ({answer}) => {
           let style = {height: '70px', width: 'auto'};
           return (
             <>
-              <Image src={photo.url} style={style}/>
+              <Image key={index} src={photo.url} style={style}/>
               {/* <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}></img>&nbsp; */}
               {/* <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}
                 onClick={() => setFullImageIsOpen(true)}></img>&nbsp;
