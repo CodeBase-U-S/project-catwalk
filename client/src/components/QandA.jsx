@@ -15,10 +15,11 @@ const auth = {
   }
 };
 
-let QandA = () => {
-
+let QandA = ({productId}) => {
+  console.log('productId in QandA: ', productId);
   // let PRODUCT_ID = 16056;//refactor for product Id as input
-  let PRODUCT_ID = useSelector(state => state.productReducer.product.id);
+  // let PRODUCT_ID = useSelector(state => state.productReducer.product.id);
+  let PRODUCT_ID = productId;
   // console.log('product id her eis ,', PRODUCT_ID);
 
   //function to get info from atelier api
@@ -47,8 +48,11 @@ let QandA = () => {
 
   // retrieveQuestions();
   useEffect(() => {
+    setQuestionCount(4);
     retrieveQuestions(1, questionCount);
-  }, [PRODUCT_ID]);
+    setAddQuestionIsOpen(false);
+    // console.log('useeffect retrieve questions');
+  }, [productId]);
 
   let moreQuestionsHandler = () => {
     setQuestionCount(prevQuestionCount => {

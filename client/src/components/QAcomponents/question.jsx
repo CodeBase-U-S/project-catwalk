@@ -9,7 +9,7 @@ let Question = ({question, PRODUCT_ID}) => {
   //state hook for helpful count
   let [answers, setAnswers] = useState([]);
   let [answerCount, setAnswerCount] = useState(2);
-  let [questionHelpfulness, setQuestionHelpfulness] = useState(question.question_helpfulness);
+  let [questionHelpfulness, setQuestionHelpfulness] = useState();
   let [helpfulClicked, setHelpfulClicked] = useState(false);
   let [reportClicked, setReportClicked] = useState(false);
   let [addAnswerIsOpen, setAddAnswerIsOpen] = useState(false);
@@ -39,8 +39,13 @@ let Question = ({question, PRODUCT_ID}) => {
   // let question_id = question.question_id;
 
   useEffect(() => {
+    setAnswerCount(2);
     retrieveAnswers(1, answerCount);
-  }, []);
+    setQuestionHelpfulness(question.question_helpfulness);
+    setHelpfulClicked(false);
+    setReportClicked(false);
+    setAddAnswerIsOpen(false);
+  }, [question]);
 
   let moreAnswersHandler = () => {
     // console.log('question id: ', question.question_id);
@@ -58,6 +63,7 @@ let Question = ({question, PRODUCT_ID}) => {
   let helpfulClickHandler = () => {
     // console.log('clicked');
     // console.log('helpfulclicked: ', helpfulClicked);
+    console.log('question id helpfulness: ', question.question_id);
     if (!helpfulClicked) {
       setQuestionHelpfulness(prevCount => prevCount + 1);
       setHelpfulClicked(true);
@@ -73,6 +79,7 @@ let Question = ({question, PRODUCT_ID}) => {
   };
 
   let reportClickHandler = () => {
+    // console.log('question id: ', question.question_id);
     if (!reportClicked) {
       setReportClicked(true);
 
