@@ -48,9 +48,6 @@ const App = () => {
         dispatch({ type: 'CHANGE_PRODUCT', product: data });
         getStyles(data.id);
       })
-      .then(() => {
-        const product = useSelector(state => state.productReducer.product);
-      })
       .catch(err => console.error(err));
   };
 

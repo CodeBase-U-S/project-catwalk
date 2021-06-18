@@ -44,40 +44,46 @@ const ImageGallery = (props) => {
 
   const magnify = (e) => {
     if (zoomify) {
-      let imageWidth = e.target.offsetHeight * 1.25;
-      let imageHeight = e.target.offsetHeight * 1.25;
+
+      let imageWidth = 5000;
+      let imageHeight = e.target.cssHeight * 1125;
       let ratio = imageHeight / imageWidth;
       let boxWidth = e.target.clientWidth;
       let x = e.pageX - e.target.offsetLeft;
       let y = e.pageY - e.target.offsetTop;
 
       let xPercent = x / (boxWidth / 100) + '%';
-      let yPercent = y / (boxWidth * ratio / 100) + '%';
+      let yPercent = y / (boxWidth / 100) + '%';
 
       Object.assign(e.target.style, {
         backgroundPosition: xPercent + ' ' + yPercent,
-        backgroundSize: imageWidth + 'px',
-        height: '70rem',
-        maxHeight: '70rem',
-        width: '60rem',
-        maxWidth: '60rem',
-        cursor: 'crosshair'
+        backgroundSize: '150%',
+        maxHeight: '120%',
+        maxWidth: '90%',
+        cursor: 'zoom-out',
+        objectPosition: '-9999px -9999px',
       });
     } else {
       Object.assign(e.target.style, {
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
-        cursor: 'crosshair'
+        cursor: 'crosshair',
+        backgroundPosition: 'top',
+        display: 'visible',
       });
     }
   };
 
-  // const regularify = (e) => {
-  //   Object.assign(e.target.style, {
-  //     backgroundSize: 'contain',
-  //     backgroundRepeat: 'no-repeat',
-  //   });
-  // };
+  // let natWidth, natHeight;
+
+  // const getImgSize = (url) => {
+  //   console.log('imgsize', url)
+  //   let imgSrc = document.createElement('img');
+  //   imgSrc.src = url;
+  //   natWidth = imgSrc.naturalWidth;
+  //   natHeight = imgSrc.naturalHeight;
+  //   console.log(natWidth, natHeight);
+  // }
 
 
   // Helper Functions //
@@ -188,20 +194,22 @@ const ImageGallery = (props) => {
               </svg>
             </button>
 
-            <div id="expandedImage" style={{
-              height: '70rem',
-              maxHeight: '70rem',
-              width: '60rem',
-              maxWidth: '60rem',
+            <img id="expandedImage" style={{
+              // height: '70rem',
+              maxHeight: '120%',
+              // minWidth: '80%',
+              maxWidth: '90%',
               zIndex: 3000,
-              objectFit: 'contain',
+              // objectFit: 'contain',
               backgroundImage: `url(${selectedStyle.photos[photoIndex].url})`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'top',
             }}
             onClick={toggleZoomify}
             onMouseMove={magnify}
-            ></div>
+            src={selectedStyle.photos[photoIndex].url}
+            ></img>
             {/* <Image id="expandedImage" src={selectedStyle.photos[photoIndex].url}
               // onClick={toggleModal}
               onMouseMove={magnify}
