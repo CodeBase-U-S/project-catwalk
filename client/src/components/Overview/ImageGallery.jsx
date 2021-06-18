@@ -58,11 +58,10 @@ const ImageGallery = (props) => {
       Object.assign(e.target.style, {
         backgroundPosition: xPercent + ' ' + yPercent,
         backgroundSize: '150%',
-        // height: '70rem',
         maxHeight: '120%',
         maxWidth: '90%',
-        cursor: 'crosshair',
-        objectPosition: '-9999px -9999px'
+        cursor: 'zoom-out',
+        objectPosition: '-9999px -9999px',
       });
     } else {
       Object.assign(e.target.style, {
@@ -70,22 +69,21 @@ const ImageGallery = (props) => {
         backgroundRepeat: 'no-repeat',
         cursor: 'crosshair',
         backgroundPosition: 'top',
-        // objectFit: 'contain'
         display: 'visible',
       });
     }
   };
 
-  let natWidth, natHeight;
+  // let natWidth, natHeight;
 
-  const getImgSize = (url) => {
-    console.log('imgsize', url)
-    let imgSrc = document.createElement('img');
-    imgSrc.src = url;
-    natWidth = imgSrc.naturalWidth;
-    natHeight = imgSrc.naturalHeight;
-    console.log(natWidth, natHeight);
-  }
+  // const getImgSize = (url) => {
+  //   console.log('imgsize', url)
+  //   let imgSrc = document.createElement('img');
+  //   imgSrc.src = url;
+  //   natWidth = imgSrc.naturalWidth;
+  //   natHeight = imgSrc.naturalHeight;
+  //   console.log(natWidth, natHeight);
+  // }
 
 
   // Helper Functions //
@@ -211,7 +209,6 @@ const ImageGallery = (props) => {
             onClick={toggleZoomify}
             onMouseMove={magnify}
             src={selectedStyle.photos[photoIndex].url}
-            ref={() => getImgSize(selectedStyle.photos[photoIndex].url)}
             ></img>
             {/* <Image id="expandedImage" src={selectedStyle.photos[photoIndex].url}
               // onClick={toggleModal}
