@@ -59,10 +59,6 @@ const App = () => {
         .then(({ data }) => {
           dispatch({ type: 'SET_STYLES', styles: data.results});
           dispatch({ type: 'SET_STYLE', style: getDefaultStyle(data)});
-          // dispatch({ type: 'SET_PHOTO', photoIndex: 0 });
-
-        })
-        .then(() => {
         });
     }
   };
