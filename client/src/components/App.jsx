@@ -18,6 +18,7 @@ const auth = { headers: { Authorization: TOKEN.TOKEN } };
 const App = () => {
   const product = useSelector(state => state.productReducer.product);
   const dispatch = useDispatch();
+  let [productId, setProductId] = useState(16056);
 
   const [reviews, setReviews] = useState({
     results: [],
@@ -37,8 +38,10 @@ const App = () => {
 
   useEffect(() => {
     getAllreviews();
+    setProductId(product.id);
   }, [product]);
 
+  console.log('productId: ', productId);
 
   const getProduct = () => {
     axios.get(`${url}/products/16056`, auth)
@@ -146,7 +149,7 @@ const App = () => {
       {/* <Overview /> */}
       <RelatedItems />
       <div className='QandA'>
-        <QandA />
+        <QandA productId={productId}/>
       </div>
       <RatingsAndReviews
         reviews={reviews.results}
