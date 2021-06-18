@@ -20,7 +20,7 @@ const OVERLAY_STYLES = {
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: 'rgba(0, 0, 0, .7)',
+  backgroundColor: 'rgba(0, 0, 0, .5)',
   zIndex: 1000
 };
 
@@ -32,21 +32,44 @@ const auth = {
   }
 };
 
-let Image = ({open, onClose, src}) => {
-
+let FullImage = ({open, onClose, src}) => {
+  // console.log('src: ', src);
   if (!open) {
     return null;
   }
+  // console.log('src: ', src);
+  const MODAL_STYLES = {
+    maxWidth: '600px',
+    maxHeight: '400px',
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#FFF',
+    padding: '10px',
+    zIndex: 1000
+  };
+
+  const OVERLAY_STYLES = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, .7)',
+    zIndex: 1000
+  };
 
   return ReactDom.createPortal(
     <>
-      <div style={OVERLAY_STYLES} />
+      <div style={OVERLAY_STYLES} onClick={onClose}/>
       <div style={MODAL_STYLES}>
-        <button className='x' onClick={onClose}>X</button>
+        <img src={src} style={MODAL_STYLES}></img>
+        {/* <button className='x' onClick={onClose}>X</button> */}
       </div>
     </>,
     document.getElementById('app')
   );
 };
 
-export default Image;
+export default FullImage;
