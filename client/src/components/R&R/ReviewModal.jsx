@@ -16,7 +16,7 @@ const MyVerticallyCenteredModal = ({ onHide, show, metaReview }) => {
 
   }
 
- console.log("LOOOK HERE BITCH", metaReview)
+
 
   const handleUserEmail = (e) => {
     setUserEmail(e.target.value)
