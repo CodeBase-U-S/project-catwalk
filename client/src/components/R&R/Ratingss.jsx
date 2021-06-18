@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 const Ratingss = () => {
   // const review = useSelector((state) => state.ratingsReducer.ratings)
   const reviews = useSelector((state) => state.reviewsReducer.reviews)
-  console.log('REVIEWS FROM RATINGS', reviews)
+  // console.log('REVIEWS FROM RATINGS', reviews)
   let rating = 0;
   let totalPercentage = 0;
 

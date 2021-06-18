@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useReducer } from 'react';
 import Token from '../../../../config.js';
 import axios from 'axios';
 import Products from './Products.jsx';
+import { useSelector } from 'react-redux';
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const options = {
@@ -14,6 +15,7 @@ const RelatedItems = (props) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
   // const [isMoved, setIsMoved] = useState(false);
   // const [cardsPosition, setCardsPosition] = useState('products');
+  const id = useSelector(state => state.productReducer.product.id);
 
   const getRelatedProductsId = (incomingProductId) => {
     axios.get(`${url}/products/${incomingProductId}/related`, options)
@@ -31,9 +33,8 @@ const RelatedItems = (props) => {
 
   //get all related products
   useEffect(() => {
-    getRelatedProductsId(16057);
-
-  }, []);
+    getRelatedProductsId(id);
+  }, [id]);
 
   return (
     <div className="Related-Products" >
