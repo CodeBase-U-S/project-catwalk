@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import Image from './image.jsx';
 import FullImage from './fullImage.jsx';
 
 let Answer = ({answer}) => {
@@ -62,14 +63,16 @@ let Answer = ({answer}) => {
         {answer.photos.map((photo, index) => {
           // console.log('beasdfas;dfkaljsdfas');
           // let [fullImageIsOpen, setFullImageIsOpen] = useState(false);
+          let style = {height: '70px', width: 'auto'};
           return (
-            <div key={index}>
-              <img  style={{height: '70px', width: 'auto'}} src={photo.url}></img>&nbsp;
+            <>
+              <Image key={index} src={photo.url} style={style}/>
+              {/* <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}></img>&nbsp; */}
               {/* <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}
                 onClick={() => setFullImageIsOpen(true)}></img>&nbsp;
               <FullImage open={fullImageIsOpen} onClose={() => setFullImageIsOpen(false)}
                 src={photo.url}/> */}
-            </div>
+            </>
           );
         })}
       </div>

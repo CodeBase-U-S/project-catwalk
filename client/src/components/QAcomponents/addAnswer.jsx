@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
+import Image from './image.jsx';
 
 const MODAL_STYLES = {
   width: '700px',
@@ -129,7 +130,9 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
           <span className='addPhoto' onClick={handleAddPhoto}>Add Photo</span>
           <div>
             {photos.map((photo, index) => {
-              return <img key={index} className='answerInput' style={{height: '50px', width: 'auto'}} src={photo}></img>;
+              let style = {height: '50px', width: 'auto'};
+              return <Image key={index} src={photo} style={style}/>;
+              // return <img key={index} className='answerInput' style={{height: '50px', width: 'auto'}} src={photo}></img>;
             })}
           </div>
           <div>Your Nickname *</div>

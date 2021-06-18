@@ -2,27 +2,27 @@ import React, {useState} from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
 
-const MODAL_STYLES = {
-  width: '600px',
-  height: '400px',
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  backgroundColor: '#FFF',
-  padding: '20px',
-  zIndex: 1000
-};
+// const MODAL_STYLES = {
+//   width: '600px',
+//   height: '400px',
+//   position: 'fixed',
+//   top: '50%',
+//   left: '50%',
+//   transform: 'translate(-50%, -50%)',
+//   backgroundColor: '#FFF',
+//   padding: '20px',
+//   zIndex: 1000
+// };
 
-const OVERLAY_STYLES = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  backgroundColor: 'rgba(0, 0, 0, .5)',
-  zIndex: 1000
-};
+// const OVERLAY_STYLES = {
+//   position: 'fixed',
+//   top: 0,
+//   left: 0,
+//   right: 0,
+//   bottom: 0,
+//   backgroundColor: 'rgba(0, 0, 0, .5)',
+//   zIndex: 1000
+// };
 
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 
@@ -46,7 +46,7 @@ let FullImage = ({open, onClose, src}) => {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#FFF',
-    padding: '10px',
+    padding: '7px',
     zIndex: 1000
   };
 
