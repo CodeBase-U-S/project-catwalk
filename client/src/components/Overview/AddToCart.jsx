@@ -5,6 +5,7 @@ import apiHandlers from '../apiHandlers.js';
 
 const AddToCart = (props) => {
   const dispatch = useDispatch();
+  let product = useSelector((store) => store.productReducer.product);
   let selectedStyle = useSelector((state) => state.styleReducer.style);
   let hasInventory = useSelector((state) => state.styleReducer.hasInventory);
   let sizeSelected = useSelector((state) => state.styleReducer.sizeSelected);
@@ -38,6 +39,7 @@ const AddToCart = (props) => {
     for (var i = 0; i < quantity; i++) {
       apiHandlers.addToCart(dispatch, skuSelected);
     }
+    // dispatch({ type: 'CHANGE_PRODUCT', product: product });
     // dispatch({ type: 'SET_STYLE', style: selectedStyle });
     // dispatch({ type: 'SET_PHOTO', photoIndex: 0 });
     // dispatch({

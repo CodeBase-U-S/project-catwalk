@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col, Image, Jumbotron, Container, Modal, ModalDialog } from 'react-bootstrap';
 
 const ImageGallery = (props) => {
-  var test = 'shorturl.at/cvIV7'
   const dispatch = useDispatch();
 
   // State Managers //
