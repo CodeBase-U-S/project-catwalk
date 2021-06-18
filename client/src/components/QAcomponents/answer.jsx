@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import Image from './image.jsx';
 import FullImage from './fullImage.jsx';
 
 let Answer = ({answer}) => {
@@ -64,7 +65,8 @@ let Answer = ({answer}) => {
           // let [fullImageIsOpen, setFullImageIsOpen] = useState(false);
           return (
             <>
-              <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}></img>&nbsp;
+              <Image src={photo.url}/>
+              {/* <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}></img>&nbsp; */}
               {/* <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}
                 onClick={() => setFullImageIsOpen(true)}></img>&nbsp;
               <FullImage open={fullImageIsOpen} onClose={() => setFullImageIsOpen(false)}
