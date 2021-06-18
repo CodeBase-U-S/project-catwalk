@@ -1,3 +1,5 @@
+
+
 const styleReducer = (state = [], action) => {
   switch (action.type) {
   case 'SET_STYLE':
@@ -39,6 +41,7 @@ const getQuantity = (style, sizeSku) => {
   }
   return null;
 };
+
 
 export default styleReducer;
 

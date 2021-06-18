@@ -1,17 +1,14 @@
 import axios from 'axios';
 
-// api options data
-import TOKEN from '../../../config.js';
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
-const auth = { headers: { Authorization: TOKEN.TOKEN } };
+const initialState = { cart: [] };
 
-
-const addToCartReducer = (state = null, action) => {
+const addToCartReducer = (state = initialState, action) => {
   switch (action.type) {
-  case 'CART':
+  case 'GET_CART':
     return { cart: action.cart };
   default:
     return state;
   }
 };
 
+export default addToCartReducer;
