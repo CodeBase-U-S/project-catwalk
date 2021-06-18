@@ -33,12 +33,16 @@ const App = () => {
 
   useEffect(() => {
     getProduct();
-    getMetaReviews();
   }, []);
 
   useEffect(() => {
     getAllreviews();
+<<<<<<< HEAD
     setProductId(product.id);
+=======
+    getMetaReviews();
+    getStyles(product.id);
+>>>>>>> 7a459f9085be53eeb88f36fc9fdb5ae8f8e16131
   }, [product]);
 
   console.log('productId: ', productId);
@@ -60,11 +64,7 @@ const App = () => {
       axios.get(`${url}/products/${id}/styles`, auth)
         .then(({ data }) => {
           dispatch({ type: 'SET_STYLES', styles: data.results});
-          dispatch({ type: 'SET_STYLE', style: getDefaultStyle(data)
-          });
-        })
-        .then(() => {
-          dispatch({ type: 'SET_PHOTO', photoIndex: 0 });
+          dispatch({ type: 'SET_STYLE', style: getDefaultStyle(data)});
         });
     }
   };
@@ -97,12 +97,12 @@ const App = () => {
 
   const getMetaReviews = () => {
     axios.get(`${url}/reviews/meta?product_id=16060`, auth)
-     .then(({ data }) => {
-       console.log('metadata', data)
-       setMetaReview(data)
+      .then(({ data }) => {
+        console.log('metadata', data);
+        setMetaReview(data);
       })
-      .catch(err => console.error(err))
-    }
+      .catch(err => console.error(err));
+  };
 
   const handleMoreReviews = (e) => {
     setReviews({
@@ -130,7 +130,7 @@ const App = () => {
         page: 1,
         count: 10,
         sort: e,
-        product_id: product.id
+        'product_id': product.id
       },
       headers: auth.headers
     });
@@ -146,7 +146,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      {/* <Overview /> */}
+      <Overview />
       <RelatedItems />
       <div className='QandA'>
         <QandA productId={productId}/>

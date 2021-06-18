@@ -15,10 +15,10 @@ const ProductInformation = ({ reviews }) => {
 
       <StarRating />
 
-      {product &&
+      {product.category &&
         <h5 id="category" className="mb-0" style={{fontWeight: 'lighter'}}> {product.category.toUpperCase()}</h5>}
 
-      {product &&
+      {product.category &&
         <h1 id="name" className="mb-3"><strong>{product.name}</strong></h1>}
 
       {selectedStyle && !selectedStyle.sale_price &&

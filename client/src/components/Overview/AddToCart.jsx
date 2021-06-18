@@ -5,6 +5,7 @@ import apiHandlers from '../apiHandlers.js';
 
 const AddToCart = (props) => {
   const dispatch = useDispatch();
+  let product = useSelector((store) => store.productReducer.product);
   let selectedStyle = useSelector((state) => state.styleReducer.style);
   let hasInventory = useSelector((state) => state.styleReducer.hasInventory);
   let sizeSelected = useSelector((state) => state.styleReducer.sizeSelected);
@@ -12,10 +13,6 @@ const AddToCart = (props) => {
   let styleQuantity = useSelector((state) => state.styleReducer.quantity);
   let quantity = useSelector((state) => state.quantityReducer.quantity);
 
-  // LOG!! //
-  // if (selectedStyle) {
-  //   console.log('here', Object.entries(selectedStyle.skus));
-  // }
 
   const setSize = (e) => {
     if (e.currentTarget.value === 'select size') {
@@ -42,6 +39,14 @@ const AddToCart = (props) => {
     for (var i = 0; i < quantity; i++) {
       apiHandlers.addToCart(dispatch, skuSelected);
     }
+    // dispatch({ type: 'CHANGE_PRODUCT', product: product });
+    // dispatch({ type: 'SET_STYLE', style: selectedStyle });
+    // dispatch({ type: 'SET_PHOTO', photoIndex: 0 });
+    // dispatch({
+    //   type: 'SET_SIZE',
+    //   style: selectedStyle,
+    //   sizeSelected: false
+    // });
   };
 
   if (selectedStyle) {
@@ -54,7 +59,7 @@ const AddToCart = (props) => {
                 <div>
                   <select className="button-wide" style={{padding: '20px'}} onChange={setSize}>
                     <option value='select size'>SELECT SIZE</option>
-                    {Object.entries(selectedStyle.skus).map((size, id) => {
+                    {selectedStyle && Object.entries(selectedStyle.skus).map((size, id) => {
                       if (size[1].quantity > 0) {
                         return (
                           <option key={id} value={size[0]}
