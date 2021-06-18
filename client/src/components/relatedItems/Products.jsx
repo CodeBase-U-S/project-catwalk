@@ -152,7 +152,7 @@ const Products = (props) => {
     return (
       <React.Fragment>
         <div className="products">
-          <span>RELATED PRODUCTS</span>
+          <span className='title'>RELATED PRODUCTS</span>
           {/* <span>{relatedProducts.id}</span> */}
           <ul>
             <Swiper slidesPerView={4} spaceBetween={10} slidesPerGroup={2} loop={false} loopFillGroupWithBlank={true} pagination={{'clickable': true }} navigation={true} className='mySwiper'>
@@ -161,7 +161,7 @@ const Products = (props) => {
           </ul>
         </div>
         <div className="outfit">
-          <span>YOUR OUTFIT</span>
+          <span className='title'>YOUR OUTFIT</span>
           <ul>
             {/* {createCard()} */}
           </ul>

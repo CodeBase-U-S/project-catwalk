@@ -2,8 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import Ratings from 'react-ratings-declarative';
 import Modal from 'react-bootstrap/Modal';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Comparing from './Comparing.jsx';
+
 
 const Cards = (props) => {
   const [styles, setStyles] = useState(props.stylesInfo);
@@ -12,9 +13,16 @@ const Cards = (props) => {
   const inputEl = useRef(null);
   const [isShow, setIsShow] = useState(false);
 
+  const dispatch = useDispatch();
+
   const switchShow = () => {
     // console.log('Clicked');
     setIsShow(isShow ? false : true);
+  };
+
+  const switchProduct = () => {
+    // console.log('DOne here ', props.product.name);
+    dispatch({ type: 'CHANGE_PRODUCT', product: props.product});
   };
 
   useEffect(()=> {
@@ -24,7 +32,7 @@ const Cards = (props) => {
 
   if (styles && rating) { // whether the data exists.
     return (
-      <li className="cards" >
+      <li className="cards" onClick={switchProduct}>
         {/* <span>{styles}</span> */}
         <div className="divcardimg">
           <img className="cardImg" src={styles.results[0].photos[0].thumbnail_url} alt="Image is not available"></img>

@@ -423,6 +423,10 @@ li.cards {
   width: 1000px;
 }
 
+span.title {
+  left: 10%;
+}
+
 .modal-90w {
   width: 1000px;
 }

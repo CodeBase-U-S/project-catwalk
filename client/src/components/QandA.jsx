@@ -17,8 +17,9 @@ const auth = {
 
 let QandA = () => {
 
-  let PRODUCT_ID = 16056;//refactor for product Id as input
-  // let PRODUCT_ID = useSelector(state => state.productReducer.product);
+  // let PRODUCT_ID = 16056;//refactor for product Id as input
+  let PRODUCT_ID = useSelector(state => state.productReducer.product.id);
+  // console.log('product id her eis ,', PRODUCT_ID);
 
   //function to get info from atelier api
   let [questions, setQuestions] = useState([]);
@@ -47,8 +48,7 @@ let QandA = () => {
   // retrieveQuestions();
   useEffect(() => {
     retrieveQuestions(1, questionCount);
-  }, []);
-
+  }, [PRODUCT_ID]);
 
   let moreQuestionsHandler = () => {
     setQuestionCount(prevQuestionCount => {
