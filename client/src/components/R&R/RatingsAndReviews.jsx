@@ -13,7 +13,7 @@ const auth = {
   }
 };
 
-const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelpfulness, handleSortReviews }) => {
+const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelpfulness, handleSortReviews, metaReview }) => {
   // const reviews = useSelector((state) => state.reviewsReducer.reviews)
 
 
@@ -57,7 +57,9 @@ const RatingsAndReviews = ({ reviews, moreReviews, handleMoreReviews, handleHelp
               onClick={() => handleMoreReviews()} />
           )}
         </div>
-         <ReviewModal />
+        <div className="addReviewContainer">
+         <ReviewModal metaReview={metaReview}/>
+        </div>
       </div>
     </div>
   );

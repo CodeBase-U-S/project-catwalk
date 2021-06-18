@@ -35,7 +35,7 @@ const Reviews = ({ review, handleHelpfulness }) => {
           <Ratings.Widget />
         </Ratings>
         <span className="reviewerName">
-          {review.reviewer_name},
+          √  {review.reviewer_name},
         &nbsp;
           {new Date(review.date).toString().slice(4, 16)}
         </span>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // sub-components //
 import Header from './Overview/Header.jsx';
@@ -15,8 +15,8 @@ const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
 const auth = { headers: { Authorization: TOKEN.TOKEN } };
 
 
-
 const App = () => {
+  const product = useSelector(state => state.productReducer.product);
   const dispatch = useDispatch();
 
   const [reviews, setReviews] = useState({
@@ -27,12 +27,17 @@ const App = () => {
   });
 
   const [sort, setSort] = useState(reviews.sort);
+  const [metaReview, setMetaReview] = useState({});
 
 
   useEffect(() => {
-    getAllreviews();
     getProduct();
+    getMetaReviews();
   }, []);
+
+  useEffect(() => {
+    getAllreviews();
+  }, [product]);
 
 
   const getProduct = () => {
@@ -40,6 +45,9 @@ const App = () => {
       .then(({ data }) => {
         dispatch({ type: 'CHANGE_PRODUCT', product: data });
         getStyles(data.id);
+      })
+      .then(() => {
+        const product = useSelector(state => state.productReducer.product);
       })
       .catch(err => console.error(err));
   };
@@ -70,9 +78,9 @@ const App = () => {
 
 
   const getAllreviews = () => {
-    axios.get(`${url}/reviews/?page=1&count=10&product_id=16060`, auth)
+    axios.get(`${url}/reviews/?page=1&count=10&product_id=${product.id}`, auth)
       .then(({ data }) => {
-        console.log('DATA', data)
+        // console.log('DATA', data);
         setReviews({
           results: data.results.slice(0, 2),
           moreReviews: data.results.slice(2),
@@ -83,6 +91,15 @@ const App = () => {
       .catch(err => console.error(err));
 
   };
+
+  const getMetaReviews = () => {
+    axios.get(`${url}/reviews/meta?product_id=16060`, auth)
+     .then(({ data }) => {
+       console.log('metadata', data)
+       setMetaReview(data)
+      })
+      .catch(err => console.error(err))
+    }
 
   const handleMoreReviews = (e) => {
     setReviews({
@@ -96,7 +113,6 @@ const App = () => {
     let updatedHelpfulness = {
       helpfulness: helpfulnessNumber + 1
     };
-    console.log("updatedHelpfulness", updatedHelpfulness)
     axios.put(`${url}/reviews/${id}/helpful`, updatedHelpfulness, auth)
       .catch(err => console.error(err));
   };
@@ -104,31 +120,30 @@ const App = () => {
   const handleSortReviews = async (e) => {
     // setSort(e)
     // (async () => {
-      const reviewsList = await axios({
-        method: 'GET',
-        url: `${url}/reviews/`,
-        params: {
-          page: 1,
-          count: 10,
-          sort: e,
-          product_id: 16060
-        },
-        headers: auth.headers
-      });
-      console.log("handleSortReviews called")
-      setReviews({
-        results: reviewsList.data.results.slice(0, 2),
-        moreReviews: reviewsList.data.results.slice(2),
-        sort: e
-      });
+    const reviewsList = await axios({
+      method: 'GET',
+      url: `${url}/reviews/`,
+      params: {
+        page: 1,
+        count: 10,
+        sort: e,
+        product_id: product.id
+      },
+      headers: auth.headers
+    });
+    console.log('handleSortReviews called');
+    setReviews({
+      results: reviewsList.data.results.slice(0, 2),
+      moreReviews: reviewsList.data.results.slice(2),
+      sort: e
+    });
     // })();
-  }
+  };
 
   return (
     <div>
       <Header />
-      <Overview
-      />
+      {/* <Overview /> */}
       <RelatedItems />
       <div className='QandA'>
         <QandA />
@@ -138,7 +153,8 @@ const App = () => {
         moreReviews={reviews.moreReviews}
         handleMoreReviews={handleMoreReviews}
         handleHelpfulness={handleHelpfulness}
-        handleSortReviews={handleSortReviews} />
+        handleSortReviews={handleSortReviews}
+        metaReview={metaReview} />
     </div>
   );
 };

@@ -1,42 +1,45 @@
 import React, { useEffect, useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import Ratings from 'react-ratings-declarative';
+import Modal from 'react-bootstrap/Modal';
+import { useSelector, useDispatch } from 'react-redux';
+import Comparing from './Comparing.jsx';
+
 
 const Cards = (props) => {
-  const [styles, setStyles] = useState();
+  const [styles, setStyles] = useState(props.stylesInfo);
   const [isMoved, setIsMoved] = useState(false);
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(props.reviewInfo);
   const inputEl = useRef(null);
+  const [isShow, setIsShow] = useState(false);
 
+  const dispatch = useDispatch();
 
-  const onButtonClick = () => {
-    // `current` points to the mounted text input element
-    // inputEl.current.focus();
+  const switchShow = () => {
+    // console.log('Clicked');
+    setIsShow(isShow ? false : true);
   };
 
-  const addToOutfit = () => {
-    setIsMoved(isMoved ? false : true);
-    alert('clicked');
-  };
-
-  const removeFromOutfit = () => {
+  const switchProduct = () => {
+    // console.log('DOne here ', props.product.name);
+    dispatch({ type: 'CHANGE_PRODUCT', product: props.product});
   };
 
   useEffect(()=> {
-    setStyles(props.stylesInfo);
-    setRating(props.reviewInfo);
+    // setStyles(props.stylesInfo);
+    // setRating(props.reviewInfo);
   }, []);
 
   if (styles && rating) { // whether the data exists.
     return (
-      <li className="cards">
+      <li className="cards" onClick={switchProduct}>
         {/* <span>{styles}</span> */}
         <div className="divcardimg">
-          <img className="cardImg" src={styles.results[0].photos[0].thumbnail_url} alt="img is here"></img>
+          <img className="cardImg" src={styles.results[0].photos[0].thumbnail_url} alt="Image is not available"></img>
 
-          <button onClick={addToOutfit} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
+          <button onClick={switchShow} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
         </div>
-        <div className="cardCategory" ><span>CATEGORY</span></div>
+        <div className="cardCategory" ><span>{props.product.category}</span></div>
         <div className="cardName">
           <span ref={inputEl}><strong>{props.product.name}</strong></span>
           <br></br>
@@ -54,6 +57,7 @@ const Cards = (props) => {
             <Ratings.Widget />
           </Ratings>
         </div>
+        {<Comparing product={props.product} handleShow={isShow} handleSwitch={switchShow}/>}
       </li>
     );
   } else {
