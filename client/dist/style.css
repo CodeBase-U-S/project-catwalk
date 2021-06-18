@@ -1,5 +1,14 @@
 /* Overview */
 
+body {
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  z-index: 2000;
+}
+
 body.modal-open {
   overflow-y: hidden;
   height: 100vh;
@@ -246,6 +255,8 @@ button:active {
 
 
 
+
+
 .tg-right {
   right: 0;
 }
@@ -288,7 +299,54 @@ button:active {
   left: 0;
 }
 
+#modalGallery-header {
+  font-size: 14px;
+  height: 12vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
 
+.navigation-button-ige {
+  overflow-wrap: noraml;
+  width: 9vw;
+}
+
+.navigation-button-ige:hover {
+  color: grey;
+  fill: lightgrey;
+}
+
+.modal-gallery {
+  height: 2.5rem;
+  width: 2.5rem;
+  object-fit: cover;
+  border-radius: 100%;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  z-index: 2000;
+  vertical-align: middle;
+}
+
+.modal-gallery:hover {
+  height: 4rem;
+  width: 4rem;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  z-index: 2000;
+}
+
+#modal-thumbnail {
+  display: flex;
+  justify-content: center;
+  margin: 3vh;
+}
 
 
 /* Overview end */

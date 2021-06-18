@@ -104,28 +104,61 @@ const ImageGallery = (props) => {
           </Row>
         </Container>
         {modalState &&
-        <div id="modalGallery" style={{zIndex: '1080', minWidth: '100vw', minHeight: '120vh', position: 'fixed',
-          left: '0', top: '0', backgroundColor: 'white'}}>
-          <div style={{fontSize: '14px', height: '10vh', margin: '6vh'}}>{'<'} BACK TO PRODUCT </div>
+        <div id="modalGallery" style={{zIndex: '1080', minWidth: '100vw', minHeight: '100vh', position: 'fixed',
+          left: '0', top: '0', bottom: '0', backgroundColor: 'white', overflowY: 'scroll'}}>
+
+          <div id="modalGallery-header">
+            <button className="navigation-button-ige" onClick={toggleModal} >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="grey" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+              </svg>  BACK TO PRODUCT
+            </button>
+
+            <Row id="thumbnailGallery" style={{height: '100%', overflowX: 'scroll', width: '60vw', display: 'flex', justifyContent: 'space-between'}}>
+              {selectedStyle && selectedStyle.photos.map((photo, id) => (
+                <Col id='modal-thumbnail' key={id} className="mb-4">
+                  {photoIndex === id ?
+                    <Image id={`pIndex${id}`} className="modal-gallery" src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
+                    :
+                    <Image id={`pIndex${id}`} className="modal-gallery" src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
+                  }
+                </Col>
+              ))}
+            </Row>
+
+            <button className="navigation-button-ige" onClick={toggleModal}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="grey" className='navigation-button-ige' viewBox="0 0 16 16">
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </button>
+          </div>
+
           <div style={{display: 'flex', justifyContent: 'center', overflow: 'scroll'}}>
-            {photoIndex > 0 &&
             <button id='navigation-expanded' className='tg-left-ex' onClick={navLeft}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact tg-left" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
               </svg>
-            </button>}
-            {photoIndex < selectedStyle.photos.length - 1 &&
+            </button>
             <button id='navigation-expanded' className='tg-right-ex' onClick={navRight}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" className="bi bi-chevron-compact tg-right" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
               </svg>
-            </button>}
+            </button>
 
-            <Image id="expandedImage" src={selectedStyle.photos[photoIndex].url}
+            <div style={{
+              backgroundImage: `url(${selectedStyle.photos[photoIndex].url})`,
+              minHeight: '100vh',
+              maxHeight: '95vh',
+              maxWidth: '70vw',
+              zIndex: 3000
+            }}></div>
+            {/* <Image id="expandedImage" src={selectedStyle.photos[photoIndex].url}
               onClick={toggleModal}
-              style={{objectFit: 'cover', maxHeight: '100vh', maxWidth: '80vw'}}/>
+              style={{objectFit: 'cover', minHeight: '100vh', maxHeight: '95vh', maxWidth: '70vw'}}/> */}
           </div>
-        </div>}
+
+        </div>
+        }
 
 
 
