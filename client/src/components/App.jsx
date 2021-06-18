@@ -37,12 +37,9 @@ const App = () => {
 
   useEffect(() => {
     getAllreviews();
-<<<<<<< HEAD
     setProductId(product.id);
-=======
     getMetaReviews();
     getStyles(product.id);
->>>>>>> 7a459f9085be53eeb88f36fc9fdb5ae8f8e16131
   }, [product]);
 
   console.log('productId: ', productId);
