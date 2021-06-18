@@ -27,7 +27,7 @@ const StarRating = () => {
   };
 
   const scrollHandler = () => {
-    const elementToScrollTo = document.getElementsByClassName('ratings')[0];
+    const elementToScrollTo = document.getElementsByClassName('reviewsJG')[0];
     elementToScrollTo.scrollIntoView();
   };
 
