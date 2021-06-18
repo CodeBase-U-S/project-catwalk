@@ -27,10 +27,12 @@ const App = () => {
   });
 
   const [sort, setSort] = useState(reviews.sort);
+  const [metaReview, setMetaReview] = useState({});
 
 
   useEffect(() => {
     getProduct();
+    getMetaReviews();
   }, []);
 
   useEffect(() => {
@@ -90,6 +92,15 @@ const App = () => {
 
   };
 
+  const getMetaReviews = () => {
+    axios.get(`${url}/reviews/meta?product_id=16060`, auth)
+     .then(({ data }) => {
+       console.log('metadata', data)
+       setMetaReview(data)
+      })
+      .catch(err => console.error(err))
+    }
+
   const handleMoreReviews = (e) => {
     setReviews({
       results: reviews.results.concat(reviews.moreReviews.slice(0, 2)),
@@ -102,7 +113,6 @@ const App = () => {
     let updatedHelpfulness = {
       helpfulness: helpfulnessNumber + 1
     };
-    console.log('updatedHelpfulness', updatedHelpfulness);
     axios.put(`${url}/reviews/${id}/helpful`, updatedHelpfulness, auth)
       .catch(err => console.error(err));
   };
@@ -143,7 +153,8 @@ const App = () => {
         moreReviews={reviews.moreReviews}
         handleMoreReviews={handleMoreReviews}
         handleHelpfulness={handleHelpfulness}
-        handleSortReviews={handleSortReviews} />
+        handleSortReviews={handleSortReviews}
+        metaReview={metaReview} />
     </div>
   );
 };

@@ -20,8 +20,6 @@ const Ratingss = () => {
     return list.reduce((count, review) => {
       const rating = review.rating;
       count[rating] += 1;
-      // console.log('COUNT RATING', count[rating])
-      // console.log("COUNT", count)
       return count
     }, { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 })
   }
