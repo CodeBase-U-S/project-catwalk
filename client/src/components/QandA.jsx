@@ -19,7 +19,8 @@ let QandA = () => {
 
   let PRODUCT_ID = 16056;//refactor for product Id as input
   // let PRODUCT_ID = useSelector(state => state.productReducer.product);
-
+  //product name
+  // console.log('state: ', PRODUCT_ID);
   //function to get info from atelier api
   let [questions, setQuestions] = useState([]);
   let [questionCount, setQuestionCount] = useState(4);
