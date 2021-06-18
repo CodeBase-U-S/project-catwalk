@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col, Image, Jumbotron, Container, Modal, ModalDialog } from 'react-bootstrap';
 
 const ImageGallery = (props) => {
+  var test = 'shorturl.at/cvIV7'
   const dispatch = useDispatch();
 
   // State Managers //
   let selectedStyle = useSelector((state) => state.styleReducer.style);
   let photoIndex = useSelector((state) => state.photoReducer.photoIndex);
   let modalState = useSelector((store) => store.modalReducer.modalState);
+  let zoomify = useSelector((store) => store.zoomifyReducer.zoomify);
 
 
   // Event Handler Functions //
@@ -35,6 +37,48 @@ const ImageGallery = (props) => {
       document.body.classList.add('modal-open') : document.body.classList.remove('modal-open');
     dispatch({ type: 'TOGGLE_MODAL', modalState: !modalState });
   };
+
+
+  const toggleZoomify = () => {
+    dispatch({ type: 'TOGGLE_ZOOMIFY', zoomify: !zoomify });
+  };
+
+  const magnify = (e) => {
+    if (zoomify) {
+      let imageWidth = e.target.offsetHeight * 1.25;
+      let imageHeight = e.target.offsetHeight * 1.25;
+      let ratio = imageHeight / imageWidth;
+      let boxWidth = e.target.clientWidth;
+      let x = e.pageX - e.target.offsetLeft;
+      let y = e.pageY - e.target.offsetTop;
+
+      let xPercent = x / (boxWidth / 100) + '%';
+      let yPercent = y / (boxWidth * ratio / 100) + '%';
+
+      Object.assign(e.target.style, {
+        backgroundPosition: xPercent + ' ' + yPercent,
+        backgroundSize: imageWidth + 'px',
+        height: '70rem',
+        maxHeight: '70rem',
+        width: '60rem',
+        maxWidth: '60rem',
+        cursor: 'crosshair'
+      });
+    } else {
+      Object.assign(e.target.style, {
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        cursor: 'crosshair'
+      });
+    }
+  };
+
+  // const regularify = (e) => {
+  //   Object.assign(e.target.style, {
+  //     backgroundSize: 'contain',
+  //     backgroundRepeat: 'no-repeat',
+  //   });
+  // };
 
 
   // Helper Functions //
@@ -145,15 +189,23 @@ const ImageGallery = (props) => {
               </svg>
             </button>
 
-            <div style={{
+            <div id="expandedImage" style={{
+              height: '70rem',
+              maxHeight: '70rem',
+              width: '60rem',
+              maxWidth: '60rem',
+              zIndex: 3000,
+              objectFit: 'contain',
               backgroundImage: `url(${selectedStyle.photos[photoIndex].url})`,
-              minHeight: '100vh',
-              maxHeight: '95vh',
-              maxWidth: '70vw',
-              zIndex: 3000
-            }}></div>
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+            }}
+            onClick={toggleZoomify}
+            onMouseMove={magnify}
+            ></div>
             {/* <Image id="expandedImage" src={selectedStyle.photos[photoIndex].url}
-              onClick={toggleModal}
+              // onClick={toggleModal}
+              onMouseMove={magnify}
               style={{objectFit: 'cover', minHeight: '100vh', maxHeight: '95vh', maxWidth: '70vw'}}/> */}
           </div>
 

@@ -236,7 +236,7 @@ button:active {
 
 #navigation-expanded {
   position: absolute;
-  height: 100vh;
+  height: 70rem;
   width: 10%;
   background-color: black;
   opacity: 5%;
@@ -353,7 +353,6 @@ button:active {
   justify-content: center;
   margin: 3vh;
 }
-
 
 /* Overview end */
 
