@@ -6,8 +6,6 @@ const stylesReducer = (state = [], action) => {
       stylesObj: styleParser(action.styles),
       styles: action.styles
     };
-
-    // return { styles: action.styles };
   default:
     return state;
   }

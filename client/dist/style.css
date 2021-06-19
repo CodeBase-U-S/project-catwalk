@@ -96,11 +96,11 @@ button:active {
   border-color: grey;
   border-width: 1px;
   color: black;
-  width: 70%;
+  width: 51%;
   height: 60px;
   margin-right: 10px;
-
 }
+
 .button-quantity {
   background-color: white;
   border: black;
@@ -113,6 +113,10 @@ button:active {
   height: 60px;
   margin-right: 10px;
   margin-left: 10px;
+}
+
+.addToCart {
+  width: 75%
 }
 
 .soldOut {

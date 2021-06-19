@@ -1,34 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Button, Select } from 'react-bootstrap';
+import { Row, Col, Button, Select, Alert } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import apiHandlers from '../apiHandlers.js';
 
 const AddToCart = (props) => {
+
+  // States //
   const dispatch = useDispatch();
   let product = useSelector((store) => store.productReducer.product);
   let selectedStyle = useSelector((state) => state.styleReducer.style);
   let hasInventory = useSelector((state) => state.styleReducer.hasInventory);
-  let sizeSelected = useSelector((state) => state.styleReducer.sizeSelected);
-  let skuSelected = useSelector((state) => state.styleReducer.sku);
-  let styleQuantity = useSelector((state) => state.styleReducer.quantity);
+  let sizeSku = useSelector((state) => state.sizeReducer.sku);
+  let styleQuantity = useSelector((state) => state.sizeReducer.sizeQuantity);
   let quantity = useSelector((state) => state.quantityReducer.quantity);
 
 
+  // Event Handlers //
   const setSize = (e) => {
-    if (e.currentTarget.value === 'select size') {
-      dispatch({
-        type: 'SET_SIZE',
-        style: selectedStyle,
-        sizeSelected: false
-      });
-    } else {
-      dispatch({
-        type: 'SET_SIZE',
-        style: selectedStyle,
-        sizeSelected: true,
-        sku: e.currentTarget.value
-      });
-    }
+    dispatch({
+      type: 'SET_SIZE',
+      sku: e.currentTarget.value,
+      style: selectedStyle,
+    });
   };
 
   const setQuantity = (e) => {
@@ -37,18 +30,14 @@ const AddToCart = (props) => {
 
   const addToBag = (e) => {
     for (var i = 0; i < quantity; i++) {
-      apiHandlers.addToCart(dispatch, skuSelected);
+      apiHandlers.addToCart(dispatch, sizeSku);
     }
-    // dispatch({ type: 'CHANGE_PRODUCT', product: product });
-    // dispatch({ type: 'SET_STYLE', style: selectedStyle });
-    // dispatch({ type: 'SET_PHOTO', photoIndex: 0 });
-    // dispatch({
-    //   type: 'SET_SIZE',
-    //   style: selectedStyle,
-    //   sizeSelected: false
-    // });
+    dispatch({ type: 'SET_QUANTITY', quantity: 0 });
+    dispatch({ type: 'SET_SIZE', sku: undefined, style: undefined });
   };
 
+
+  // Render //
   if (selectedStyle) {
     return (
       <div>
@@ -57,20 +46,21 @@ const AddToCart = (props) => {
             <Row className='mb-3'>
               <Col>
                 <div>
+                  {!sizeSku && <Alert variant='dark' style={{width: '75%'}}>Please select size</Alert>}
                   <select className="button-wide" style={{padding: '20px'}} onChange={setSize}>
                     <option value='select size'>SELECT SIZE</option>
                     {selectedStyle && Object.entries(selectedStyle.skus).map((size, id) => {
                       if (size[1].quantity > 0) {
                         return (
                           <option key={id} value={size[0]}
-                          > {size[1].size} - {size[1].quantity}</option>
+                          > Size {size[1].size} - {size[1].quantity}</option>
                         );
                       }
                     })}
                   </select>
                   <select className="button-quantity" onChange={setQuantity}>
                     <option> - </option>
-                    {sizeSelected && styleQuantity.map((count, id) => (
+                    {sizeSku && styleQuantity.map((count, id) => (
                       <option key={id} value={count}> {count} </option>
                     ))}
                   </select>
@@ -80,8 +70,7 @@ const AddToCart = (props) => {
 
             <Row>
               <Col>
-                <input type="button" className="button-wide" value="ADD TO BAG" onClick={addToBag}></input>
-                <input type="button" className="button-quantity" value="★"></input>
+                <input type="button" className="button-wide addToCart" value="ADD TO BAG" onClick={addToBag}></input>
               </Col>
             </Row>
           </div>
