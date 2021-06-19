@@ -5,7 +5,7 @@ import { Row, Col, Image, Jumbotron, Container, Modal, ModalDialog } from 'react
 const ImageGallery = (props) => {
   const dispatch = useDispatch();
 
-  // State Managers //
+  // States //
   let selectedStyle = useSelector((state) => state.styleReducer.style);
   let photoIndex = useSelector((state) => state.photoReducer.photoIndex);
   let modalState = useSelector((store) => store.modalReducer.modalState);
@@ -37,17 +37,12 @@ const ImageGallery = (props) => {
     dispatch({ type: 'TOGGLE_MODAL', modalState: !modalState });
   };
 
-
   const toggleZoomify = () => {
     dispatch({ type: 'TOGGLE_ZOOMIFY', zoomify: !zoomify });
   };
 
   const magnify = (e) => {
     if (zoomify) {
-
-      let imageWidth = 5000;
-      let imageHeight = e.target.cssHeight * 1125;
-      let ratio = imageHeight / imageWidth;
       let boxWidth = e.target.clientWidth;
       let x = e.pageX - e.target.offsetLeft;
       let y = e.pageY - e.target.offsetTop;
@@ -58,32 +53,16 @@ const ImageGallery = (props) => {
       Object.assign(e.target.style, {
         backgroundPosition: xPercent + ' ' + yPercent,
         backgroundSize: '150%',
-        maxHeight: '120%',
-        maxWidth: '90%',
         cursor: 'zoom-out',
         objectPosition: '-9999px -9999px',
       });
     } else {
       Object.assign(e.target.style, {
         backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
         cursor: 'crosshair',
-        backgroundPosition: 'top',
-        display: 'visible',
       });
     }
   };
-
-  // let natWidth, natHeight;
-
-  // const getImgSize = (url) => {
-  //   console.log('imgsize', url)
-  //   let imgSrc = document.createElement('img');
-  //   imgSrc.src = url;
-  //   natWidth = imgSrc.naturalWidth;
-  //   natHeight = imgSrc.naturalHeight;
-  //   console.log(natWidth, natHeight);
-  // }
 
 
   // Helper Functions //
@@ -195,47 +174,23 @@ const ImageGallery = (props) => {
             </button>
 
             <img id="expandedImage" style={{
-              // height: '70rem',
               maxHeight: '120%',
-              // minWidth: '80%',
               maxWidth: '90%',
-              zIndex: 3000,
-              // objectFit: 'contain',
               backgroundImage: `url(${selectedStyle.photos[photoIndex].url})`,
               backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
               backgroundPosition: 'top',
             }}
             onClick={toggleZoomify}
             onMouseMove={magnify}
             src={selectedStyle.photos[photoIndex].url}
             ></img>
-            {/* <Image id="expandedImage" src={selectedStyle.photos[photoIndex].url}
-              // onClick={toggleModal}
-              onMouseMove={magnify}
-              style={{objectFit: 'cover', minHeight: '100vh', maxHeight: '95vh', maxWidth: '70vw'}}/> */}
           </div>
 
         </div>
         }
-
-
-
-        {/* <Modal
-          show={modalState}
-          onHide={toggleModal}
-          className="imageGallery-expanded"
-          dialogClassName="imageGallery-expanded-dialog"
-          style={{padding: 0, minWidth: '100vw'}}
-        >
-          <div style={{height: '10vh', minWidth: '100vw', borderStyle: 'none'}}> {'<'}Back to product</div>
-          {photoIndex >= 0 &&
-            <Image id="expandedImage" src={selectedStyle.photos[photoIndex].url}
-              onClick={toggleModal}
-              style={{maxHeight: '100vh', objectFit: 'cover', minWidth: '70vh'}}/>}
-        </Modal> */}
       </Jumbotron>
     );
+
   } else {
     return (<div></div>);
   }
