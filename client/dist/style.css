@@ -307,7 +307,7 @@ button:active {
 
 #modalGallery-header {
   font-size: 14px;
-  height: 12vh;
+  height: 5rem;
   width: 100vw;
   display: flex;
   justify-content: space-between;
@@ -323,16 +323,21 @@ button:active {
   fill: lightgrey;
 }
 
+#modal-thumbnailGallery {
+  scrollbar-width: none;
+  align-items: center;
+}
+
 .modal-gallery {
   height: 2.5rem;
   width: 2.5rem;
   object-fit: cover;
   border-radius: 100%;
-  -webkit-transition: all 500ms ease;
-  -moz-transition: all 500ms ease;
-  -ms-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  -ms-transition: all 250ms ease;
+  -o-transition: all 250ms ease;
+  transition: all 250ms ease;
   z-index: 2000;
   vertical-align: middle;
 }
@@ -348,10 +353,22 @@ button:active {
   z-index: 2000;
 }
 
+.modal-gallery-selected {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 100%;
+  object-fit: cover;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  z-index: 2000;
+}
+
 #modal-thumbnail {
   display: flex;
   justify-content: center;
-  margin: 3vh;
 }
 
 /* Overview end */

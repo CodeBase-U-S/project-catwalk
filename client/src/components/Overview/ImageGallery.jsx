@@ -142,11 +142,11 @@ const ImageGallery = (props) => {
               </svg>  BACK TO PRODUCT
             </button>
 
-            <Row id="thumbnailGallery" style={{height: '100%', overflowX: 'scroll', width: '60vw', display: 'flex', justifyContent: 'space-between'}}>
+            <Row id="modal-thumbnailGallery" style={{height: '100%', width: '60vw', display: 'flex', justifyContent: 'space-between'}}>
               {selectedStyle && selectedStyle.photos.map((photo, id) => (
-                <Col id='modal-thumbnail' key={id} className="mb-4">
+                <Col id='modal-thumbnail' key={id}>
                   {photoIndex === id ?
-                    <Image id={`pIndex${id}`} className="modal-gallery" src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
+                    <Image id={`pIndex${id}`} className="modal-gallery-selected" src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
                     :
                     <Image id={`pIndex${id}`} className="modal-gallery" src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
                   }
