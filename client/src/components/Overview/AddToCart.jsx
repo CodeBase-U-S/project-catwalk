@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Button, Select, Alert } from 'react-bootstrap';
+import { Row, Col, Button, Select, Alert, Dropdown } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import apiHandlers from '../apiHandlers.js';
 
@@ -47,17 +47,21 @@ const AddToCart = (props) => {
               <Col>
                 <div>
                   {!sizeSku && <Alert variant='dark' style={{width: '75%'}}>Please select size</Alert>}
-                  <select className="button-wide" style={{padding: '20px'}} onChange={setSize}>
-                    <option value='select size'>SELECT SIZE</option>
-                    {selectedStyle && Object.entries(selectedStyle.skus).map((size, id) => {
-                      if (size[1].quantity > 0) {
-                        return (
-                          <option key={id} value={size[0]}
-                          > Size {size[1].size} - {size[1].quantity}</option>
-                        );
-                      }
-                    })}
-                  </select>
+                  <Dropdown bsPrefix="button-wide">
+                    <Dropdown.Toggle bsPrefix="button-wide" style={{padding: '20px'}}>SELECT SIZE </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item bsPrefix="button-wide" value='select size'>SELECT SIZE</Dropdown.Item>
+                      {selectedStyle && Object.entries(selectedStyle.skus).map((size, id) => {
+                        if (size[1].quantity > 0) {
+                          return (
+                            <Dropdown.Item bsPrefix="button-wide" key={id} value={size[0]} onClick={setSize}
+                            > Size {size[1].size} - {size[1].quantity}</Dropdown.Item>
+                          );
+                        }
+                      })}
+                    </Dropdown.Menu>
+
+                  </Dropdown>
                   <select className="button-quantity" onChange={setQuantity}>
                     <option> - </option>
                     {sizeSku && styleQuantity.map((count, id) => (
