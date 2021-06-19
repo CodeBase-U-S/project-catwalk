@@ -7,16 +7,17 @@ import { useSelector } from 'react-redux';
 
 const ProductInformation = ({ reviews }) => {
 
+  // States //
   let product = useSelector((state) => state.productReducer.product);
   let selectedStyle = useSelector((state) => state.styleReducer.style);
+
 
   return (
     <Container className="mb-5">
 
       <StarRating />
 
-      {product.category &&
-      <h5 id="category" className="mb-0" style={{fontWeight: 'lighter'}}> {product.category.toUpperCase()}</h5>}
+      <h5 id="category" className="mb-0" style={{fontWeight: 'lighter'}}> {product.category && product.category.toUpperCase()}</h5>
 
       <h1 id="name" className="mb-3"><strong>{product.name}</strong></h1>
 
@@ -25,7 +26,9 @@ const ProductInformation = ({ reviews }) => {
 
       {selectedStyle && selectedStyle.sale_price &&
         <div id="price" >
-          <s>${~~selectedStyle.original_price}</s> <span className="text-danger">${~~selectedStyle.sale_price}</span></div>}
+          <s>${~~selectedStyle.original_price}</s>
+          <span className="text-danger">${~~selectedStyle.sale_price}</span>
+        </div>}
 
       <br></br>
 
@@ -35,7 +38,7 @@ const ProductInformation = ({ reviews }) => {
 
       <br></br>
 
-      {product && product.description &&
+      {product.description &&
         <div>
           <hr></hr>
           <br></br>
@@ -49,6 +52,7 @@ const ProductInformation = ({ reviews }) => {
           <hr></hr>
         </div>
       }
+
       <Row style={{width: '60%'}}>
         <Col>
           <h6><strong>Share</strong></h6>

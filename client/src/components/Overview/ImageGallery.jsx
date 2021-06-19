@@ -84,7 +84,7 @@ const ImageGallery = (props) => {
   };
 
 
-
+  // Render //
   if (selectedStyle) {
     return (
       <Jumbotron>
