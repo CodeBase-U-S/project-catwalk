@@ -37,33 +37,37 @@ const ImageGallery = (props) => {
     dispatch({ type: 'TOGGLE_MODAL', modalState: !modalState });
   };
 
-  const toggleZoomify = () => {
+  const toggleZoomify = (e) => {
+    if (!zoomify) {
+      zoom(e);
+    } else {
+      unZoom(e);
+    }
     dispatch({ type: 'TOGGLE_ZOOMIFY', zoomify: !zoomify });
   };
 
-  const magnify = (e) => {
-    if (zoomify) {
-      let boxWidth = e.target.clientWidth;
-      let x = e.pageX - e.target.offsetLeft;
-      let y = e.pageY - e.target.offsetTop;
+  const zoom = (e) => {
+    let boxWidth = e.target.clientWidth;
+    let x = e.pageX - e.target.offsetLeft;
+    let y = e.pageY - e.target.offsetTop;
 
-      let xPercent = x / (boxWidth / 100) + '%';
-      let yPercent = y / (boxWidth / 100) + '%';
+    let xPercent = x / (boxWidth / 100) + '%';
+    let yPercent = y / (boxWidth / 100) + '%';
 
-      Object.assign(e.target.style, {
-        backgroundPosition: xPercent + ' ' + yPercent,
-        backgroundSize: '150%',
-        cursor: 'zoom-out',
-        objectPosition: '-9999px -9999px',
-      });
-    } else {
-      Object.assign(e.target.style, {
-        backgroundSize: 'contain',
-        cursor: 'crosshair',
-      });
-    }
+    Object.assign(e.target.style, {
+      backgroundPosition: xPercent + ' ' + yPercent,
+      backgroundSize: '150%',
+      cursor: 'zoom-out',
+      objectPosition: '-9999px -9999px',
+    });
   };
 
+  const unZoom = (e) => {
+    Object.assign(e.target.style, {
+      backgroundSize: 'contain',
+      cursor: 'crosshair',
+    });
+  };
 
   // Helper Functions //
   const scrollTo = (scrollPositionFinder) => {
@@ -177,11 +181,10 @@ const ImageGallery = (props) => {
               maxHeight: '120%',
               maxWidth: '90%',
               backgroundImage: `url(${selectedStyle.photos[photoIndex].url})`,
-              backgroundSize: 'contain',
               backgroundPosition: 'top',
             }}
             onClick={toggleZoomify}
-            onMouseMove={magnify}
+            onMouseMove={zoomify ? zoom : undefined}
             src={selectedStyle.photos[photoIndex].url}
             ></img>
           </div>
