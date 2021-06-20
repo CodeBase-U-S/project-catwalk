@@ -1,3 +1,5 @@
+const initialState = { style: {}, hasInventory: false };
+
 
 const styleReducer = (state = [], action) => {
   switch (action.type) {

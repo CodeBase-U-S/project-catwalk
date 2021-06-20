@@ -38,6 +38,12 @@ const ImageGallery = (props) => {
     scrollTo(scrollPositionFinderLeft);
   };
 
+  const toggleModal = (e) => {
+    !modalState ?
+      document.body.classList.add('modal-open') : document.body.classList.remove('modal-open');
+    dispatch({ type: 'TOGGLE_MODAL', modalState: !modalState });
+  };
+
 
   // Components //
   const ThumbnailGallery = () => (
