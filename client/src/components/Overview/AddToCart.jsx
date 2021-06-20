@@ -48,7 +48,7 @@ const AddToCart = (props) => {
                 <div>
                   {!sizeSku && <Alert variant='dark' style={{width: '75%'}}>Please select size</Alert>}
                   <Dropdown bsPrefix="button-wide">
-                    <Dropdown.Toggle bsPrefix="button-wide" style={{padding: '20px'}}>SELECT SIZE </Dropdown.Toggle>
+                    <Dropdown.Toggle style={{padding: '20px'}}>SELECT SIZE </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item bsPrefix="button-wide" value='select size'>SELECT SIZE</Dropdown.Item>
                       {selectedStyle && Object.entries(selectedStyle.skus).map((size, id) => {

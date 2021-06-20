@@ -19,7 +19,7 @@ const StarRating = () => {
 
   // Event Handlers //
 
-  const scrollHandler = () => {
+  const scrollHandler = (e) => {
     const elementToScrollTo = document.getElementsByClassName('reviewsJG')[0];
     elementToScrollTo.scrollIntoView();
   };
