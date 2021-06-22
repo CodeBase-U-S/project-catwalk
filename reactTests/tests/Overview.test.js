@@ -35,8 +35,6 @@ afterEach(() => {
 
 describe('Overview renders Product Information', () => {
 
-
-
   const testProduct = {
     "id": 132123,
     "campus": "hr-lax",
@@ -49,6 +47,7 @@ describe('Overview renders Product Information', () => {
     "updated_at": "2021-02-23T03:29:57.827Z"
   }
 
+  it("should create an action to add a product", () => {
 
   // #1. Checks that product information is rendered properly.
   it("renders product data", async () => {

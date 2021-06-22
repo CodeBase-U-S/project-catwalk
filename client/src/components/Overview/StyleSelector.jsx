@@ -5,16 +5,19 @@ import { useSelector, useDispatch } from 'react-redux';
 const StyleSelector = (props) => {
   const dispatch = useDispatch();
 
+  // States //
   let selectedStyle = useSelector((state) => state.styleReducer.style);
   let styles = useSelector((state) => state.stylesReducer.styles);
   let stylesObj = useSelector((state) => state.stylesReducer.stylesObj);
 
+  // Event Handlers //
   const selectStyle = (e) => {
     let styleId = e.currentTarget.getAttribute('style-index');
     dispatch({ type: 'SET_STYLE', style: stylesObj[styleId] });
     dispatch({ type: 'SET_PHOTO', photoIndex: 0 });
   };
 
+  // Render //
   if (selectedStyle) {
     return (
       <div className="mb-4">
